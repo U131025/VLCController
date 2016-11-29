@@ -21,6 +21,7 @@
 #import "ColorSelectorViewController.h"
 #import "ColorSettingViewController.h"
 #import "UIColor+extension.h"
+#import "ThemeTableViewCell.h"
 
 #define CustomColor @"Custom"
 
@@ -62,10 +63,10 @@
     self.tableView.allowsSelection = NO;
     self.tableView.frame = CGRectMake(0, NavBarHeight, ScreenWidth, ScreenHeight-NavBarHeight - 55);
     
-    UIButton *saveButton = [[UIButton alloc] initWithFrame:CGRectMake(50, ScreenHeight-50, ScreenWidth-100, 40)];
+    UIButton *saveButton = [[UIButton alloc] initWithFrame:CGRectMake(80, ScreenHeight-50, ScreenWidth-160, 40)];
     saveButton.layer.borderColor = WhiteColor.CGColor;
     saveButton.layer.borderWidth = 1;
-    saveButton.titleLabel.font = FontBold(16);
+    saveButton.titleLabel.font = Font(16);
     [saveButton setTitle:@"Save Theme" forState:UIControlStateNormal];
     [saveButton addTarget:self action:@selector(saveTheme) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:saveButton];
@@ -157,7 +158,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 1) {
-        return 40;
+        return 50;
     }
     
     return 100;
@@ -209,11 +210,12 @@
         }        
         
     } else if (section == 1) {
-        view.frame = (CGRect){0, 0, ScreenWidth, 40};
+        view.frame = (CGRect){0, 0, ScreenWidth, 50};
         
-        NSInteger LabelWidth = ScreenWidth / 3;
-        myUILabel *channelLabel = [[myUILabel alloc] initWithFrame:CGRectMake(50, 0, LabelWidth-50, 40)];
-        channelLabel.text = @"CHANNEL";
+        NSInteger LabelWidth = (ScreenWidth-60) / 3;
+        myUILabel *channelLabel = [[myUILabel alloc] initWithFrame:CGRectMake(30, 0, LabelWidth, 50)];
+        channelLabel.text = @"BULB\nCHANNEL";
+        channelLabel.numberOfLines = 2;
         channelLabel.textAlignment = NSTextAlignmentLeft;
         channelLabel.verticalAlignment = VerticalAlignmentMiddle;
         channelLabel.textColor = WhiteColor;
@@ -221,12 +223,22 @@
         [view addSubview:channelLabel];
         
         myUILabel *colorLabel = [[myUILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(channelLabel.frame), 0, LabelWidth, CGRectGetHeight(channelLabel.frame))];
-        colorLabel.text = @"COLOR";
-        colorLabel.textAlignment = NSTextAlignmentLeft;
+        colorLabel.text = @"PRIMARY\nCOLOR";
+        colorLabel.numberOfLines = 2;
+        colorLabel.textAlignment = NSTextAlignmentCenter;
         colorLabel.verticalAlignment = VerticalAlignmentMiddle;
         colorLabel.textColor = WhiteColor;
         colorLabel.font = FontBold(14);
         [view addSubview:colorLabel];
+        
+        myUILabel *fadeColorLabel = [[myUILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(colorLabel.frame), 0, LabelWidth, CGRectGetHeight(channelLabel.frame))];
+        fadeColorLabel.text = @"FADE TO\nCOLOR";
+        fadeColorLabel.numberOfLines = 2;
+        fadeColorLabel.textAlignment = NSTextAlignmentRight;
+        fadeColorLabel.verticalAlignment = VerticalAlignmentMiddle;
+        fadeColorLabel.textColor = WhiteColor;
+        fadeColorLabel.font = FontBold(14);
+        [view addSubview:fadeColorLabel];
         
     }
     
@@ -240,120 +252,31 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DefaultCellIdentifier];
+    static  NSString *cellId = @"Cell_ID";
+    ThemeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DefaultCellIdentifier];
-    } else {
-        for (UIView *subView in cell.contentView.subviews) {
-            [subView removeFromSuperview];
-        }
+        cell = [[ThemeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     
+    __weak typeof(self) weakSelf = self;
     ChannelModel *channel = [self.channelArray objectAtIndex:indexPath.row];
-    NSInteger gridWidth = ScreenWidth / 3;
-    UIView *cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
-    cellView.backgroundColor = [UIColor clearColor];
-    
-    myUILabel *channelName = [[myUILabel alloc] initWithFrame:CGRectMake(50, 0, gridWidth-50, 40)];
-    channelName.text = channel.name;
-    channelName.verticalAlignment = VerticalAlignmentMiddle;
-    channelName.textAlignment = NSTextAlignmentLeft;
-    channelName.font = Font(14);
-    channelName.textColor = WhiteColor;
-    [cellView addSubview:channelName];
-    
-    MyComBoxView *colorComboxView = [[MyComBoxView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(channelName.frame), 5, gridWidth, 30)];
-    colorComboxView.contentText = channel.colorName;
-    colorComboxView.clickActionBlock = ^(BOOL isExpand) {
-        //弹出主题颜色选择项
-        [self tapClick:nil];
-        self.themeName = self.nameTextField.text;
-        [self showDefaultColor:channel];
+    cell.model = channel;
+    cell.buttonHandel = ^ (BOOL isPrimaryColor) {
+      
+        if (isPrimaryColor) {
+            [weakSelf selectColor:indexPath.row];
+        }
+        else {
+            [weakSelf selectSubColor:indexPath.row];
+        }
     };
     
-    [cellView addSubview:colorComboxView];
     
-    //color button
-    UIButton *colorButton1 = [self createRoundButton:CGRectMake(CGRectGetMaxX(colorComboxView.frame)+10, 5, 30, 30)];
-    
-//    if ([channel.warmValue isEqualToString:@"0xff"]) {
-//        colorButton1.backgroundColor = RGBFromColor(0xfefe9c);
-//    } else {
-//        colorButton1.backgroundColor = channel.color;
-//    }
-    
-    if ([channel.colorType isEqualToString:@"Warm Clear"]) {
-        //Warm Clear
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"Warm Clear"]) {
-            colorButton1.backgroundColor = [UIColor getColor:[[NSUserDefaults standardUserDefaults] objectForKey:@"Warm Clear"]];
-        }
-        else {
-            colorButton1.backgroundColor = RGBFromColor(0xfefe9c);
-        }
-    }
-    else {
-        colorButton1.backgroundColor = channel.showColor;
-    }
-    
-    if (!colorButton1.backgroundColor) {
-        [colorButton1 setTitle:@"╳" forState:UIControlStateNormal];
-    }
-    
-    colorButton1.tag = indexPath.row;
-    [colorButton1 addTarget:self action:@selector(selectColor:) forControlEvents:UIControlEventTouchUpInside];
-    
-//    MyLongPressGestureRecognizer *longPressColor1 = [[MyLongPressGestureRecognizer alloc] initWithTarget:self action:@selector(firstColorBtnLong:) tag:indexPath.row];
-//    longPressColor1.minimumPressDuration = 0.8;
-//    [colorButton1 addGestureRecognizer:longPressColor1];
-
-    [cellView addSubview:colorButton1];
-    
-    UIButton *colorButton2 = [self createRoundButton:CGRectMake(CGRectGetMaxX(colorButton1.frame)+10, 5, 30, 30)];
-    colorButton2.tag = indexPath.row;
-    [colorButton2 addTarget:self action:@selector(selectSubColor:) forControlEvents:UIControlEventTouchUpInside];
-    
-    if (!channel.isCustomColor) {
-//        colorButton2.enabled = NO;
-    } else {
-        
-        if ([channel.subColorType isEqualToString:@"Warm Clear"]) {
-            //Warm Clear
-            if ([[NSUserDefaults standardUserDefaults] objectForKey:@"Warm Clear"]) {
-                colorButton2.backgroundColor = [UIColor getColor:[[NSUserDefaults standardUserDefaults] objectForKey:@"Warm Clear"]];
-            }
-            else {
-                colorButton2.backgroundColor = RGBFromColor(0xfefe9c);
-            }
-        }
-//        else if ([channel.subColorType isEqualToString:@"Winter White"]) {
-//            if ([[NSUserDefaults standardUserDefaults] objectForKey:@"Winter White"]) {
-//                colorButton2.backgroundColor = [UIColor getColor:[[NSUserDefaults standardUserDefaults] objectForKey:@"Winter White"]];
-//            }
-//            else {
-//                colorButton2.backgroundColor = OpaqueRGBColor(235, 244, 251);
-//            }
-//        }
-        else {
-            colorButton2.backgroundColor = channel.showSubColor;
-        }
-//        colorButton2.backgroundColor = channel.subColor;
-    }
-    
-    if (!colorButton2.backgroundColor) {
-        [colorButton2 setTitle:@"╳" forState:UIControlStateNormal];
-    }
-    
-//    MyLongPressGestureRecognizer *longPressColor2 = [[MyLongPressGestureRecognizer alloc] initWithTarget:self action:@selector(secondColorBtnLong:) tag:indexPath.row];
-//    longPressColor2.minimumPressDuration = 0.8;
-//    [colorButton2 addGestureRecognizer:longPressColor2];
-    
-    [cellView addSubview:colorButton2];
-    
-    [cell.contentView addSubview:cellView];
-    cell.backgroundColor = [UIColor clearColor];
     return cell;
+
 }
 
+#pragma mark - Handle
 - (void)firstColorBtnLong:(MyLongPressGestureRecognizer *)gestureRecognizer
 {
     ChannelModel *channel = [self.channelArray objectAtIndex:gestureRecognizer.tag];
@@ -410,15 +333,15 @@
     return roundButton;
 }
 
-- (void)selectColor:(UIButton *)button
+- (void)selectColor:(NSInteger)tag
 {
-    [self showColorOptionWithChanelIndex:button.tag isMainColor:YES];
+    [self showColorOptionWithChanelIndex:tag isMainColor:YES];
     
 }
 
-- (void)selectSubColor:(UIButton *)button
+- (void)selectSubColor:(NSInteger)tag
 {
-    [self showColorOptionWithChanelIndex:button.tag isMainColor:NO];
+    [self showColorOptionWithChanelIndex:tag isMainColor:NO];
  
 }
 
@@ -429,14 +352,7 @@
     MyLog(@"mainColor:%@;\nsubColor:%@.", [UIColor hexFromUIColor:channel.color], [UIColor hexFromUIColor:channel.subColor]);
     
     //跳转至颜色选择，颜色设置
-//    UIColor *currentColor;
-//    if (isMainColor) {
-//        currentColor = channel.color;
-//    } else {
-//        currentColor = channel.subColor;
-//    }
-    
-//    ColorSettingViewController *viewController = [[ColorSettingViewController alloc] initWithColor:currentColor];
+
     ColorSelectorViewController *viewController = [[ColorSelectorViewController alloc] init];
     [self.navigationController pushViewController:viewController animated:YES];
     
@@ -471,43 +387,7 @@
         self.themeName = self.nameTextField.text;
         [self.tableView reloadData];
     };
-    
-//    ColorOptionsViewController *colorOptionsVC = [[ColorOptionsViewController alloc] init];
-//    if (isMainColor) {
-//        colorOptionsVC.selectedColor = channel.color;
-//    } else {
-//        colorOptionsVC.selectedColor = channel.subColor;
-//    }
-//    
-//    colorOptionsVC.onSaveColorBlock = ^ (UIColor *selColor) {
-//        if (isMainColor) {
-//            channel.color = selColor;
-//        } else {
-//            channel.subColor = selColor;
-//        }
-//        
-//        channel.colorName = @"Custom";
-//        channel.isCustomColor = YES;
-//        self.themeName = self.nameTextField.text;
-//        [self.tableView reloadData];
-//    };
-//    
-//    colorOptionsVC.onSelecteSpecialColorBlock = ^ (UIColor *color, NSString *warmValue) {
-//        if (isMainColor) {
-//            channel.color = color;
-//            channel.warmValue = warmValue;
-//        } else {
-//            channel.subColor = color;
-//            channel.subWarmValue = warmValue;
-//        }
-//        
-//        channel.colorName = @"Custom";
-//        channel.isCustomColor = YES;
-//        self.themeName = self.nameTextField.text;
-//        [self.tableView reloadData];
-//    };
-//    
-//    [self.navigationController pushViewController:colorOptionsVC animated:YES];
+
 }
 
 - (void)saveTheme
@@ -516,6 +396,20 @@
         [MBProgressHUD showError:@"Please input Theme Name!"];
         return;
     }
+    
+    //校验是否有选择颜色
+    BOOL isColor = NO;
+    for (ChannelModel *model in self.channelArray) {
+        if (model.color || model.subColor) {
+            isColor = YES;
+            break;
+        }
+    }
+    if (!isColor) {
+        [MBProgressHUD showError:@"You must first select a color before saving."];
+        return;
+    }
+    
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     

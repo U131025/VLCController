@@ -131,6 +131,7 @@
 		D5F6092B1D84D9580094EEFF /* ColorSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5F609291D84D9580094EEFF /* ColorSettingViewController.xib */; };
 		D5F6092F1D84DBBA0094EEFF /* ColorSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F6092D1D84DBBA0094EEFF /* ColorSelectorViewController.m */; };
 		D5F609301D84DBBA0094EEFF /* ColorSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5F6092E1D84DBBA0094EEFF /* ColorSelectorViewController.xib */; };
+		E5B4A9461DED54BD00894817 /* ThemeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B4A9451DED54BD00894817 /* ThemeTableViewCell.m */; };
 		F3A0F49D2B6AD83F2AED78A1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B652454E6CD469B43DCC727 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -372,6 +373,8 @@
 		D5F6092C1D84DBBA0094EEFF /* ColorSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorSelectorViewController.h; path = ViewController/Theme/ColorSelectorViewController.h; sourceTree = "<group>"; };
 		D5F6092D1D84DBBA0094EEFF /* ColorSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorSelectorViewController.m; path = ViewController/Theme/ColorSelectorViewController.m; sourceTree = "<group>"; };
 		D5F6092E1D84DBBA0094EEFF /* ColorSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ColorSelectorViewController.xib; path = ViewController/Theme/ColorSelectorViewController.xib; sourceTree = "<group>"; };
+		E5B4A9441DED54BD00894817 /* ThemeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThemeTableViewCell.h; path = View/Theme/ThemeTableViewCell.h; sourceTree = "<group>"; };
+		E5B4A9451DED54BD00894817 /* ThemeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThemeTableViewCell.m; path = View/Theme/ThemeTableViewCell.m; sourceTree = "<group>"; };
 		F5EAC72D7AA346B59563CCF0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -754,6 +757,7 @@
 		D58ABC241C3E39E200270C1F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E5B4A9431DED548A00894817 /* Theme */,
 				D560094E1C6B132F006DE648 /* 弹出框 */,
 				D5DDD42A1C59A940002D1264 /* ColorPicker */,
 				D5F58EF41C575CA700DE602A /* 选择日期 */,
@@ -914,6 +918,15 @@
 			);
 			name = "选择日期";
 			path = "View/选择日期";
+			sourceTree = "<group>";
+		};
+		E5B4A9431DED548A00894817 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				E5B4A9441DED54BD00894817 /* ThemeTableViewCell.h */,
+				E5B4A9451DED54BD00894817 /* ThemeTableViewCell.m */,
+			);
+			name = Theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1233,6 +1246,7 @@
 				D5E824A81D87861B00BA2053 /* ColorButton.m in Sources */,
 				D50F541D1C51C39B00F5D292 /* TextFieldWithBorderView.m in Sources */,
 				D524D9591C8D734500044B08 /* UnpairWirelessPlugViewController.m in Sources */,
+				E5B4A9461DED54BD00894817 /* ThemeTableViewCell.m in Sources */,
 				D50F53FD1C4F743C00F5D292 /* Channel.m in Sources */,
 				D58ABBEF1C3E39C000270C1F /* main.m in Sources */,
 				D590FDE01C915BCF0049E0B1 /* ColorFavorites+Fetch.m in Sources */,

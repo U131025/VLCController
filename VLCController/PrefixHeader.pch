@@ -23,8 +23,8 @@
 #define TEST_FILTER_NAME @"fliter_name"
 
 #ifdef DEBUG
-    #define TEST_CLOSE_BLUETOOTH @"test_close_bluetooth"
-    #define TEST_FILTER_RESPOND @"fliter_respond"
+//    #define TEST_CLOSE_BLUETOOTH @"test_close_bluetooth"
+//    #define TEST_FILTER_RESPOND @"fliter_respond"
 #endif
 
 #define BUGLY_APP_ID @"08db302b27"
