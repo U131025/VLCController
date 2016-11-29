@@ -7,6 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		941B976561C5CA008DBF7FA6 /* libPods-VLCControllerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0468F5F72FE3259983C6DA1 /* libPods-VLCControllerTests.a */; };
+		D5081D371C72CF8700B556D7 /* InputHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D5081D361C72CF8700B556D7 /* InputHelper.m */; };
+		D50F53E01C4F1C2A00F5D292 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50F53D91C4F1C2A00F5D292 /* arrow@2x.png */; };
+		D50F53E11C4F1C2A00F5D292 /* downArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50F53DA1C4F1C2A00F5D292 /* downArrow@2x.png */; };
+		D50F53E21C4F1C2A00F5D292 /* icon_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50F53DB1C4F1C2A00F5D292 /* icon_green@2x.png */; };
+		D50F53E31C4F1C2A00F5D292 /* icon_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50F53DC1C4F1C2A00F5D292 /* icon_red@2x.png */; };
+		D50F53E41C4F1C2A00F5D292 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50F53DD1C4F1C2A00F5D292 /* Icon@2x.png */; };
+		D50F53E51C4F1C2A00F5D292 /* link@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50F53DE1C4F1C2A00F5D292 /* link@2x.png */; };
+		D50F53E61C4F1C2A00F5D292 /* subArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50F53DF1C4F1C2A00F5D292 /* subArrow@2x.png */; };
+		D50F53E81C4F599D00F5D292 /* backArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50F53E71C4F599D00F5D292 /* backArrow@2x.png */; };
+		D50F53FC1C4F743C00F5D292 /* Channel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D50F53EF1C4F743C00F5D292 /* Channel+CoreDataProperties.m */; };
+		D50F53FD1C4F743C00F5D292 /* Channel.m in Sources */ = {isa = PBXBuildFile; fileRef = D50F53F11C4F743C00F5D292 /* Channel.m */; };
+		D50F53FE1C4F743C00F5D292 /* Theme+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D50F53F31C4F743C00F5D292 /* Theme+CoreDataProperties.m */; };
+		D50F53FF1C4F743C00F5D292 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = D50F53F51C4F743C00F5D292 /* Theme.m */; };
+		D50F54001C4F743C00F5D292 /* SlaveLightController+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D50F53F71C4F743C00F5D292 /* SlaveLightController+CoreDataProperties.m */; };
+		D50F54011C4F743C00F5D292 /* SlaveLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50F53F91C4F743C00F5D292 /* SlaveLightController.m */; };
+		D50F54041C4F85D300F5D292 /* LightController+Fetch.m in Sources */ = {isa = PBXBuildFile; fileRef = D50F54031C4F85D300F5D292 /* LightController+Fetch.m */; };
+		D50F54091C50BC2E00F5D292 /* BluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D50F54081C50BC2E00F5D292 /* BluetoothManager.m */; };
+		D50F540F1C50CA2400F5D292 /* LightControllerCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D50F540E1C50CA2400F5D292 /* LightControllerCommand.m */; };
+		D50F54141C50DFF800F5D292 /* NotFoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50F54121C50DFF800F5D292 /* NotFoundViewController.m */; };
+		D50F54151C50DFF800F5D292 /* NotFoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D50F54131C50DFF800F5D292 /* NotFoundViewController.xib */; };
+		D50F54191C50E01D00F5D292 /* FoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50F54171C50E01D00F5D292 /* FoundViewController.m */; };
+		D50F541A1C50E01D00F5D292 /* FoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D50F54181C50E01D00F5D292 /* FoundViewController.xib */; };
+		D50F541D1C51C39B00F5D292 /* TextFieldWithBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D50F541C1C51C39B00F5D292 /* TextFieldWithBorderView.m */; };
+		D50F54221C520B1100F5D292 /* SvUDIDTools.m in Sources */ = {isa = PBXBuildFile; fileRef = D50F54211C520B1000F5D292 /* SvUDIDTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D51B3A491C71D423005D72CC /* MBProgressHUD+NJ.m in Sources */ = {isa = PBXBuildFile; fileRef = D51B3A451C71D423005D72CC /* MBProgressHUD+NJ.m */; };
+		D51B3A4A1C71D423005D72CC /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D51B3A461C71D423005D72CC /* MBProgressHUD.bundle */; };
+		D51B3A4B1C71D423005D72CC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D51B3A481C71D423005D72CC /* MBProgressHUD.m */; };
+		D524D9401C893A3200044B08 /* BulbChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D524D93F1C893A3200044B08 /* BulbChannelViewController.m */; };
+		D524D9491C895D0D00044B08 /* AssignBulbChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D524D9481C895D0D00044B08 /* AssignBulbChannelViewController.m */; };
+		D524D94D1C897A9000044B08 /* ChannelItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D524D94C1C897A9000044B08 /* ChannelItemView.m */; };
+		D524D9521C8D530D00044B08 /* BulbChannel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D524D94F1C8D530D00044B08 /* BulbChannel+CoreDataProperties.m */; };
+		D524D9531C8D530D00044B08 /* BulbChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = D524D9511C8D530D00044B08 /* BulbChannel.m */; };
+		D524D9561C8D6FE300044B08 /* ManageWirelessPlugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D524D9551C8D6FE300044B08 /* ManageWirelessPlugsViewController.m */; };
+		D524D9591C8D734500044B08 /* UnpairWirelessPlugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D524D9581C8D734500044B08 /* UnpairWirelessPlugViewController.m */; };
+		D56009511C6B1515006DE648 /* PopBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D56009501C6B1515006DE648 /* PopBaseView.m */; };
+		D575E93F1C759B0300083571 /* ColorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D575E93E1C759B0300083571 /* ColorModel.m */; };
+		D57CA5711CB7367B00EDD027 /* backgroundNoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D57CA5701CB7367B00EDD027 /* backgroundNoIcon.png */; };
 		D58ABBEF1C3E39C000270C1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABBEE1C3E39C000270C1F /* main.m */; };
 		D58ABBF21C3E39C000270C1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABBF11C3E39C000270C1F /* AppDelegate.m */; };
 		D58ABBF51C3E39C000270C1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABBF41C3E39C000270C1F /* ViewController.m */; };
@@ -16,6 +54,84 @@
 		D58ABC001C3E39C000270C1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D58ABBFE1C3E39C000270C1F /* LaunchScreen.storyboard */; };
 		D58ABC0B1C3E39C000270C1F /* VLCControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABC0A1C3E39C000270C1F /* VLCControllerTests.m */; };
 		D58ABC161C3E39C000270C1F /* VLCControllerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABC151C3E39C000270C1F /* VLCControllerUITests.m */; };
+		D58ABC2A1C3E424A00270C1F /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABC291C3E424A00270C1F /* BaseViewController.m */; };
+		D58ABC311C3F472A00270C1F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABC2F1C3F472A00270C1F /* HomeViewController.m */; };
+		D58ABC321C3F472A00270C1F /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABC301C3F472A00270C1F /* HomeViewController.xib */; };
+		D58ABC491C3FC4A000270C1F /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABC471C3FC4A000270C1F /* TipViewController.m */; };
+		D58ABC4A1C3FC4A000270C1F /* TipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABC481C3FC4A000270C1F /* TipViewController.xib */; };
+		D58ABC841C411C3E00270C1F /* BluetoothLibary.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABC831C411C3E00270C1F /* BluetoothLibary.m */; };
+		D58ABC861C438B8C00270C1F /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = D58ABC851C438B8C00270C1F /* Background.png */; };
+		D58ABC8B1C46349E00270C1F /* LightControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABC8A1C46349E00270C1F /* LightControllerModel.m */; };
+		D58ABC8E1C464EA900270C1F /* LightControllerCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABC8D1C464EA900270C1F /* LightControllerCellView.m */; };
+		D58ABC921C472F4300270C1F /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABC911C472F4300270C1F /* NSString+Extension.m */; };
+		D58ABC991C47890A00270C1F /* AddControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABC971C47890A00270C1F /* AddControllerViewController.m */; };
+		D58ABC9A1C47890A00270C1F /* AddControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABC981C47890A00270C1F /* AddControllerViewController.xib */; };
+		D58ABC9E1C487F8800270C1F /* DuplicateControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABC9C1C487F8800270C1F /* DuplicateControllerViewController.m */; };
+		D58ABC9F1C487F8800270C1F /* DuplicateControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABC9D1C487F8800270C1F /* DuplicateControllerViewController.xib */; };
+		D58ABCA61C48BBF700270C1F /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABCA41C48BBF700270C1F /* SettingViewController.m */; };
+		D58ABCA71C48BBF700270C1F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABCA51C48BBF700270C1F /* SettingViewController.xib */; };
+		D58ABCAA1C48D26600270C1F /* MyComBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABCA91C48D26600270C1F /* MyComBoxView.m */; };
+		D58ABCAE1C4C729800270C1F /* ScheduleOptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABCAC1C4C729800270C1F /* ScheduleOptionViewController.m */; };
+		D58ABCAF1C4C729800270C1F /* ScheduleOptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABCAD1C4C729800270C1F /* ScheduleOptionViewController.xib */; };
+		D58ABCB71C4CB92A00270C1F /* TextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABCB61C4CB92A00270C1F /* TextTableViewCell.m */; };
+		D58ABCBA1C4CBD6800270C1F /* myUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABCB91C4CBD6800270C1F /* myUILabel.m */; };
+		D58ABCBE1C4CC2A700270C1F /* EditSimpleScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABCBC1C4CC2A700270C1F /* EditSimpleScheduleViewController.m */; };
+		D58ABCBF1C4CC2A700270C1F /* EditSimpleScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABCBD1C4CC2A700270C1F /* EditSimpleScheduleViewController.xib */; };
+		D58ABCC31C4CC2C600270C1F /* EditCustomScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABCC11C4CC2C600270C1F /* EditCustomScheduleViewController.m */; };
+		D58ABCC41C4CC2C600270C1F /* EditCustomScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABCC21C4CC2C600270C1F /* EditCustomScheduleViewController.xib */; };
+		D58ABCC81C4DC7D000270C1F /* ManageBulbsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABCC61C4DC7D000270C1F /* ManageBulbsViewController.m */; };
+		D58ABCC91C4DC7D000270C1F /* ManageBulbsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABCC71C4DC7D000270C1F /* ManageBulbsViewController.xib */; };
+		D58ABCCD1C4DCC0400270C1F /* ManageThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABCCB1C4DCC0400270C1F /* ManageThemeViewController.m */; };
+		D58ABCCE1C4DCC0400270C1F /* ManageThemeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABCCC1C4DCC0400270C1F /* ManageThemeViewController.xib */; };
+		D58ABCD11C4DCE6D00270C1F /* ThemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABCD01C4DCE6D00270C1F /* ThemeModel.m */; };
+		D58ABCD51C4DD59200270C1F /* EditThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABCD31C4DD59200270C1F /* EditThemeViewController.m */; };
+		D58ABCD61C4DD59300270C1F /* EditThemeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D58ABCD41C4DD59200270C1F /* EditThemeViewController.xib */; };
+		D58ABCD91C4DDB5400270C1F /* ChannelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D58ABCD81C4DDB5400270C1F /* ChannelModel.m */; };
+		D590FDA31C8E56AA0049E0B1 /* TImePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDA21C8E56AA0049E0B1 /* TImePickerView.m */; };
+		D590FDA91C8EA0750049E0B1 /* ScheduleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDA81C8EA0750049E0B1 /* ScheduleModel.m */; };
+		D590FDB41C8EB23A0049E0B1 /* Schedule+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDAF1C8EB23A0049E0B1 /* Schedule+CoreDataProperties.m */; };
+		D590FDB51C8EB23A0049E0B1 /* Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDB11C8EB23A0049E0B1 /* Schedule.m */; };
+		D590FDC01C8EB4200049E0B1 /* ScheduleItem+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDBD1C8EB4200049E0B1 /* ScheduleItem+CoreDataProperties.m */; };
+		D590FDC11C8EB4200049E0B1 /* ScheduleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDBF1C8EB4200049E0B1 /* ScheduleItem.m */; };
+		D590FDC41C8EB5350049E0B1 /* Schedule+Fetch.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDC31C8EB5350049E0B1 /* Schedule+Fetch.m */; };
+		D590FDC71C8EB8500049E0B1 /* ScheduleItem+Fetch.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDC61C8EB8500049E0B1 /* ScheduleItem+Fetch.m */; };
+		D590FDCB1C8EBE600049E0B1 /* DateFuncation.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDCA1C8EBE600049E0B1 /* DateFuncation.m */; };
+		D590FDCE1C8F1F4F0049E0B1 /* NSString+CustomCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDCD1C8F1F4F0049E0B1 /* NSString+CustomCompare.m */; };
+		D590FDD11C9116810049E0B1 /* BulbChannel+Fetch.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDD01C9116810049E0B1 /* BulbChannel+Fetch.m */; };
+		D590FDD61C913D3D0049E0B1 /* LightController+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDD31C913D3D0049E0B1 /* LightController+CoreDataProperties.m */; };
+		D590FDD71C913D3D0049E0B1 /* LightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDD51C913D3D0049E0B1 /* LightController.m */; };
+		D590FDDC1C915BAE0049E0B1 /* ColorFavorites+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDD91C915BAE0049E0B1 /* ColorFavorites+CoreDataProperties.m */; };
+		D590FDDD1C915BAE0049E0B1 /* ColorFavorites.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDDB1C915BAE0049E0B1 /* ColorFavorites.m */; };
+		D590FDE01C915BCF0049E0B1 /* ColorFavorites+Fetch.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDDF1C915BCF0049E0B1 /* ColorFavorites+Fetch.m */; };
+		D590FDE31C91CA830049E0B1 /* SlaveControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDE21C91CA830049E0B1 /* SlaveControllerViewController.m */; };
+		D5BAD1231C76B5BD000B6966 /* ZJSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = D5BAD1221C76B5BD000B6966 /* ZJSwitch.m */; };
+		D5DDD3E51C586010002D1264 /* TipMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DDD3E41C586010002D1264 /* TipMessageView.m */; };
+		D5DDD3E81C58AC82002D1264 /* ColorOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DDD3E71C58AC82002D1264 /* ColorOptionsViewController.m */; };
+		D5DDD4231C5917E7002D1264 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DDD4221C5917E7002D1264 /* QuartzCore.framework */; };
+		D5DDD4251C591805002D1264 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DDD4241C591805002D1264 /* UIKit.framework */; };
+		D5DDD4271C591816002D1264 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DDD4261C591816002D1264 /* Foundation.framework */; };
+		D5DDD4291C591826002D1264 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DDD4281C591826002D1264 /* CoreGraphics.framework */; };
+		D5DDD4331C59A940002D1264 /* colorPickerKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DDD42B1C59A940002D1264 /* colorPickerKnob.png */; };
+		D5DDD4341C59A940002D1264 /* colorPickerKnob@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DDD42C1C59A940002D1264 /* colorPickerKnob@2x.png */; };
+		D5DDD4351C59A940002D1264 /* HSV.c in Sources */ = {isa = PBXBuildFile; fileRef = D5DDD42D1C59A940002D1264 /* HSV.c */; };
+		D5DDD4361C59A940002D1264 /* KZColorPickerHSWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DDD4301C59A940002D1264 /* KZColorPickerHSWheel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D5DDD4371C59A940002D1264 /* pickerColorWheel.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DDD4311C59A940002D1264 /* pickerColorWheel.png */; };
+		D5DDD4381C59A940002D1264 /* pickerColorWheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5DDD4321C59A940002D1264 /* pickerColorWheel@2x.png */; };
+		D5DDD43B1C59B280002D1264 /* UIColor+extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DDD43A1C59B280002D1264 /* UIColor+extension.m */; };
+		D5DDD43E1C5B3141002D1264 /* Theme+Fetch.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DDD43D1C5B3141002D1264 /* Theme+Fetch.m */; };
+		D5DDD4411C5B3AD6002D1264 /* Channel+Fetch.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DDD4401C5B3AD6002D1264 /* Channel+Fetch.m */; };
+		D5DDD4441C5B3AF1002D1264 /* SlaveLightController+Fetch.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DDD4431C5B3AF1002D1264 /* SlaveLightController+Fetch.m */; };
+		D5E6B7011CA97C7300F05F24 /* MyLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E6B7001CA97C7300F05F24 /* MyLongPressGestureRecognizer.m */; };
+		D5E824A81D87861B00BA2053 /* ColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E824A71D87861B00BA2053 /* ColorButton.m */; };
+		D5F58EED1C561D3800DE602A /* DropdownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F58EEC1C561D3700DE602A /* DropdownListView.m */; };
+		D5F58EF81C575CA700DE602A /* SelectDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F58EF61C575CA700DE602A /* SelectDateView.m */; };
+		D5F58EF91C575CA700DE602A /* SelectDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5F58EF71C575CA700DE602A /* SelectDateView.xib */; };
+		D5F58EFC1C575E8700DE602A /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F58EFB1C575E8700DE602A /* UIView+Extension.m */; };
+		D5F6092A1D84D9580094EEFF /* ColorSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F609281D84D9580094EEFF /* ColorSettingViewController.m */; };
+		D5F6092B1D84D9580094EEFF /* ColorSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5F609291D84D9580094EEFF /* ColorSettingViewController.xib */; };
+		D5F6092F1D84DBBA0094EEFF /* ColorSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F6092D1D84DBBA0094EEFF /* ColorSelectorViewController.m */; };
+		D5F609301D84DBBA0094EEFF /* ColorSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5F6092E1D84DBBA0094EEFF /* ColorSelectorViewController.xib */; };
+		F3A0F49D2B6AD83F2AED78A1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B652454E6CD469B43DCC727 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +152,75 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B652454E6CD469B43DCC727 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2215F3560922F6614F7D1E2C /* Pods-VLCControllerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VLCControllerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VLCControllerTests/Pods-VLCControllerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		53CBBE1E5FE2E726B8112C60 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		A0468F5F72FE3259983C6DA1 /* libPods-VLCControllerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VLCControllerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEE3BD7147B02725C128780A /* Pods-VLCControllerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VLCControllerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VLCControllerTests/Pods-VLCControllerTests.release.xcconfig"; sourceTree = "<group>"; };
+		D5081D351C72CF8700B556D7 /* InputHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputHelper.h; sourceTree = "<group>"; };
+		D5081D361C72CF8700B556D7 /* InputHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputHelper.m; sourceTree = "<group>"; };
+		D50F53D91C4F1C2A00F5D292 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		D50F53DA1C4F1C2A00F5D292 /* downArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downArrow@2x.png"; sourceTree = "<group>"; };
+		D50F53DB1C4F1C2A00F5D292 /* icon_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_green@2x.png"; sourceTree = "<group>"; };
+		D50F53DC1C4F1C2A00F5D292 /* icon_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_red@2x.png"; sourceTree = "<group>"; };
+		D50F53DD1C4F1C2A00F5D292 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		D50F53DE1C4F1C2A00F5D292 /* link@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link@2x.png"; sourceTree = "<group>"; };
+		D50F53DF1C4F1C2A00F5D292 /* subArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "subArrow@2x.png"; sourceTree = "<group>"; };
+		D50F53E71C4F599D00F5D292 /* backArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backArrow@2x.png"; sourceTree = "<group>"; };
+		D50F53EE1C4F743C00F5D292 /* Channel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Channel+CoreDataProperties.h"; path = "DateBase/Channel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D50F53EF1C4F743C00F5D292 /* Channel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Channel+CoreDataProperties.m"; path = "DateBase/Channel+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D50F53F01C4F743C00F5D292 /* Channel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Channel.h; path = DateBase/Channel.h; sourceTree = "<group>"; };
+		D50F53F11C4F743C00F5D292 /* Channel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Channel.m; path = DateBase/Channel.m; sourceTree = "<group>"; };
+		D50F53F21C4F743C00F5D292 /* Theme+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Theme+CoreDataProperties.h"; path = "DateBase/Theme+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D50F53F31C4F743C00F5D292 /* Theme+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Theme+CoreDataProperties.m"; path = "DateBase/Theme+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D50F53F41C4F743C00F5D292 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Theme.h; path = DateBase/Theme.h; sourceTree = "<group>"; };
+		D50F53F51C4F743C00F5D292 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Theme.m; path = DateBase/Theme.m; sourceTree = "<group>"; };
+		D50F53F61C4F743C00F5D292 /* SlaveLightController+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SlaveLightController+CoreDataProperties.h"; path = "DateBase/SlaveLightController+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D50F53F71C4F743C00F5D292 /* SlaveLightController+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SlaveLightController+CoreDataProperties.m"; path = "DateBase/SlaveLightController+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D50F53F81C4F743C00F5D292 /* SlaveLightController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlaveLightController.h; path = DateBase/SlaveLightController.h; sourceTree = "<group>"; };
+		D50F53F91C4F743C00F5D292 /* SlaveLightController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlaveLightController.m; path = DateBase/SlaveLightController.m; sourceTree = "<group>"; };
+		D50F54021C4F85D300F5D292 /* LightController+Fetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LightController+Fetch.h"; path = "DateBase/LightController+Fetch.h"; sourceTree = "<group>"; };
+		D50F54031C4F85D300F5D292 /* LightController+Fetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "LightController+Fetch.m"; path = "DateBase/LightController+Fetch.m"; sourceTree = "<group>"; };
+		D50F54071C50BC2E00F5D292 /* BluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BluetoothManager.h; path = Bluetooth/BluetoothManager.h; sourceTree = "<group>"; };
+		D50F54081C50BC2E00F5D292 /* BluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothManager.m; path = Bluetooth/BluetoothManager.m; sourceTree = "<group>"; };
+		D50F540C1C50C83900F5D292 /* SingletonMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonMacro.h; sourceTree = "<group>"; };
+		D50F540D1C50CA2400F5D292 /* LightControllerCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightControllerCommand.h; path = Bluetooth/LightControllerCommand.h; sourceTree = "<group>"; };
+		D50F540E1C50CA2400F5D292 /* LightControllerCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LightControllerCommand.m; path = Bluetooth/LightControllerCommand.m; sourceTree = "<group>"; };
+		D50F54101C50CB9300F5D292 /* NotifyDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NotifyDefine.h; path = Include/NotifyDefine.h; sourceTree = "<group>"; };
+		D50F54111C50DFF800F5D292 /* NotFoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotFoundViewController.h; path = ViewController/NotFoundViewController.h; sourceTree = "<group>"; };
+		D50F54121C50DFF800F5D292 /* NotFoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotFoundViewController.m; path = ViewController/NotFoundViewController.m; sourceTree = "<group>"; };
+		D50F54131C50DFF800F5D292 /* NotFoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotFoundViewController.xib; path = ViewController/NotFoundViewController.xib; sourceTree = "<group>"; };
+		D50F54161C50E01D00F5D292 /* FoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoundViewController.h; path = ViewController/FoundViewController.h; sourceTree = "<group>"; };
+		D50F54171C50E01D00F5D292 /* FoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoundViewController.m; path = ViewController/FoundViewController.m; sourceTree = "<group>"; };
+		D50F54181C50E01D00F5D292 /* FoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FoundViewController.xib; path = ViewController/FoundViewController.xib; sourceTree = "<group>"; };
+		D50F541B1C51C39B00F5D292 /* TextFieldWithBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextFieldWithBorderView.h; path = View/TextFieldWithBorderView.h; sourceTree = "<group>"; };
+		D50F541C1C51C39B00F5D292 /* TextFieldWithBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextFieldWithBorderView.m; path = View/TextFieldWithBorderView.m; sourceTree = "<group>"; };
+		D50F54201C520B1000F5D292 /* SvUDIDTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SvUDIDTools.h; sourceTree = "<group>"; };
+		D50F54211C520B1000F5D292 /* SvUDIDTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SvUDIDTools.m; sourceTree = "<group>"; };
+		D51B3A441C71D423005D72CC /* MBProgressHUD+NJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+NJ.h"; sourceTree = "<group>"; };
+		D51B3A451C71D423005D72CC /* MBProgressHUD+NJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+NJ.m"; sourceTree = "<group>"; };
+		D51B3A461C71D423005D72CC /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		D51B3A471C71D423005D72CC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		D51B3A481C71D423005D72CC /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		D524D93E1C893A3200044B08 /* BulbChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BulbChannelViewController.h; path = ViewController/BulbChannelViewController.h; sourceTree = "<group>"; };
+		D524D93F1C893A3200044B08 /* BulbChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BulbChannelViewController.m; path = ViewController/BulbChannelViewController.m; sourceTree = "<group>"; };
+		D524D9471C895D0D00044B08 /* AssignBulbChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssignBulbChannelViewController.h; path = ViewController/AssignBulbChannelViewController.h; sourceTree = "<group>"; };
+		D524D9481C895D0D00044B08 /* AssignBulbChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssignBulbChannelViewController.m; path = ViewController/AssignBulbChannelViewController.m; sourceTree = "<group>"; };
+		D524D94B1C897A9000044B08 /* ChannelItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelItemView.h; path = View/ChannelItemView.h; sourceTree = "<group>"; };
+		D524D94C1C897A9000044B08 /* ChannelItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChannelItemView.m; path = View/ChannelItemView.m; sourceTree = "<group>"; };
+		D524D94E1C8D530D00044B08 /* BulbChannel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BulbChannel+CoreDataProperties.h"; path = "DateBase/BulbChannel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D524D94F1C8D530D00044B08 /* BulbChannel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "BulbChannel+CoreDataProperties.m"; path = "DateBase/BulbChannel+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D524D9501C8D530D00044B08 /* BulbChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BulbChannel.h; path = DateBase/BulbChannel.h; sourceTree = "<group>"; };
+		D524D9511C8D530D00044B08 /* BulbChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BulbChannel.m; path = DateBase/BulbChannel.m; sourceTree = "<group>"; };
+		D524D9541C8D6FE300044B08 /* ManageWirelessPlugsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManageWirelessPlugsViewController.h; path = ViewController/ManageWirelessPlugsViewController.h; sourceTree = "<group>"; };
+		D524D9551C8D6FE300044B08 /* ManageWirelessPlugsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManageWirelessPlugsViewController.m; path = ViewController/ManageWirelessPlugsViewController.m; sourceTree = "<group>"; };
+		D524D9571C8D734500044B08 /* UnpairWirelessPlugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnpairWirelessPlugViewController.h; path = ViewController/UnpairWirelessPlugViewController.h; sourceTree = "<group>"; };
+		D524D9581C8D734500044B08 /* UnpairWirelessPlugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnpairWirelessPlugViewController.m; path = ViewController/UnpairWirelessPlugViewController.m; sourceTree = "<group>"; };
+		D560094F1C6B1515006DE648 /* PopBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopBaseView.h; path = "View/弹出框/PopBaseView.h"; sourceTree = "<group>"; };
+		D56009501C6B1515006DE648 /* PopBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopBaseView.m; path = "View/弹出框/PopBaseView.m"; sourceTree = "<group>"; };
+		D575E93D1C759B0300083571 /* ColorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorModel.h; path = Model/ColorModel.h; sourceTree = "<group>"; };
+		D575E93E1C759B0300083571 /* ColorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorModel.m; path = Model/ColorModel.m; sourceTree = "<group>"; };
+		D57CA5701CB7367B00EDD027 /* backgroundNoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundNoIcon.png; sourceTree = "<group>"; };
 		D58ABBEA1C3E39C000270C1F /* VLCController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VLCController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58ABBEE1C3E39C000270C1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D58ABBF01C3E39C000270C1F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -53,6 +238,141 @@
 		D58ABC111C3E39C000270C1F /* VLCControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VLCControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58ABC151C3E39C000270C1F /* VLCControllerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VLCControllerUITests.m; sourceTree = "<group>"; };
 		D58ABC171C3E39C000270C1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D58ABC281C3E424A00270C1F /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = ViewController/BaseViewController.h; sourceTree = "<group>"; };
+		D58ABC291C3E424A00270C1F /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = ViewController/BaseViewController.m; sourceTree = "<group>"; };
+		D58ABC2E1C3F472A00270C1F /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ViewController/HomeViewController.h; sourceTree = "<group>"; };
+		D58ABC2F1C3F472A00270C1F /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ViewController/HomeViewController.m; sourceTree = "<group>"; };
+		D58ABC301C3F472A00270C1F /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = ViewController/HomeViewController.xib; sourceTree = "<group>"; };
+		D58ABC331C3F49F900270C1F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		D58ABC351C3F4C2400270C1F /* UIDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UIDefine.h; path = Include/UIDefine.h; sourceTree = "<group>"; };
+		D58ABC3D1C3F5F0F00270C1F /* ColorDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ColorDefine.h; path = Include/ColorDefine.h; sourceTree = "<group>"; };
+		D58ABC461C3FC4A000270C1F /* TipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TipViewController.h; path = ViewController/TipViewController.h; sourceTree = "<group>"; };
+		D58ABC471C3FC4A000270C1F /* TipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TipViewController.m; path = ViewController/TipViewController.m; sourceTree = "<group>"; };
+		D58ABC481C3FC4A000270C1F /* TipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TipViewController.xib; path = ViewController/TipViewController.xib; sourceTree = "<group>"; };
+		D58ABC821C411C3E00270C1F /* BluetoothLibary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BluetoothLibary.h; path = Bluetooth/BluetoothLibary.h; sourceTree = "<group>"; };
+		D58ABC831C411C3E00270C1F /* BluetoothLibary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothLibary.m; path = Bluetooth/BluetoothLibary.m; sourceTree = "<group>"; };
+		D58ABC851C438B8C00270C1F /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
+		D58ABC891C46349E00270C1F /* LightControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightControllerModel.h; path = Model/LightControllerModel.h; sourceTree = "<group>"; };
+		D58ABC8A1C46349E00270C1F /* LightControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LightControllerModel.m; path = Model/LightControllerModel.m; sourceTree = "<group>"; };
+		D58ABC8C1C464EA900270C1F /* LightControllerCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightControllerCellView.h; path = View/LightControllerCellView.h; sourceTree = "<group>"; };
+		D58ABC8D1C464EA900270C1F /* LightControllerCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LightControllerCellView.m; path = View/LightControllerCellView.m; sourceTree = "<group>"; };
+		D58ABC901C472F4300270C1F /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Extension.h"; path = "Category/NSString+Extension.h"; sourceTree = "<group>"; };
+		D58ABC911C472F4300270C1F /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Extension.m"; path = "Category/NSString+Extension.m"; sourceTree = "<group>"; };
+		D58ABC961C47890A00270C1F /* AddControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddControllerViewController.h; path = ViewController/AddControllerViewController.h; sourceTree = "<group>"; };
+		D58ABC971C47890A00270C1F /* AddControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddControllerViewController.m; path = ViewController/AddControllerViewController.m; sourceTree = "<group>"; };
+		D58ABC981C47890A00270C1F /* AddControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddControllerViewController.xib; path = ViewController/AddControllerViewController.xib; sourceTree = "<group>"; };
+		D58ABC9B1C487F8800270C1F /* DuplicateControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DuplicateControllerViewController.h; path = ViewController/DuplicateControllerViewController.h; sourceTree = "<group>"; };
+		D58ABC9C1C487F8800270C1F /* DuplicateControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DuplicateControllerViewController.m; path = ViewController/DuplicateControllerViewController.m; sourceTree = "<group>"; };
+		D58ABC9D1C487F8800270C1F /* DuplicateControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DuplicateControllerViewController.xib; path = ViewController/DuplicateControllerViewController.xib; sourceTree = "<group>"; };
+		D58ABCA31C48BBF700270C1F /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = ViewController/SettingViewController.h; sourceTree = "<group>"; };
+		D58ABCA41C48BBF700270C1F /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = ViewController/SettingViewController.m; sourceTree = "<group>"; };
+		D58ABCA51C48BBF700270C1F /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingViewController.xib; path = ViewController/SettingViewController.xib; sourceTree = "<group>"; };
+		D58ABCA81C48D26600270C1F /* MyComBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyComBoxView.h; path = View/MyComBoxView.h; sourceTree = "<group>"; };
+		D58ABCA91C48D26600270C1F /* MyComBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyComBoxView.m; path = View/MyComBoxView.m; sourceTree = "<group>"; };
+		D58ABCAB1C4C729800270C1F /* ScheduleOptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleOptionViewController.h; path = ViewController/ScheduleOptionViewController.h; sourceTree = "<group>"; };
+		D58ABCAC1C4C729800270C1F /* ScheduleOptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleOptionViewController.m; path = ViewController/ScheduleOptionViewController.m; sourceTree = "<group>"; };
+		D58ABCAD1C4C729800270C1F /* ScheduleOptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScheduleOptionViewController.xib; path = ViewController/ScheduleOptionViewController.xib; sourceTree = "<group>"; };
+		D58ABCB51C4CB92900270C1F /* TextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextTableViewCell.h; path = View/TextTableViewCell.h; sourceTree = "<group>"; };
+		D58ABCB61C4CB92A00270C1F /* TextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextTableViewCell.m; path = View/TextTableViewCell.m; sourceTree = "<group>"; };
+		D58ABCB81C4CBD6800270C1F /* myUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myUILabel.h; path = View/myUILabel.h; sourceTree = "<group>"; };
+		D58ABCB91C4CBD6800270C1F /* myUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = myUILabel.m; path = View/myUILabel.m; sourceTree = "<group>"; };
+		D58ABCBB1C4CC2A700270C1F /* EditSimpleScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditSimpleScheduleViewController.h; path = ViewController/EditSimpleScheduleViewController.h; sourceTree = "<group>"; };
+		D58ABCBC1C4CC2A700270C1F /* EditSimpleScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditSimpleScheduleViewController.m; path = ViewController/EditSimpleScheduleViewController.m; sourceTree = "<group>"; };
+		D58ABCBD1C4CC2A700270C1F /* EditSimpleScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EditSimpleScheduleViewController.xib; path = ViewController/EditSimpleScheduleViewController.xib; sourceTree = "<group>"; };
+		D58ABCC01C4CC2C600270C1F /* EditCustomScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditCustomScheduleViewController.h; path = ViewController/EditCustomScheduleViewController.h; sourceTree = "<group>"; };
+		D58ABCC11C4CC2C600270C1F /* EditCustomScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditCustomScheduleViewController.m; path = ViewController/EditCustomScheduleViewController.m; sourceTree = "<group>"; };
+		D58ABCC21C4CC2C600270C1F /* EditCustomScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EditCustomScheduleViewController.xib; path = ViewController/EditCustomScheduleViewController.xib; sourceTree = "<group>"; };
+		D58ABCC51C4DC7D000270C1F /* ManageBulbsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManageBulbsViewController.h; path = ViewController/ManageBulbsViewController.h; sourceTree = "<group>"; };
+		D58ABCC61C4DC7D000270C1F /* ManageBulbsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManageBulbsViewController.m; path = ViewController/ManageBulbsViewController.m; sourceTree = "<group>"; };
+		D58ABCC71C4DC7D000270C1F /* ManageBulbsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManageBulbsViewController.xib; path = ViewController/ManageBulbsViewController.xib; sourceTree = "<group>"; };
+		D58ABCCA1C4DCC0400270C1F /* ManageThemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManageThemeViewController.h; path = ViewController/ManageThemeViewController.h; sourceTree = "<group>"; };
+		D58ABCCB1C4DCC0400270C1F /* ManageThemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManageThemeViewController.m; path = ViewController/ManageThemeViewController.m; sourceTree = "<group>"; };
+		D58ABCCC1C4DCC0400270C1F /* ManageThemeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManageThemeViewController.xib; path = ViewController/ManageThemeViewController.xib; sourceTree = "<group>"; };
+		D58ABCCF1C4DCE6D00270C1F /* ThemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThemeModel.h; path = Model/ThemeModel.h; sourceTree = "<group>"; };
+		D58ABCD01C4DCE6D00270C1F /* ThemeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThemeModel.m; path = Model/ThemeModel.m; sourceTree = "<group>"; };
+		D58ABCD21C4DD59200270C1F /* EditThemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditThemeViewController.h; path = ViewController/EditThemeViewController.h; sourceTree = "<group>"; };
+		D58ABCD31C4DD59200270C1F /* EditThemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditThemeViewController.m; path = ViewController/EditThemeViewController.m; sourceTree = "<group>"; };
+		D58ABCD41C4DD59200270C1F /* EditThemeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EditThemeViewController.xib; path = ViewController/EditThemeViewController.xib; sourceTree = "<group>"; };
+		D58ABCD71C4DDB5400270C1F /* ChannelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelModel.h; path = Model/ChannelModel.h; sourceTree = "<group>"; };
+		D58ABCD81C4DDB5400270C1F /* ChannelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChannelModel.m; path = Model/ChannelModel.m; sourceTree = "<group>"; };
+		D590FDA11C8E56AA0049E0B1 /* TImePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TImePickerView.h; sourceTree = "<group>"; };
+		D590FDA21C8E56AA0049E0B1 /* TImePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TImePickerView.m; sourceTree = "<group>"; };
+		D590FDA71C8EA0750049E0B1 /* ScheduleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleModel.h; path = Model/ScheduleModel.h; sourceTree = "<group>"; };
+		D590FDA81C8EA0750049E0B1 /* ScheduleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleModel.m; path = Model/ScheduleModel.m; sourceTree = "<group>"; };
+		D590FDAE1C8EB23A0049E0B1 /* Schedule+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Schedule+CoreDataProperties.h"; path = "DateBase/Schedule+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D590FDAF1C8EB23A0049E0B1 /* Schedule+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Schedule+CoreDataProperties.m"; path = "DateBase/Schedule+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D590FDB01C8EB23A0049E0B1 /* Schedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Schedule.h; path = DateBase/Schedule.h; sourceTree = "<group>"; };
+		D590FDB11C8EB23A0049E0B1 /* Schedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Schedule.m; path = DateBase/Schedule.m; sourceTree = "<group>"; };
+		D590FDBC1C8EB4200049E0B1 /* ScheduleItem+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ScheduleItem+CoreDataProperties.h"; path = "DateBase/ScheduleItem+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D590FDBD1C8EB4200049E0B1 /* ScheduleItem+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ScheduleItem+CoreDataProperties.m"; path = "DateBase/ScheduleItem+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D590FDBE1C8EB4200049E0B1 /* ScheduleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleItem.h; path = DateBase/ScheduleItem.h; sourceTree = "<group>"; };
+		D590FDBF1C8EB4200049E0B1 /* ScheduleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleItem.m; path = DateBase/ScheduleItem.m; sourceTree = "<group>"; };
+		D590FDC21C8EB5350049E0B1 /* Schedule+Fetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Schedule+Fetch.h"; path = "DateBase/Schedule+Fetch.h"; sourceTree = "<group>"; };
+		D590FDC31C8EB5350049E0B1 /* Schedule+Fetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Schedule+Fetch.m"; path = "DateBase/Schedule+Fetch.m"; sourceTree = "<group>"; };
+		D590FDC51C8EB8500049E0B1 /* ScheduleItem+Fetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ScheduleItem+Fetch.h"; path = "DateBase/ScheduleItem+Fetch.h"; sourceTree = "<group>"; };
+		D590FDC61C8EB8500049E0B1 /* ScheduleItem+Fetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ScheduleItem+Fetch.m"; path = "DateBase/ScheduleItem+Fetch.m"; sourceTree = "<group>"; };
+		D590FDC91C8EBE600049E0B1 /* DateFuncation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateFuncation.h; sourceTree = "<group>"; };
+		D590FDCA1C8EBE600049E0B1 /* DateFuncation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateFuncation.m; sourceTree = "<group>"; };
+		D590FDCC1C8F1F4F0049E0B1 /* NSString+CustomCompare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+CustomCompare.h"; path = "Category/NSString+CustomCompare.h"; sourceTree = "<group>"; };
+		D590FDCD1C8F1F4F0049E0B1 /* NSString+CustomCompare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+CustomCompare.m"; path = "Category/NSString+CustomCompare.m"; sourceTree = "<group>"; };
+		D590FDCF1C9116810049E0B1 /* BulbChannel+Fetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BulbChannel+Fetch.h"; path = "DateBase/BulbChannel+Fetch.h"; sourceTree = "<group>"; };
+		D590FDD01C9116810049E0B1 /* BulbChannel+Fetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "BulbChannel+Fetch.m"; path = "DateBase/BulbChannel+Fetch.m"; sourceTree = "<group>"; };
+		D590FDD21C913D3D0049E0B1 /* LightController+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LightController+CoreDataProperties.h"; path = "DateBase/LightController+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D590FDD31C913D3D0049E0B1 /* LightController+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "LightController+CoreDataProperties.m"; path = "DateBase/LightController+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D590FDD41C913D3D0049E0B1 /* LightController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightController.h; path = DateBase/LightController.h; sourceTree = "<group>"; };
+		D590FDD51C913D3D0049E0B1 /* LightController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LightController.m; path = DateBase/LightController.m; sourceTree = "<group>"; };
+		D590FDD81C915BAE0049E0B1 /* ColorFavorites+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ColorFavorites+CoreDataProperties.h"; path = "DateBase/ColorFavorites+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D590FDD91C915BAE0049E0B1 /* ColorFavorites+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ColorFavorites+CoreDataProperties.m"; path = "DateBase/ColorFavorites+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D590FDDA1C915BAE0049E0B1 /* ColorFavorites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorFavorites.h; path = DateBase/ColorFavorites.h; sourceTree = "<group>"; };
+		D590FDDB1C915BAE0049E0B1 /* ColorFavorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorFavorites.m; path = DateBase/ColorFavorites.m; sourceTree = "<group>"; };
+		D590FDDE1C915BCF0049E0B1 /* ColorFavorites+Fetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ColorFavorites+Fetch.h"; path = "DateBase/ColorFavorites+Fetch.h"; sourceTree = "<group>"; };
+		D590FDDF1C915BCF0049E0B1 /* ColorFavorites+Fetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ColorFavorites+Fetch.m"; path = "DateBase/ColorFavorites+Fetch.m"; sourceTree = "<group>"; };
+		D590FDE11C91CA830049E0B1 /* SlaveControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlaveControllerViewController.h; path = ViewController/SlaveControllerViewController.h; sourceTree = "<group>"; };
+		D590FDE21C91CA830049E0B1 /* SlaveControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlaveControllerViewController.m; path = ViewController/SlaveControllerViewController.m; sourceTree = "<group>"; };
+		D5BAD1211C76B5BD000B6966 /* ZJSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSwitch.h; sourceTree = "<group>"; };
+		D5BAD1221C76B5BD000B6966 /* ZJSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSwitch.m; sourceTree = "<group>"; };
+		D5DDD3E31C586010002D1264 /* TipMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TipMessageView.h; path = View/TipMessageView.h; sourceTree = "<group>"; };
+		D5DDD3E41C586010002D1264 /* TipMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TipMessageView.m; path = View/TipMessageView.m; sourceTree = "<group>"; };
+		D5DDD3E61C58AC82002D1264 /* ColorOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorOptionsViewController.h; path = ViewController/ColorOptionsViewController.h; sourceTree = "<group>"; };
+		D5DDD3E71C58AC82002D1264 /* ColorOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorOptionsViewController.m; path = ViewController/ColorOptionsViewController.m; sourceTree = "<group>"; };
+		D5DDD4221C5917E7002D1264 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D5DDD4241C591805002D1264 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D5DDD4261C591816002D1264 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D5DDD4281C591826002D1264 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D5DDD42B1C59A940002D1264 /* colorPickerKnob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colorPickerKnob.png; sourceTree = "<group>"; };
+		D5DDD42C1C59A940002D1264 /* colorPickerKnob@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "colorPickerKnob@2x.png"; sourceTree = "<group>"; };
+		D5DDD42D1C59A940002D1264 /* HSV.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HSV.c; sourceTree = "<group>"; };
+		D5DDD42E1C59A940002D1264 /* HSV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSV.h; sourceTree = "<group>"; };
+		D5DDD42F1C59A940002D1264 /* KZColorPickerHSWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZColorPickerHSWheel.h; sourceTree = "<group>"; };
+		D5DDD4301C59A940002D1264 /* KZColorPickerHSWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZColorPickerHSWheel.m; sourceTree = "<group>"; };
+		D5DDD4311C59A940002D1264 /* pickerColorWheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pickerColorWheel.png; sourceTree = "<group>"; };
+		D5DDD4321C59A940002D1264 /* pickerColorWheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pickerColorWheel@2x.png"; sourceTree = "<group>"; };
+		D5DDD4391C59B280002D1264 /* UIColor+extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+extension.h"; path = "Category/UIColor+extension.h"; sourceTree = "<group>"; };
+		D5DDD43A1C59B280002D1264 /* UIColor+extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+extension.m"; path = "Category/UIColor+extension.m"; sourceTree = "<group>"; };
+		D5DDD43C1C5B3141002D1264 /* Theme+Fetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Theme+Fetch.h"; path = "DateBase/Theme+Fetch.h"; sourceTree = "<group>"; };
+		D5DDD43D1C5B3141002D1264 /* Theme+Fetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Theme+Fetch.m"; path = "DateBase/Theme+Fetch.m"; sourceTree = "<group>"; };
+		D5DDD43F1C5B3AD6002D1264 /* Channel+Fetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Channel+Fetch.h"; path = "DateBase/Channel+Fetch.h"; sourceTree = "<group>"; };
+		D5DDD4401C5B3AD6002D1264 /* Channel+Fetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Channel+Fetch.m"; path = "DateBase/Channel+Fetch.m"; sourceTree = "<group>"; };
+		D5DDD4421C5B3AF1002D1264 /* SlaveLightController+Fetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SlaveLightController+Fetch.h"; path = "DateBase/SlaveLightController+Fetch.h"; sourceTree = "<group>"; };
+		D5DDD4431C5B3AF1002D1264 /* SlaveLightController+Fetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SlaveLightController+Fetch.m"; path = "DateBase/SlaveLightController+Fetch.m"; sourceTree = "<group>"; };
+		D5E6B6FF1CA97C7300F05F24 /* MyLongPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyLongPressGestureRecognizer.h; path = Category/MyLongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		D5E6B7001CA97C7300F05F24 /* MyLongPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyLongPressGestureRecognizer.m; path = Category/MyLongPressGestureRecognizer.m; sourceTree = "<group>"; };
+		D5E824A61D87861B00BA2053 /* ColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorButton.h; path = ViewController/Theme/ColorButton.h; sourceTree = "<group>"; };
+		D5E824A71D87861B00BA2053 /* ColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorButton.m; path = ViewController/Theme/ColorButton.m; sourceTree = "<group>"; };
+		D5F58EEB1C561D3700DE602A /* DropdownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropdownListView.h; sourceTree = "<group>"; };
+		D5F58EEC1C561D3700DE602A /* DropdownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropdownListView.m; sourceTree = "<group>"; };
+		D5F58EF51C575CA700DE602A /* SelectDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDateView.h; sourceTree = "<group>"; };
+		D5F58EF61C575CA700DE602A /* SelectDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDateView.m; sourceTree = "<group>"; };
+		D5F58EF71C575CA700DE602A /* SelectDateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectDateView.xib; sourceTree = "<group>"; };
+		D5F58EFA1C575E8700DE602A /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Extension.h"; path = "Category/UIView+Extension.h"; sourceTree = "<group>"; };
+		D5F58EFB1C575E8700DE602A /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Extension.m"; path = "Category/UIView+Extension.m"; sourceTree = "<group>"; };
+		D5F609271D84D9580094EEFF /* ColorSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorSettingViewController.h; path = ViewController/Theme/ColorSettingViewController.h; sourceTree = "<group>"; };
+		D5F609281D84D9580094EEFF /* ColorSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorSettingViewController.m; path = ViewController/Theme/ColorSettingViewController.m; sourceTree = "<group>"; };
+		D5F609291D84D9580094EEFF /* ColorSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ColorSettingViewController.xib; path = ViewController/Theme/ColorSettingViewController.xib; sourceTree = "<group>"; };
+		D5F6092C1D84DBBA0094EEFF /* ColorSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorSelectorViewController.h; path = ViewController/Theme/ColorSelectorViewController.h; sourceTree = "<group>"; };
+		D5F6092D1D84DBBA0094EEFF /* ColorSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorSelectorViewController.m; path = ViewController/Theme/ColorSelectorViewController.m; sourceTree = "<group>"; };
+		D5F6092E1D84DBBA0094EEFF /* ColorSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ColorSelectorViewController.xib; path = ViewController/Theme/ColorSelectorViewController.xib; sourceTree = "<group>"; };
+		F5EAC72D7AA346B59563CCF0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +380,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5DDD4291C591826002D1264 /* CoreGraphics.framework in Frameworks */,
+				D5DDD4271C591816002D1264 /* Foundation.framework in Frameworks */,
+				D5DDD4251C591805002D1264 /* UIKit.framework in Frameworks */,
+				D5DDD4231C5917E7002D1264 /* QuartzCore.framework in Frameworks */,
+				F3A0F49D2B6AD83F2AED78A1 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +392,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				941B976561C5CA008DBF7FA6 /* libPods-VLCControllerTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,13 +406,263 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45327EF0EE7455179857CAE2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F5EAC72D7AA346B59563CCF0 /* Pods.debug.xcconfig */,
+				53CBBE1E5FE2E726B8112C60 /* Pods.release.xcconfig */,
+				2215F3560922F6614F7D1E2C /* Pods-VLCControllerTests.debug.xcconfig */,
+				AEE3BD7147B02725C128780A /* Pods-VLCControllerTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6796BD294971488CBA9EF3B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B652454E6CD469B43DCC727 /* libPods.a */,
+				A0468F5F72FE3259983C6DA1 /* libPods-VLCControllerTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D5081D341C72CF8700B556D7 /* InputHelper */ = {
+			isa = PBXGroup;
+			children = (
+				D5081D351C72CF8700B556D7 /* InputHelper.h */,
+				D5081D361C72CF8700B556D7 /* InputHelper.m */,
+			);
+			path = InputHelper;
+			sourceTree = "<group>";
+		};
+		D50F53E91C4F6DEB00F5D292 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				D590FDD81C915BAE0049E0B1 /* ColorFavorites+CoreDataProperties.h */,
+				D590FDD91C915BAE0049E0B1 /* ColorFavorites+CoreDataProperties.m */,
+				D590FDDA1C915BAE0049E0B1 /* ColorFavorites.h */,
+				D590FDDB1C915BAE0049E0B1 /* ColorFavorites.m */,
+				D590FDD21C913D3D0049E0B1 /* LightController+CoreDataProperties.h */,
+				D590FDD31C913D3D0049E0B1 /* LightController+CoreDataProperties.m */,
+				D590FDD41C913D3D0049E0B1 /* LightController.h */,
+				D590FDD51C913D3D0049E0B1 /* LightController.m */,
+				D590FDBC1C8EB4200049E0B1 /* ScheduleItem+CoreDataProperties.h */,
+				D590FDBD1C8EB4200049E0B1 /* ScheduleItem+CoreDataProperties.m */,
+				D590FDBE1C8EB4200049E0B1 /* ScheduleItem.h */,
+				D590FDBF1C8EB4200049E0B1 /* ScheduleItem.m */,
+				D590FDAE1C8EB23A0049E0B1 /* Schedule+CoreDataProperties.h */,
+				D590FDAF1C8EB23A0049E0B1 /* Schedule+CoreDataProperties.m */,
+				D590FDB01C8EB23A0049E0B1 /* Schedule.h */,
+				D590FDB11C8EB23A0049E0B1 /* Schedule.m */,
+				D524D94E1C8D530D00044B08 /* BulbChannel+CoreDataProperties.h */,
+				D524D94F1C8D530D00044B08 /* BulbChannel+CoreDataProperties.m */,
+				D524D9501C8D530D00044B08 /* BulbChannel.h */,
+				D524D9511C8D530D00044B08 /* BulbChannel.m */,
+				D58ABBF91C3E39C000270C1F /* VLCController.xcdatamodeld */,
+				D50F53EE1C4F743C00F5D292 /* Channel+CoreDataProperties.h */,
+				D50F53EF1C4F743C00F5D292 /* Channel+CoreDataProperties.m */,
+				D50F53F01C4F743C00F5D292 /* Channel.h */,
+				D50F53F11C4F743C00F5D292 /* Channel.m */,
+				D50F53F21C4F743C00F5D292 /* Theme+CoreDataProperties.h */,
+				D50F53F31C4F743C00F5D292 /* Theme+CoreDataProperties.m */,
+				D50F53F41C4F743C00F5D292 /* Theme.h */,
+				D50F53F51C4F743C00F5D292 /* Theme.m */,
+				D50F53F61C4F743C00F5D292 /* SlaveLightController+CoreDataProperties.h */,
+				D50F53F71C4F743C00F5D292 /* SlaveLightController+CoreDataProperties.m */,
+				D50F53F81C4F743C00F5D292 /* SlaveLightController.h */,
+				D50F53F91C4F743C00F5D292 /* SlaveLightController.m */,
+				D50F54021C4F85D300F5D292 /* LightController+Fetch.h */,
+				D50F54031C4F85D300F5D292 /* LightController+Fetch.m */,
+				D5DDD43C1C5B3141002D1264 /* Theme+Fetch.h */,
+				D5DDD43D1C5B3141002D1264 /* Theme+Fetch.m */,
+				D5DDD43F1C5B3AD6002D1264 /* Channel+Fetch.h */,
+				D5DDD4401C5B3AD6002D1264 /* Channel+Fetch.m */,
+				D5DDD4421C5B3AF1002D1264 /* SlaveLightController+Fetch.h */,
+				D5DDD4431C5B3AF1002D1264 /* SlaveLightController+Fetch.m */,
+				D590FDC21C8EB5350049E0B1 /* Schedule+Fetch.h */,
+				D590FDC31C8EB5350049E0B1 /* Schedule+Fetch.m */,
+				D590FDC51C8EB8500049E0B1 /* ScheduleItem+Fetch.h */,
+				D590FDC61C8EB8500049E0B1 /* ScheduleItem+Fetch.m */,
+				D590FDCF1C9116810049E0B1 /* BulbChannel+Fetch.h */,
+				D590FDD01C9116810049E0B1 /* BulbChannel+Fetch.m */,
+				D590FDDE1C915BCF0049E0B1 /* ColorFavorites+Fetch.h */,
+				D590FDDF1C915BCF0049E0B1 /* ColorFavorites+Fetch.m */,
+			);
+			name = DataBase;
+			sourceTree = "<group>";
+		};
+		D50F540B1C50C83900F5D292 /* UtilityMacro */ = {
+			isa = PBXGroup;
+			children = (
+				D50F540C1C50C83900F5D292 /* SingletonMacro.h */,
+			);
+			path = UtilityMacro;
+			sourceTree = "<group>";
+		};
+		D50F541F1C520B1000F5D292 /* UDID_Tools */ = {
+			isa = PBXGroup;
+			children = (
+				D50F54201C520B1000F5D292 /* SvUDIDTools.h */,
+				D50F54211C520B1000F5D292 /* SvUDIDTools.m */,
+			);
+			path = UDID_Tools;
+			sourceTree = "<group>";
+		};
+		D51B3A421C71D423005D72CC /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				D5BAD1201C76B5BD000B6966 /* ZJSwitch */,
+				D5081D341C72CF8700B556D7 /* InputHelper */,
+				D51B3A431C71D423005D72CC /* MBProgressHUD */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		D51B3A431C71D423005D72CC /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				D51B3A441C71D423005D72CC /* MBProgressHUD+NJ.h */,
+				D51B3A451C71D423005D72CC /* MBProgressHUD+NJ.m */,
+				D51B3A461C71D423005D72CC /* MBProgressHUD.bundle */,
+				D51B3A471C71D423005D72CC /* MBProgressHUD.h */,
+				D51B3A481C71D423005D72CC /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		D524D9411C893A3900044B08 /* Bulb */ = {
+			isa = PBXGroup;
+			children = (
+				D524D93E1C893A3200044B08 /* BulbChannelViewController.h */,
+				D524D93F1C893A3200044B08 /* BulbChannelViewController.m */,
+				D58ABCC51C4DC7D000270C1F /* ManageBulbsViewController.h */,
+				D58ABCC61C4DC7D000270C1F /* ManageBulbsViewController.m */,
+				D58ABCC71C4DC7D000270C1F /* ManageBulbsViewController.xib */,
+				D524D9471C895D0D00044B08 /* AssignBulbChannelViewController.h */,
+				D524D9481C895D0D00044B08 /* AssignBulbChannelViewController.m */,
+			);
+			name = Bulb;
+			sourceTree = "<group>";
+		};
+		D524D9421C893A4100044B08 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				D5DDD3E61C58AC82002D1264 /* ColorOptionsViewController.h */,
+				D5DDD3E71C58AC82002D1264 /* ColorOptionsViewController.m */,
+				D58ABCCA1C4DCC0400270C1F /* ManageThemeViewController.h */,
+				D58ABCCB1C4DCC0400270C1F /* ManageThemeViewController.m */,
+				D58ABCCC1C4DCC0400270C1F /* ManageThemeViewController.xib */,
+				D58ABCD21C4DD59200270C1F /* EditThemeViewController.h */,
+				D58ABCD31C4DD59200270C1F /* EditThemeViewController.m */,
+				D58ABCD41C4DD59200270C1F /* EditThemeViewController.xib */,
+				D5F609271D84D9580094EEFF /* ColorSettingViewController.h */,
+				D5F609281D84D9580094EEFF /* ColorSettingViewController.m */,
+				D5F609291D84D9580094EEFF /* ColorSettingViewController.xib */,
+				D5F6092C1D84DBBA0094EEFF /* ColorSelectorViewController.h */,
+				D5F6092D1D84DBBA0094EEFF /* ColorSelectorViewController.m */,
+				D5F6092E1D84DBBA0094EEFF /* ColorSelectorViewController.xib */,
+				D5E824A61D87861B00BA2053 /* ColorButton.h */,
+				D5E824A71D87861B00BA2053 /* ColorButton.m */,
+			);
+			name = Theme;
+			sourceTree = "<group>";
+		};
+		D524D9431C893A4B00044B08 /* Tip */ = {
+			isa = PBXGroup;
+			children = (
+				D58ABC461C3FC4A000270C1F /* TipViewController.h */,
+				D58ABC471C3FC4A000270C1F /* TipViewController.m */,
+				D58ABC481C3FC4A000270C1F /* TipViewController.xib */,
+			);
+			name = Tip;
+			sourceTree = "<group>";
+		};
+		D524D9441C893A5C00044B08 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D58ABC961C47890A00270C1F /* AddControllerViewController.h */,
+				D58ABC971C47890A00270C1F /* AddControllerViewController.m */,
+				D58ABC981C47890A00270C1F /* AddControllerViewController.xib */,
+				D58ABC9B1C487F8800270C1F /* DuplicateControllerViewController.h */,
+				D58ABC9C1C487F8800270C1F /* DuplicateControllerViewController.m */,
+				D58ABC9D1C487F8800270C1F /* DuplicateControllerViewController.xib */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D524D9451C893A7400044B08 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				D58ABCAB1C4C729800270C1F /* ScheduleOptionViewController.h */,
+				D58ABCAC1C4C729800270C1F /* ScheduleOptionViewController.m */,
+				D58ABCAD1C4C729800270C1F /* ScheduleOptionViewController.xib */,
+				D58ABCBB1C4CC2A700270C1F /* EditSimpleScheduleViewController.h */,
+				D58ABCBC1C4CC2A700270C1F /* EditSimpleScheduleViewController.m */,
+				D58ABCBD1C4CC2A700270C1F /* EditSimpleScheduleViewController.xib */,
+				D58ABCC01C4CC2C600270C1F /* EditCustomScheduleViewController.h */,
+				D58ABCC11C4CC2C600270C1F /* EditCustomScheduleViewController.m */,
+				D58ABCC21C4CC2C600270C1F /* EditCustomScheduleViewController.xib */,
+			);
+			name = Schedule;
+			sourceTree = "<group>";
+		};
+		D524D9461C893A9F00044B08 /* Commond */ = {
+			isa = PBXGroup;
+			children = (
+				D50F54111C50DFF800F5D292 /* NotFoundViewController.h */,
+				D50F54121C50DFF800F5D292 /* NotFoundViewController.m */,
+				D50F54131C50DFF800F5D292 /* NotFoundViewController.xib */,
+				D50F54161C50E01D00F5D292 /* FoundViewController.h */,
+				D50F54171C50E01D00F5D292 /* FoundViewController.m */,
+				D50F54181C50E01D00F5D292 /* FoundViewController.xib */,
+				D58ABC281C3E424A00270C1F /* BaseViewController.h */,
+				D58ABC291C3E424A00270C1F /* BaseViewController.m */,
+			);
+			name = Commond;
+			sourceTree = "<group>";
+		};
+		D524D94A1C89722700044B08 /* WirelessPlugs */ = {
+			isa = PBXGroup;
+			children = (
+				D524D9541C8D6FE300044B08 /* ManageWirelessPlugsViewController.h */,
+				D524D9551C8D6FE300044B08 /* ManageWirelessPlugsViewController.m */,
+				D524D9571C8D734500044B08 /* UnpairWirelessPlugViewController.h */,
+				D524D9581C8D734500044B08 /* UnpairWirelessPlugViewController.m */,
+			);
+			name = WirelessPlugs;
+			sourceTree = "<group>";
+		};
+		D524D95A1C8D7F8C00044B08 /* SlaveCotroller */ = {
+			isa = PBXGroup;
+			children = (
+				D590FDE11C91CA830049E0B1 /* SlaveControllerViewController.h */,
+				D590FDE21C91CA830049E0B1 /* SlaveControllerViewController.m */,
+			);
+			name = SlaveCotroller;
+			sourceTree = "<group>";
+		};
+		D560094E1C6B132F006DE648 /* 弹出框 */ = {
+			isa = PBXGroup;
+			children = (
+				D560094F1C6B1515006DE648 /* PopBaseView.h */,
+				D56009501C6B1515006DE648 /* PopBaseView.m */,
+			);
+			name = "弹出框";
+			sourceTree = "<group>";
+		};
 		D58ABBE11C3E39C000270C1F = {
 			isa = PBXGroup;
 			children = (
+				D5DDD4281C591826002D1264 /* CoreGraphics.framework */,
+				D5DDD4261C591816002D1264 /* Foundation.framework */,
+				D5DDD4241C591805002D1264 /* UIKit.framework */,
+				D5DDD4221C5917E7002D1264 /* QuartzCore.framework */,
 				D58ABBEC1C3E39C000270C1F /* VLCController */,
 				D58ABC091C3E39C000270C1F /* VLCControllerTests */,
 				D58ABC141C3E39C000270C1F /* VLCControllerUITests */,
 				D58ABBEB1C3E39C000270C1F /* Products */,
+				45327EF0EE7455179857CAE2 /* Pods */,
+				6796BD294971488CBA9EF3B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,15 +679,23 @@
 		D58ABBEC1C3E39C000270C1F /* VLCController */ = {
 			isa = PBXGroup;
 			children = (
+				D590FDC81C8EBE600049E0B1 /* Public */,
+				D50F540B1C50C83900F5D292 /* UtilityMacro */,
+				D50F53E91C4F6DEB00F5D292 /* DataBase */,
+				D58ABC8F1C472EDB00270C1F /* Category */,
+				D58ABC361C3F4DFE00270C1F /* Extend */,
+				D58ABC341C3F4B8300270C1F /* Include */,
+				D58ABC271C3E3A6E00270C1F /* Bluetooth */,
+				D58ABC261C3E3A0B00270C1F /* Assets */,
+				D58ABC251C3E39EF00270C1F /* Model */,
+				D58ABC241C3E39E200270C1F /* View */,
+				D58ABC231C3E39D200270C1F /* ViewController */,
 				D58ABBF01C3E39C000270C1F /* AppDelegate.h */,
 				D58ABBF11C3E39C000270C1F /* AppDelegate.m */,
 				D58ABBF31C3E39C000270C1F /* ViewController.h */,
 				D58ABBF41C3E39C000270C1F /* ViewController.m */,
-				D58ABBF61C3E39C000270C1F /* Main.storyboard */,
 				D58ABBFC1C3E39C000270C1F /* Assets.xcassets */,
-				D58ABBFE1C3E39C000270C1F /* LaunchScreen.storyboard */,
 				D58ABC011C3E39C000270C1F /* Info.plist */,
-				D58ABBF91C3E39C000270C1F /* VLCController.xcdatamodeld */,
 				D58ABBED1C3E39C000270C1F /* Supporting Files */,
 			);
 			path = VLCController;
@@ -120,7 +704,10 @@
 		D58ABBED1C3E39C000270C1F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D58ABBFE1C3E39C000270C1F /* LaunchScreen.storyboard */,
+				D58ABBF61C3E39C000270C1F /* Main.storyboard */,
 				D58ABBEE1C3E39C000270C1F /* main.m */,
+				D58ABC331C3F49F900270C1F /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -143,6 +730,192 @@
 			path = VLCControllerUITests;
 			sourceTree = "<group>";
 		};
+		D58ABC231C3E39D200270C1F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D524D95A1C8D7F8C00044B08 /* SlaveCotroller */,
+				D524D94A1C89722700044B08 /* WirelessPlugs */,
+				D524D9461C893A9F00044B08 /* Commond */,
+				D524D9451C893A7400044B08 /* Schedule */,
+				D524D9441C893A5C00044B08 /* Controller */,
+				D524D9431C893A4B00044B08 /* Tip */,
+				D524D9421C893A4100044B08 /* Theme */,
+				D524D9411C893A3900044B08 /* Bulb */,
+				D58ABC2E1C3F472A00270C1F /* HomeViewController.h */,
+				D58ABC2F1C3F472A00270C1F /* HomeViewController.m */,
+				D58ABC301C3F472A00270C1F /* HomeViewController.xib */,
+				D58ABCA31C48BBF700270C1F /* SettingViewController.h */,
+				D58ABCA41C48BBF700270C1F /* SettingViewController.m */,
+				D58ABCA51C48BBF700270C1F /* SettingViewController.xib */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		D58ABC241C3E39E200270C1F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D560094E1C6B132F006DE648 /* 弹出框 */,
+				D5DDD42A1C59A940002D1264 /* ColorPicker */,
+				D5F58EF41C575CA700DE602A /* 选择日期 */,
+				D5F58EEA1C561D3700DE602A /* 下拉框 */,
+				D50F541B1C51C39B00F5D292 /* TextFieldWithBorderView.h */,
+				D50F541C1C51C39B00F5D292 /* TextFieldWithBorderView.m */,
+				D58ABCB81C4CBD6800270C1F /* myUILabel.h */,
+				D58ABCB91C4CBD6800270C1F /* myUILabel.m */,
+				D58ABC8C1C464EA900270C1F /* LightControllerCellView.h */,
+				D58ABC8D1C464EA900270C1F /* LightControllerCellView.m */,
+				D58ABCA81C48D26600270C1F /* MyComBoxView.h */,
+				D58ABCA91C48D26600270C1F /* MyComBoxView.m */,
+				D58ABCB51C4CB92900270C1F /* TextTableViewCell.h */,
+				D58ABCB61C4CB92A00270C1F /* TextTableViewCell.m */,
+				D5DDD3E31C586010002D1264 /* TipMessageView.h */,
+				D5DDD3E41C586010002D1264 /* TipMessageView.m */,
+				D524D94B1C897A9000044B08 /* ChannelItemView.h */,
+				D524D94C1C897A9000044B08 /* ChannelItemView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		D58ABC251C3E39EF00270C1F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D58ABC891C46349E00270C1F /* LightControllerModel.h */,
+				D58ABC8A1C46349E00270C1F /* LightControllerModel.m */,
+				D58ABCCF1C4DCE6D00270C1F /* ThemeModel.h */,
+				D58ABCD01C4DCE6D00270C1F /* ThemeModel.m */,
+				D58ABCD71C4DDB5400270C1F /* ChannelModel.h */,
+				D58ABCD81C4DDB5400270C1F /* ChannelModel.m */,
+				D575E93D1C759B0300083571 /* ColorModel.h */,
+				D575E93E1C759B0300083571 /* ColorModel.m */,
+				D590FDA71C8EA0750049E0B1 /* ScheduleModel.h */,
+				D590FDA81C8EA0750049E0B1 /* ScheduleModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D58ABC261C3E3A0B00270C1F /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D57CA5701CB7367B00EDD027 /* backgroundNoIcon.png */,
+				D50F53E71C4F599D00F5D292 /* backArrow@2x.png */,
+				D50F53D91C4F1C2A00F5D292 /* arrow@2x.png */,
+				D50F53DA1C4F1C2A00F5D292 /* downArrow@2x.png */,
+				D50F53DB1C4F1C2A00F5D292 /* icon_green@2x.png */,
+				D50F53DC1C4F1C2A00F5D292 /* icon_red@2x.png */,
+				D50F53DD1C4F1C2A00F5D292 /* Icon@2x.png */,
+				D50F53DE1C4F1C2A00F5D292 /* link@2x.png */,
+				D50F53DF1C4F1C2A00F5D292 /* subArrow@2x.png */,
+				D58ABC851C438B8C00270C1F /* Background.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		D58ABC271C3E3A6E00270C1F /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				D58ABC821C411C3E00270C1F /* BluetoothLibary.h */,
+				D58ABC831C411C3E00270C1F /* BluetoothLibary.m */,
+				D50F54071C50BC2E00F5D292 /* BluetoothManager.h */,
+				D50F54081C50BC2E00F5D292 /* BluetoothManager.m */,
+				D50F540D1C50CA2400F5D292 /* LightControllerCommand.h */,
+				D50F540E1C50CA2400F5D292 /* LightControllerCommand.m */,
+			);
+			name = Bluetooth;
+			sourceTree = "<group>";
+		};
+		D58ABC341C3F4B8300270C1F /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				D58ABC351C3F4C2400270C1F /* UIDefine.h */,
+				D58ABC3D1C3F5F0F00270C1F /* ColorDefine.h */,
+				D50F54101C50CB9300F5D292 /* NotifyDefine.h */,
+			);
+			name = Include;
+			sourceTree = "<group>";
+		};
+		D58ABC361C3F4DFE00270C1F /* Extend */ = {
+			isa = PBXGroup;
+			children = (
+				D51B3A421C71D423005D72CC /* Library */,
+				D50F541F1C520B1000F5D292 /* UDID_Tools */,
+			);
+			name = Extend;
+			sourceTree = "<group>";
+		};
+		D58ABC8F1C472EDB00270C1F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				D5F58EFA1C575E8700DE602A /* UIView+Extension.h */,
+				D5F58EFB1C575E8700DE602A /* UIView+Extension.m */,
+				D58ABC901C472F4300270C1F /* NSString+Extension.h */,
+				D58ABC911C472F4300270C1F /* NSString+Extension.m */,
+				D5DDD4391C59B280002D1264 /* UIColor+extension.h */,
+				D5DDD43A1C59B280002D1264 /* UIColor+extension.m */,
+				D590FDCC1C8F1F4F0049E0B1 /* NSString+CustomCompare.h */,
+				D590FDCD1C8F1F4F0049E0B1 /* NSString+CustomCompare.m */,
+				D5E6B6FF1CA97C7300F05F24 /* MyLongPressGestureRecognizer.h */,
+				D5E6B7001CA97C7300F05F24 /* MyLongPressGestureRecognizer.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		D590FDC81C8EBE600049E0B1 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				D590FDC91C8EBE600049E0B1 /* DateFuncation.h */,
+				D590FDCA1C8EBE600049E0B1 /* DateFuncation.m */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		D5BAD1201C76B5BD000B6966 /* ZJSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				D5BAD1211C76B5BD000B6966 /* ZJSwitch.h */,
+				D5BAD1221C76B5BD000B6966 /* ZJSwitch.m */,
+			);
+			path = ZJSwitch;
+			sourceTree = "<group>";
+		};
+		D5DDD42A1C59A940002D1264 /* ColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				D5DDD42B1C59A940002D1264 /* colorPickerKnob.png */,
+				D5DDD42C1C59A940002D1264 /* colorPickerKnob@2x.png */,
+				D5DDD42D1C59A940002D1264 /* HSV.c */,
+				D5DDD42E1C59A940002D1264 /* HSV.h */,
+				D5DDD42F1C59A940002D1264 /* KZColorPickerHSWheel.h */,
+				D5DDD4301C59A940002D1264 /* KZColorPickerHSWheel.m */,
+				D5DDD4311C59A940002D1264 /* pickerColorWheel.png */,
+				D5DDD4321C59A940002D1264 /* pickerColorWheel@2x.png */,
+			);
+			name = ColorPicker;
+			path = View/ColorPicker;
+			sourceTree = "<group>";
+		};
+		D5F58EEA1C561D3700DE602A /* 下拉框 */ = {
+			isa = PBXGroup;
+			children = (
+				D5F58EEB1C561D3700DE602A /* DropdownListView.h */,
+				D5F58EEC1C561D3700DE602A /* DropdownListView.m */,
+				D590FDA11C8E56AA0049E0B1 /* TImePickerView.h */,
+				D590FDA21C8E56AA0049E0B1 /* TImePickerView.m */,
+			);
+			name = "下拉框";
+			path = "View/下拉框";
+			sourceTree = "<group>";
+		};
+		D5F58EF41C575CA700DE602A /* 选择日期 */ = {
+			isa = PBXGroup;
+			children = (
+				D5F58EF51C575CA700DE602A /* SelectDateView.h */,
+				D5F58EF61C575CA700DE602A /* SelectDateView.m */,
+				D5F58EF71C575CA700DE602A /* SelectDateView.xib */,
+			);
+			name = "选择日期";
+			path = "View/选择日期";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,9 +923,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D58ABC1A1C3E39C000270C1F /* Build configuration list for PBXNativeTarget "VLCController" */;
 			buildPhases = (
+				4030F633C2EB1309D58CAF8A /* Check Pods Manifest.lock */,
 				D58ABBE61C3E39C000270C1F /* Sources */,
 				D58ABBE71C3E39C000270C1F /* Frameworks */,
 				D58ABBE81C3E39C000270C1F /* Resources */,
+				EAF5E16DAC9B2F98F35C3719 /* Embed Pods Frameworks */,
+				5CC523DAB6E0835336FBDC40 /* Copy Pods Resources */,
+				D50EC8941D8F93C80061F76A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -167,9 +944,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D58ABC1D1C3E39C000270C1F /* Build configuration list for PBXNativeTarget "VLCControllerTests" */;
 			buildPhases = (
+				9EC8AE2928EBC5B8D93D2104 /* Check Pods Manifest.lock */,
 				D58ABC021C3E39C000270C1F /* Sources */,
 				D58ABC031C3E39C000270C1F /* Frameworks */,
 				D58ABC041C3E39C000270C1F /* Resources */,
+				B589FFF52E2B3922ED56A996 /* Embed Pods Frameworks */,
+				FCBED8EDD525108B2D48A845 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -210,6 +990,8 @@
 				TargetAttributes = {
 					D58ABBE91C3E39C000270C1F = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 7ZQ4SUF8ZF;
+						ProvisioningStyle = Automatic;
 					};
 					D58ABC051C3E39C000270C1F = {
 						CreatedOnToolsVersion = 7.2;
@@ -247,8 +1029,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				D58ABC001C3E39C000270C1F /* LaunchScreen.storyboard in Resources */,
+				D5DDD4371C59A940002D1264 /* pickerColorWheel.png in Resources */,
+				D58ABCC91C4DC7D000270C1F /* ManageBulbsViewController.xib in Resources */,
+				D58ABCA71C48BBF700270C1F /* SettingViewController.xib in Resources */,
+				D58ABCAF1C4C729800270C1F /* ScheduleOptionViewController.xib in Resources */,
+				D50F541A1C50E01D00F5D292 /* FoundViewController.xib in Resources */,
+				D50F53E01C4F1C2A00F5D292 /* arrow@2x.png in Resources */,
+				D5DDD4341C59A940002D1264 /* colorPickerKnob@2x.png in Resources */,
+				D5F58EF91C575CA700DE602A /* SelectDateView.xib in Resources */,
+				D5F609301D84DBBA0094EEFF /* ColorSelectorViewController.xib in Resources */,
+				D50F53E61C4F1C2A00F5D292 /* subArrow@2x.png in Resources */,
 				D58ABBFD1C3E39C000270C1F /* Assets.xcassets in Resources */,
+				D50F54151C50DFF800F5D292 /* NotFoundViewController.xib in Resources */,
+				D58ABCBF1C4CC2A700270C1F /* EditSimpleScheduleViewController.xib in Resources */,
+				D5F6092B1D84D9580094EEFF /* ColorSettingViewController.xib in Resources */,
+				D57CA5711CB7367B00EDD027 /* backgroundNoIcon.png in Resources */,
+				D58ABC9A1C47890A00270C1F /* AddControllerViewController.xib in Resources */,
+				D50F53E11C4F1C2A00F5D292 /* downArrow@2x.png in Resources */,
+				D50F53E51C4F1C2A00F5D292 /* link@2x.png in Resources */,
+				D50F53E41C4F1C2A00F5D292 /* Icon@2x.png in Resources */,
+				D58ABCC41C4CC2C600270C1F /* EditCustomScheduleViewController.xib in Resources */,
+				D5DDD4381C59A940002D1264 /* pickerColorWheel@2x.png in Resources */,
+				D58ABC4A1C3FC4A000270C1F /* TipViewController.xib in Resources */,
+				D5DDD4331C59A940002D1264 /* colorPickerKnob.png in Resources */,
+				D58ABC9F1C487F8800270C1F /* DuplicateControllerViewController.xib in Resources */,
+				D58ABC861C438B8C00270C1F /* Background.png in Resources */,
+				D51B3A4A1C71D423005D72CC /* MBProgressHUD.bundle in Resources */,
+				D50F53E21C4F1C2A00F5D292 /* icon_green@2x.png in Resources */,
+				D58ABCD61C4DD59300270C1F /* EditThemeViewController.xib in Resources */,
+				D50F53E81C4F599D00F5D292 /* backArrow@2x.png in Resources */,
+				D50F53E31C4F1C2A00F5D292 /* icon_red@2x.png in Resources */,
+				D58ABCCE1C4DCC0400270C1F /* ManageThemeViewController.xib in Resources */,
 				D58ABBF81C3E39C000270C1F /* Main.storyboard in Resources */,
+				D58ABC321C3F472A00270C1F /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,15 +1081,200 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4030F633C2EB1309D58CAF8A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5CC523DAB6E0835336FBDC40 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9EC8AE2928EBC5B8D93D2104 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B589FFF52E2B3922ED56A996 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VLCControllerTests/Pods-VLCControllerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D50EC8941D8F93C80061F76A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n#\n# Copyright 2016 Bugly, Tencent. All rights reserved.\n#\n# V1.4.0\n#\n# 2016.08.03\n#\n#\n#\n######################################################\n# 1. 脚本集成到Xcode工程的Target\n######################################################\n#\n# --- Copy the SCRIPT to the Run Script of Build Phases in the Xcode project ---\n#\n# #\nBUGLY_APP_ID=\"08db302b27\"\n# #\nBUGLY_APP_KEY=\"45db083b-a14a-4df2-8fd7-c87f226d6096\"\n# #\nBUNDLE_IDENTIFIER=\"com.VLCController.app\"\n# #\nUPLOAD_DSYM_ONLY=1\n#\n# # 脚本默认配置的版本格式为CFBundleShortVersionString(CFBundleVersion),  如果你修改默认的版本格式, 请设置此变量, 如果不想修改, 请忽略此设置\n# CUSTOMIZED_APP_VERSION=\"\"\n#\n# # Debug模式编译是否上传，1＝上传 0＝不上传，默认不上传\nUPLOAD_DEBUG_SYMBOLS=1\n#\n# # 模拟器编译是否上传，1=上传 0=不上传，默认不上传\n# UPLOAD_SIMULATOR_SYMBOLS=0\n#\n# #只有Archive操作时上传, 1=支持Archive上传 0=所有Release模式编译都上传\n# UPLOAD_ARCHIVE_ONLY=0\n#\n# #\n# source dSYMUpload.sh\n#\n# --- END OF SCRIPT ---\n#\n#\n#\n#\n#######################################################\n# 2. 脚本根据输入参数处理\n#######################################################\n#\n# #命令行下输入应用基本信息, .dSYM文件的父目录路径, 输出文件目录即可\n#\n# sh dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir>\n#\n# #\n#\n# #注意:\n# # 1. dSYMUpload.sh会调用buglySymboliOS.jar进行.dSYM解析，所以依赖Java运行时环境\n# # 2. dSYMUpload.sh和buglySymboliOS.jar的文件路径需一致\n#\n#\n\n#\n# --- CONTENT OF SCRIPT ---\n#\n\n# Bugly服务域名\nBUGLY_DSYM_UPLOAD_DOMAIN=\"api.bugly.qq.com\"\n\n# 注意jar工具的路径跟dSYMUpload.sh脚本路径一致, 请务必保证jar路径的正确性\nBUGLY_SYMBOL_JAR_PATH=\"dsymtool/buglySymboliOS.jar\"\n# 查找添加到系统目录的jar工具\nif [ ! -f \"${BUGLY_SYMBOL_JAR_PATH}\" ]; then\nBUGLY_SYMBOL_JAR_PATH=\"$HOME/bin/buglySymboliOS.jar\"\nfi\n\n# 打印错误信息\nfunction exitWithMessage(){\n    echo \"--------------------------------\"\n    echo \"${1}\"\n    echo \"--------------------------------\"\n    exit ${2}\n}\n\n# 上传bSYMBOL文件\nfunction dSYMUpload() {\n    P_APP_ID=\"$1\"\n    P_APP_KEY=\"$2\"\n    P_APP_BUNDLE_ID=\"$3\"\n    P_APP_VERSION=\"$4\"\n    P_BSYMBOL_ZIP_FILE=\"$5\"\n    \n    #\n    P_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE##*/}\n        P_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE_NAME//&/_}\n            P_BSYMBOL_ZIP_FILE_NAME=\"${P_BSYMBOL_ZIP_FILE_NAME// /_}\"\n            \n            DSYM_UPLOAD_URL=\"https://${BUGLY_DSYM_UPLOAD_DOMAIN}/openapi/file/upload/symbol?app_id=${P_APP_ID}&app_key=${P_APP_KEY}\"\n            echo \"dSYM upload url: ${DSYM_UPLOAD_URL}\"\n            \n            echo \"-----------------------------\"\n            STATUS=$(/usr/bin/curl -k \"${DSYM_UPLOAD_URL}\" --form \"api_version=1\" --form \"app_id=${P_APP_ID}\" --form \"app_key=${P_APP_KEY}\" --form \"symbolType=2\"  --form \"bundleId=${BUNDLE_IDENTIFIER}\" --form \"productVersion=${BUGLY_APP_VERSION}\" --form \"fileName=${P_BSYMBOL_ZIP_FILE_NAME}\" --form \"file=@${P_BSYMBOL_ZIP_FILE}\" --verbose)\n            echo \"-----------------------------\"\n            \n            UPLOAD_RESULT=\"FAILTURE\"\n            echo \"Bugly server response: ${STATUS}\"\n            if [ ! \"${STATUS}\" ]; then\n            echo \"Error: Failed to upload the zip archive file.\"\n            elif [[ \"${STATUS}\" == *\"{\\\"reponseCode\\\":\\\"0\\\"}\"* ]]; then\n            echo \"Success to upload the dSYM for the app [${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION}]\"\n            UPLOAD_RESULT=\"SUCCESS\"\n            else\n            echo \"Error: Failed to upload the zip archive file to Bugly.\"\n            fi\n            \n            #Remove temp dSYM archive\n            #echo \"Remove temporary zip archive: ${DSYM_ZIP_FPATH}\"\n            #/bin/rm -f \"${DSYM_ZIP_FPATH}\"\n            \n            if [ \"$?\" -ne 0 ]; then\n            exitWithMessage \"Error: Failed to remove temporary zip archive.\" 0\n            fi\n            \n            echo \"--------------------------------\"\n            echo \"${UPLOAD_RESULT} - dSYM upload complete.\"\n            \n            if [[ \"${UPLOAD_RESULT}\" == \"FAILTURE\" ]]; then\n            echo \"--------------------------------\"\n            echo \"Failed to upload the dSYM\"\n            echo \"Please check the script and try it again.\"\n            fi\n        }\n        \n        # .dSYM解析为bSYMBOL文件\n        function dSYMParse() {\n            DSYM_FILE=\"$1\"\n            DSYM_SYMBOL_FILE=\"$2\"\n            \n            echo \"--------------------------------\"\n            echo \"Extract symbol info from .dSYM file. to ${DSYM_SYMBOL_FILE}\"\n            (/usr/bin/java -Xms512m -Xmx1024m -Dfile.encoding=UTF8 -jar \"${BUGLY_SYMBOL_JAR_PATH}\" -i \"${DSYM_FILE}\" -o \"${DSYM_SYMBOL_FILE}\" ) || exitWithMessage \"Error: Failed to extract symbols.\" 1\n            echo \"--------------------------------\"\n            \n        }\n        \n        # 执行\n        function run() {\n            \n            CONFIG_BUGLY_APP_ID=\"$1\"\n            CONFIG_BUGLY_APP_KEY=\"$2\"\n            \n            CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER=\"$3\"\n            CONFIG_BUGLY_APP_VERSION=\"$4\"\n            CONFIG_DSYM_SOURCE_DIR=\"$5\"\n            CONFIG_DSYM_DEST_DIR=\"$6\"\n            CONFIG_UPLOAD_DSYM_ONLY=\"$7\"\n            \n            # 检查必须参数是否设置\n            if [ ! \"${CONFIG_BUGLY_APP_ID}\" ]; then\n            exitWithMessage \"Error: Bugly App ID not defined. Please set 'BUGLY_APP_ID' \" 0\n            fi\n            \n            if [[ \"${CONFIG_BUGLY_APP_ID}\" == *\"App ID\"* ]]; then\n            exitWithMessage \"Error: Bugly App ID not defined.\" 0\n            fi\n            \n            if [ ! \"${CONFIG_BUGLY_APP_KEY}\" ]; then\n            exitWithMessage \"Error: Bugly App Key not defined.\" 0\n            fi\n            \n            if [ ! \"${CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER}\" ]; then\n            exitWithMessage \"Error: Bundle Identifier not defined.\" 0\n            fi\n            \n            if [ ! \"${CONFIG_BUGLY_APP_VERSION}\" ]; then\n            exitWithMessage \"Error: App Version not defined.\" 0\n            fi\n            \n            if [ ! -e \"${CONFIG_DSYM_SOURCE_DIR}\" ]; then\n            exitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_SOURCE_DIR}\" 0\n            fi\n            \n            if [ ! \"${CONFIG_DSYM_DEST_DIR}\" ]; then\n            exitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_DEST_DIR}\" 0\n            fi\n            \n            if [ ! -e \"${CONFIG_DSYM_DEST_DIR}\" ]; then\n            mkdir ${CONFIG_DSYM_DEST_DIR}\n            fi\n            \n            DSYM_FOLDER=\"${CONFIG_DSYM_SOURCE_DIR}\"\n            IFS=$'\\n'\n            \n            echo \"Scaning dSYM FOLDER: ${DSYM_FOLDER} ...\"\n            RET=\"F\"\n            \n            #\n            for dsymFile in $(find \"$DSYM_FOLDER\" -name '*.dSYM'); do\n            RET=\"T\"\n            echo \"Found dSYM file: $dsymFile\"\n            \n            DSYM_FILE_NAME=${dsymFile##*/}\n                DSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_FILE_NAME}.zip\"\n                DSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_SYMBOL_ZIP_FILE_NAME// /_}\"\n                DSYM_SYMBOL_ZIP_FILE=${CONFIG_DSYM_DEST_DIR}/${DSYM_SYMBOL_ZIP_FILE_NAME}\n                \n                if [ $CONFIG_UPLOAD_DSYM_ONLY -eq 1 ]; then\n                if [ -e $DSYM_SYMBOL_ZIP_FILE ]; then\n                rm -f $DSYM_SYMBOL_ZIP_FILE\n                fi\n                # 如果只上传dSYM，直接压缩dSYM目录\n                zip -r -j $DSYM_SYMBOL_ZIP_FILE $dsymFile -x *.plist\n                else\n                # 使用符号表工具来生成Symbol文件\n                dSYMParse $dsymFile $DSYM_SYMBOL_ZIP_FILE\n                fi\n                \n                # 上传\n                dSYMUpload $CONFIG_BUGLY_APP_ID $CONFIG_BUGLY_APP_KEY $CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER $CONFIG_BUGLY_APP_VERSION $DSYM_SYMBOL_ZIP_FILE\n                done\n                \n                if [ $RET = \"F\" ]; then\n                exitWithMessage \"No .dSYM found in ${DSYM_FOLDER}\" 0\n                fi\n            }\n            \n            # 在Xcode工程中执行\n            function runInXcode(){\n                echo \"Uploading dSYM to Bugly in Xcode ...\"\n                \n                echo \"Info.Plist : ${INFOPLIST_FILE}\"\n                \n                BUNDLE_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleVersion' \"${INFOPLIST_FILE}\")\n                BUNDLE_SHORT_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' \"${INFOPLIST_FILE}\")\n                \n                # 组装Bugly默认识别的版本信息(格式为CFBundleShortVersionString(CFBundleVersion), 例如: 1.0(1))\n                if [ ! \"${CUSTOMIZED_APP_VERSION}\" ]; then\n                BUGLY_APP_VERSION=\"${BUNDLE_SHORT_VERSION}(${BUNDLE_VERSION})\"\n                else\n                BUGLY_APP_VERSION=\"${CUSTOMIZED_APP_VERSION}\"\n                fi\n                \n                echo \"--------------------------------\"\n                echo \"Prepare application information.\"\n                echo \"--------------------------------\"\n                \n                echo \"Product Name: ${PRODUCT_NAME}\"\n                echo \"Bundle Identifier: ${BUNDLE_IDENTIFIER}\"\n                echo \"Version: ${BUNDLE_SHORT_VERSION}\"\n                echo \"Build: ${BUNDLE_VERSION}\"\n                \n                echo \"Bugly App ID: ${BUGLY_APP_ID}\"\n                echo \"Bugly App key: ${BUGLY_APP_KEY}\"\n                echo \"Bugly App Version: ${BUGLY_APP_VERSION}\"\n                \n                echo \"--------------------------------\"\n                echo \"Check the arguments ...\"\n                \n                ##检查模拟器编译是否允许上传符号\n                if [ \"$EFFECTIVE_PLATFORM_NAME\" == \"-iphonesimulator\" ]; then\n                if [ $UPLOAD_SIMULATOR_SYMBOLS -eq 0 ]; then\n                exitWithMessage \"Warning: Build for simulator and skipping to upload. \\nYou can modify 'UPLOAD_SIMULATOR_SYMBOLS' to 1 in the script.\" 0\n                fi\n                fi\n                \n                ##检查是否是Release模式编译\n                if [ \"${CONFIGURATION=}\" == \"Debug\" ]; then\n                if [ $UPLOAD_DEBUG_SYMBOLS -eq 0 ]; then\n                exitWithMessage \"Warning: Build for debug mode and skipping to upload. \\nYou can modify 'UPLOAD_DEBUG_SYMBOLS' to 1 in the script.\" 0\n                fi\n                fi\n                \n                ##检查是否Archive操作\n                if [ $UPLOAD_ARCHIVE_ONLY -eq 1 ]; then\n                if [[ \"$TARGET_BUILD_DIR\" == *\"/Archive\"* ]]; then\n                echo \"Archive the package\"\n                else\n                exitWithMessage \"Warning: Build for NOT Archive mode and skipping to upload. \\nYou can modify 'UPLOAD_ARCHIVE_ONLY' to 0 in the script.\" 0\n                fi\n                fi\n                \n                #\n                run ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${BUILD_DIR}/BuglySymbolTemp ${UPLOAD_DSYM_ONLY}\n            }\n            \n            # 根据Xcode的环境变量判断是否处于Xcode环境\n            INFO_PLIST_FILE=\"${INFOPLIST_FILE}\"\n            \n            BuildInXcode=\"F\"\n            if [ -f \"${INFO_PLIST_FILE}\" ]; then\n            BuildInXcode=\"T\"\n            fi\n            \n            if [ $BuildInXcode = \"T\" ]; then\n            runInXcode\n            else\n            echo \"\\nUsage: dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir> [upload_dsym_only]\\n\"\n            # 你可以在此处直接设置BuglyAppID和BuglyAppKey，排除不常变参数的输入\n            BUGLY_APP_ID=\"$1\"\n            BUGLY_APP_KEY=\"$2\"\n            BUNDLE_IDENTIFIER=\"$3\"\n            BUGLY_APP_VERSION=\"$4\"\n            DWARF_DSYM_FOLDER_PATH=\"$5\"\n            SYMBOL_OUTPUT_PATH=\"$6\"\n            UPLOAD_DSYM_ONLY=$7\n            run ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${SYMBOL_OUTPUT_PATH} ${UPLOAD_DSYM_ONLY}\n            fi";
+		};
+		EAF5E16DAC9B2F98F35C3719 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCBED8EDD525108B2D48A845 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VLCControllerTests/Pods-VLCControllerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D58ABBE61C3E39C000270C1F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D590FDD71C913D3D0049E0B1 /* LightController.m in Sources */,
+				D5E6B7011CA97C7300F05F24 /* MyLongPressGestureRecognizer.m in Sources */,
+				D5081D371C72CF8700B556D7 /* InputHelper.m in Sources */,
+				D5DDD4411C5B3AD6002D1264 /* Channel+Fetch.m in Sources */,
+				D50F54011C4F743C00F5D292 /* SlaveLightController.m in Sources */,
+				D58ABC491C3FC4A000270C1F /* TipViewController.m in Sources */,
+				D5F58EFC1C575E8700DE602A /* UIView+Extension.m in Sources */,
+				D5F6092F1D84DBBA0094EEFF /* ColorSelectorViewController.m in Sources */,
+				D590FDC01C8EB4200049E0B1 /* ScheduleItem+CoreDataProperties.m in Sources */,
+				D5DDD3E51C586010002D1264 /* TipMessageView.m in Sources */,
+				D5DDD4351C59A940002D1264 /* HSV.c in Sources */,
+				D58ABCBA1C4CBD6800270C1F /* myUILabel.m in Sources */,
+				D58ABCC31C4CC2C600270C1F /* EditCustomScheduleViewController.m in Sources */,
+				D5DDD43B1C59B280002D1264 /* UIColor+extension.m in Sources */,
+				D58ABCD11C4DCE6D00270C1F /* ThemeModel.m in Sources */,
+				D590FDDD1C915BAE0049E0B1 /* ColorFavorites.m in Sources */,
+				D5BAD1231C76B5BD000B6966 /* ZJSwitch.m in Sources */,
 				D58ABBF51C3E39C000270C1F /* ViewController.m in Sources */,
+				D58ABCAA1C48D26600270C1F /* MyComBoxView.m in Sources */,
+				D50F53FE1C4F743C00F5D292 /* Theme+CoreDataProperties.m in Sources */,
+				D58ABCB71C4CB92A00270C1F /* TextTableViewCell.m in Sources */,
+				D50F54091C50BC2E00F5D292 /* BluetoothManager.m in Sources */,
+				D58ABC2A1C3E424A00270C1F /* BaseViewController.m in Sources */,
 				D58ABBF21C3E39C000270C1F /* AppDelegate.m in Sources */,
+				D590FDD11C9116810049E0B1 /* BulbChannel+Fetch.m in Sources */,
+				D50F54041C4F85D300F5D292 /* LightController+Fetch.m in Sources */,
+				D590FDE31C91CA830049E0B1 /* SlaveControllerViewController.m in Sources */,
+				D50F54001C4F743C00F5D292 /* SlaveLightController+CoreDataProperties.m in Sources */,
+				D5F58EED1C561D3800DE602A /* DropdownListView.m in Sources */,
+				D524D9561C8D6FE300044B08 /* ManageWirelessPlugsViewController.m in Sources */,
+				D58ABCD91C4DDB5400270C1F /* ChannelModel.m in Sources */,
+				D5DDD3E81C58AC82002D1264 /* ColorOptionsViewController.m in Sources */,
+				D590FDD61C913D3D0049E0B1 /* LightController+CoreDataProperties.m in Sources */,
+				D58ABC9E1C487F8800270C1F /* DuplicateControllerViewController.m in Sources */,
+				D58ABC991C47890A00270C1F /* AddControllerViewController.m in Sources */,
+				D51B3A491C71D423005D72CC /* MBProgressHUD+NJ.m in Sources */,
+				D590FDDC1C915BAE0049E0B1 /* ColorFavorites+CoreDataProperties.m in Sources */,
+				D590FDC11C8EB4200049E0B1 /* ScheduleItem.m in Sources */,
+				D5E824A81D87861B00BA2053 /* ColorButton.m in Sources */,
+				D50F541D1C51C39B00F5D292 /* TextFieldWithBorderView.m in Sources */,
+				D524D9591C8D734500044B08 /* UnpairWirelessPlugViewController.m in Sources */,
+				D50F53FD1C4F743C00F5D292 /* Channel.m in Sources */,
 				D58ABBEF1C3E39C000270C1F /* main.m in Sources */,
+				D590FDE01C915BCF0049E0B1 /* ColorFavorites+Fetch.m in Sources */,
+				D58ABCCD1C4DCC0400270C1F /* ManageThemeViewController.m in Sources */,
+				D524D9531C8D530D00044B08 /* BulbChannel.m in Sources */,
+				D590FDC41C8EB5350049E0B1 /* Schedule+Fetch.m in Sources */,
+				D58ABC921C472F4300270C1F /* NSString+Extension.m in Sources */,
+				D58ABC8E1C464EA900270C1F /* LightControllerCellView.m in Sources */,
+				D5DDD4441C5B3AF1002D1264 /* SlaveLightController+Fetch.m in Sources */,
+				D5F58EF81C575CA700DE602A /* SelectDateView.m in Sources */,
+				D524D9401C893A3200044B08 /* BulbChannelViewController.m in Sources */,
+				D590FDA91C8EA0750049E0B1 /* ScheduleModel.m in Sources */,
+				D50F54221C520B1100F5D292 /* SvUDIDTools.m in Sources */,
+				D524D9491C895D0D00044B08 /* AssignBulbChannelViewController.m in Sources */,
+				D58ABC8B1C46349E00270C1F /* LightControllerModel.m in Sources */,
+				D524D94D1C897A9000044B08 /* ChannelItemView.m in Sources */,
+				D58ABCC81C4DC7D000270C1F /* ManageBulbsViewController.m in Sources */,
+				D590FDC71C8EB8500049E0B1 /* ScheduleItem+Fetch.m in Sources */,
+				D51B3A4B1C71D423005D72CC /* MBProgressHUD.m in Sources */,
+				D50F53FF1C4F743C00F5D292 /* Theme.m in Sources */,
+				D5F6092A1D84D9580094EEFF /* ColorSettingViewController.m in Sources */,
+				D58ABC311C3F472A00270C1F /* HomeViewController.m in Sources */,
+				D5DDD4361C59A940002D1264 /* KZColorPickerHSWheel.m in Sources */,
+				D58ABCAE1C4C729800270C1F /* ScheduleOptionViewController.m in Sources */,
+				D5DDD43E1C5B3141002D1264 /* Theme+Fetch.m in Sources */,
+				D58ABC841C411C3E00270C1F /* BluetoothLibary.m in Sources */,
+				D50F54141C50DFF800F5D292 /* NotFoundViewController.m in Sources */,
 				D58ABBFB1C3E39C000270C1F /* VLCController.xcdatamodeld in Sources */,
+				D575E93F1C759B0300083571 /* ColorModel.m in Sources */,
+				D50F540F1C50CA2400F5D292 /* LightControllerCommand.m in Sources */,
+				D58ABCBE1C4CC2A700270C1F /* EditSimpleScheduleViewController.m in Sources */,
+				D56009511C6B1515006DE648 /* PopBaseView.m in Sources */,
+				D524D9521C8D530D00044B08 /* BulbChannel+CoreDataProperties.m in Sources */,
+				D590FDB41C8EB23A0049E0B1 /* Schedule+CoreDataProperties.m in Sources */,
+				D50F53FC1C4F743C00F5D292 /* Channel+CoreDataProperties.m in Sources */,
+				D590FDB51C8EB23A0049E0B1 /* Schedule.m in Sources */,
+				D590FDCB1C8EBE600049E0B1 /* DateFuncation.m in Sources */,
+				D50F54191C50E01D00F5D292 /* FoundViewController.m in Sources */,
+				D590FDA31C8E56AA0049E0B1 /* TImePickerView.m in Sources */,
+				D58ABCD51C4DD59200270C1F /* EditThemeViewController.m in Sources */,
+				D58ABCA61C48BBF700270C1F /* SettingViewController.m in Sources */,
+				D590FDCE1C8F1F4F0049E0B1 /* NSString+CustomCompare.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,28 +1411,52 @@
 		};
 		D58ABC1B1C3E39C000270C1F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5EAC72D7AA346B59563CCF0 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 7ZQ4SUF8ZF;
+				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/VLCController/PrefixHeader.pch";
 				INFOPLIST_FILE = VLCController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Basket.app.VLCController;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VLCController.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
 		D58ABC1C1C3E39C000270C1F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53CBBE1E5FE2E726B8112C60 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7ZQ4SUF8ZF;
+				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/VLCController/PrefixHeader.pch";
 				INFOPLIST_FILE = VLCController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Basket.app.VLCController;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VLCController.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
 		D58ABC1E1C3E39C000270C1F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2215F3560922F6614F7D1E2C /* Pods-VLCControllerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = VLCControllerTests/Info.plist;
@@ -447,6 +1469,7 @@
 		};
 		D58ABC1F1C3E39C000270C1F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AEE3BD7147B02725C128780A /* Pods-VLCControllerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = VLCControllerTests/Info.plist;
@@ -500,6 +1523,7 @@
 				D58ABC1C1C3E39C000270C1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D58ABC1D1C3E39C000270C1F /* Build configuration list for PBXNativeTarget "VLCControllerTests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +1532,7 @@
 				D58ABC1F1C3E39C000270C1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D58ABC201C3E39C000270C1F /* Build configuration list for PBXNativeTarget "VLCControllerUITests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +1541,7 @@
 				D58ABC221C3E39C000270C1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

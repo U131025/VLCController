@@ -7,16 +7,33 @@
 //
 
 #import "AppDelegate.h"
+#import "HomeViewController.h"
+#import "Theme+Fetch.h"
+#import "MBProgressHUD+NJ.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<BluetoothManagerDelegate>
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // 初始化bugly 需要异步，否则会阻塞
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [self setupBugly];
+    });
+    
+    [BluetoothManager sharedInstance].delegate = self;
+    [[BluetoothManager sharedInstance] startScanBluetooth];
+    
+    HomeViewController *mainViewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+    UINavigationController *naveigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
+    
+    self.window.rootViewController = naveigationController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -122,6 +139,117 @@
             abort();
         }
     }
+}
+
+#pragma mark - BlueManagerDelegate
+- (void)receiveTimeOut:(CBPeripheral *)peripheral
+{
+    //弹出提示框
+//    [MBProgressHUD showError:@"No Respond."];
+}
+
+- (void)receiveSuccess:(NSData *)data
+{
+    Byte value[30] = {0};
+    [data getBytes:&value length:sizeof(value)];
+    
+    if (value[0] == 0xaa && value[1] == 0x0a) {
+        //paired success
+//        [MBProgressHUD showSuccess:@"Paired Success."];
+    }
+    else if (value[0] == 0xaa && value[1] == 0xee){
+        //paired error
+        [MBProgressHUD showError:@"Paired Failure."];
+    }
+    
+}
+
+#pragma mark - Bugly
+- (void)setupBugly
+{
+    // Get the default config
+    BuglyConfig * config = [[BuglyConfig alloc] init];
+    
+    // Open the debug mode to print the sdk log message.
+    // Default value is NO, please DISABLE it in your RELEASE version.
+#if DEBUG
+    config.debugMode = YES;
+#endif
+    
+    // Open the customized log record and report, BuglyLogLevelWarn will report Warn, Error log message.
+    // Default value is BuglyLogLevelSilent that means DISABLE it.
+    // You could change the value according to you need.
+    config.reportLogLevel = BuglyLogLevelWarn;
+    
+    // Open the STUCK scene data in MAIN thread record and report.
+    // Default value is NO
+    config.blockMonitorEnable = YES;
+    
+    // Set the STUCK THRESHOLD time, when STUCK time > THRESHOLD it will record an event and report data when the app launched next time.
+    // Default value is 3.5 second.
+    config.blockMonitorTimeout = 1.5;
+    
+    // Set the app channel to deployment
+    config.channel = @"Bugly";
+    
+    // NOTE:Required
+    // Start the Bugly sdk with APP_ID and your config
+    [Bugly startWithAppId:BUGLY_APP_ID config:config];
+    
+    // Set the customizd tag thats config in your APP registerd on the  bugly.qq.com
+    [Bugly setTag:1799];
+    
+    [Bugly setUserIdentifier:[NSString stringWithFormat:@"User: %@", [NSProcessInfo processInfo].hostName]];
+    
+    [Bugly setUserValue:[NSProcessInfo processInfo].processName forKey:@"App"];
+    
+    // NOTE: This is only TEST code for BuglyLog , please UNCOMMENT it in your code.
+    //    [self performSelectorInBackground:@selector(testLogOnBackground) withObject:nil];
+    
+//    [self testNSException];
+}
+
+/**
+ *    @brief TEST method for BuglyLog
+ */
+- (void)testLogOnBackground {
+    int cnt = 0;
+    while (1) {
+        cnt++;
+        
+        switch (cnt % 5) {
+            case 0:
+                BLYLogError(@"Test Log Print %d", cnt);
+                break;
+            case 4:
+                BLYLogWarn(@"Test Log Print %d", cnt);
+                break;
+            case 3:
+                BLYLogInfo(@"Test Log Print %d", cnt);
+                BLYLogv(BuglyLogLevelWarn, @"BLLogv: Test", NULL);
+                break;
+            case 2:
+                BLYLogDebug(@"Test Log Print %d", cnt);
+                BLYLog(BuglyLogLevelError, @"BLLog : %@", @"Test BLLog");
+                break;
+            case 1:
+            default:
+                BLYLogVerbose(@"Test Log Print %d", cnt);
+                break;
+        }
+        
+        // print log interval 1 sec.
+        sleep(1);
+    }
+}
+
+- (void)testNSException {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"it will throw an NSException ");
+        NSArray * array = @[];
+        NSLog(@"the element is %@", array[1]);
+    });
+    
 }
 
 @end

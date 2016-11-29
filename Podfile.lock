@@ -1,0 +1,13 @@
+PODS:
+  - Bugly (2.3.1)
+  - Kiwi (2.4.0)
+
+DEPENDENCIES:
+  - Bugly
+  - Kiwi
+
+SPEC CHECKSUMS:
+  Bugly: c8ece2fa5bdcb404abdd0e07131e8129f580d893
+  Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
+
+COCOAPODS: 0.39.0
