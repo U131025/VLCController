@@ -7,51 +7,61 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BluetoothLibary.h"
+//#import "BluetoothLibary.h"
 #import "LightControllerModel.h"
+#import "DeviceModel.h"
+#import "DeviceManager.h"
 
-@protocol BluetoothManagerDelegate <NSObject>
+typedef NS_ENUM(NSInteger, BLERespondType) {
+    BLERespondTypeRead,
+    BLERespondTypePairPWD,
+    BLERespondTypeMacAddr,
+    BLERespondTypeTimeout,
+    
+    BLERespondTypeFailure,
+    BLERespondTypeSuccess,
+};
 
-- (void)receiveTimeOut:(CBPeripheral *)peripheral;
-- (void)receiveSuccess:(NSData *)data;
+typedef void(^RespondBlock)(NSData *data);
+typedef void(^BluetoothCompleteBlock)(CBPeripheral *peripheral, id data, BLERespondType type);
+typedef void(^BLEConnectSuccess)(CBPeripheral *peripheral);
+typedef void(^BLEConnectFailed)(CBPeripheral *peripheral);
 
-@optional
 
-- (void)bluetoothDisConnected;
+/////////////////// BluetoothManagerDelegate
+//@protocol BluetoothManagerDelegate <NSObject>
+//
+//- (void)receiveTimeOut:(CBPeripheral *)peripheral;
+//- (void)receiveSuccess:(NSData *)data;
+//
+//@optional
+//
+//- (void)bluetoothDisConnected;
+//
+//@end
 
-@end
+
+/////////////// BluetoothManager
 
 @interface BluetoothManager : NSObject
 
 //单例
 DECLARE_SINGLETON(BluetoothManager);
 
-@property (nonatomic, strong) NSMutableArray *device;   //of CBPeripheral
+@property (nonatomic, copy) NSArray *device;   //of CBPeripheral
 @property (nonatomic, assign) NSInteger timeOutSeconds;
-@property (nonatomic, weak) id<BluetoothManagerDelegate> delegate;
-@property (nonatomic, strong) CBPeripheral *peripheral;
+//@property (nonatomic, weak) id<BluetoothManagerDelegate> delegate;
+@property (nonatomic, readonly, weak) CBPeripheral *peripheral;
+@property (nonatomic, assign) BOOL isBluetoothOpen;
+@property (nonatomic, assign) BOOL isConnectedPeripheral;
 
-- (BOOL)startScanBluetooth;
-- (BOOL)connectPeripheral:(CBPeripheral *)peripheral onSuccessBlock:(void (^)())onSuccessBlock onTimeoutBlock:(void (^)())onTimeoutBlock;
-- (void)disConnectPeripheral;
+- (void)connectWithName:(NSString *)name oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword successBlock:(BluetoothCompleteBlock)success faileBlock:(BluetoothCompleteBlock)failed;
 
-- (void)disConnectPeripheral:(void (^)())onFinished;
-- (void)disConnectPeripheral:(CBPeripheral *)periphseral onFinished:(void (^)())onFinished;
-
-// 发送数据至蓝牙设备
-- (void)sendDataToPeripheral:(NSData *)sendData;
-- (void)sendDataToPeripheral:(NSData *)sendData withIdentifier:(NSString *)identifier;
+- (void)disconnectAllPeripheral;
 
 - (void)sendData:(NSData *)sendData onRespond:(BOOL (^)(NSData *data))respond onTimeOut:(void (^)())timeOut;
-- (void)sendData:(NSData *)sendData withIdentifier:(NSString *)identifier onRespond:(BOOL (^)(NSData *data))respond onTimeOut:(void (^)())timeOut;
 
-- (CBPeripheral *)getPeripheralWithIdentifier:(NSString *)identifier;
+- (void)sendData:(NSData *)sendData onRespond:(BOOL (^)(NSData *))respond timeOutValue:(NSInteger)timeOutValue onTimeOut:(void (^)())timeOut;
 
-
-//根据identifier搜索设备
-- (void)scanBluetoothWithIdentifier:(NSString *)identifier onSuccessBlock:(void (^)())onSuccessBlock onTimeoutBlock:(void (^)())onTimeoutBlock;
-
-//是否设备处于连接状态
-- (BOOL)isConnectedPeripheral;
 
 @end

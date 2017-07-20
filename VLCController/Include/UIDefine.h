@@ -26,6 +26,8 @@
 #define ScreenHeight (kIsIos7?[UIScreen mainScreen].bounds.size.height:([UIScreen mainScreen].bounds.size.height-20))
 
 #define NavBarHeight (kIsIos7?64:44)//导航条高度
+#define MarginValue 50
+#define ButtonHeight 60
 
 #define Font(F) [UIFont systemFontOfSize:(F)]
 #define FontBold(F) [UIFont fontWithName:@"TrebuchetMS-Bold" size:(F)]
@@ -47,3 +49,5 @@
 
 
 #endif /* UIDefine_h */
+
+

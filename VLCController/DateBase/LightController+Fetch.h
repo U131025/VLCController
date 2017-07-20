@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Mojy. All rights reserved.
 //
 
-#import "LightController.h"
+#import "LightController+CoreDataClass.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <objc/runtime.h>
 #import "LightControllerModel.h"

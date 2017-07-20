@@ -18,6 +18,7 @@
         self.name = item.name;
         self.date = item.date;
         self.themeName = item.themeName;
+        self.date = item.date;
     }
     return self;
 }

@@ -7,7 +7,7 @@
 //
 
 #import "Schedule.h"
-#import "LightController.h"
+#import "LightController+CoreDataClass.h"
 #import "ScheduleItem.h"
 
 @implementation Schedule

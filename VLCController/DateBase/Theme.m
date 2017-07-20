@@ -8,7 +8,7 @@
 
 #import "Theme.h"
 #import "Channel.h"
-#import "LightController.h"
+#import "LightController+CoreDataClass.h"
 
 @implementation Theme
 

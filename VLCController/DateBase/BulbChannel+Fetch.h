@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Mojy. All rights reserved.
 //
 
-#import "BulbChannel.h"
+#import "BulbChannel+CoreDataClass.h"
 
 @interface BulbChannel (Fetch)
 

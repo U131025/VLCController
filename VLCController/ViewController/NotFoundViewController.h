@@ -10,4 +10,6 @@
 
 @interface NotFoundViewController : BaseViewController
 
+- (instancetype)initWithBackButton;
+
 @end

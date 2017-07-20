@@ -2,19 +2,20 @@
 //  BulbChannel+CoreDataProperties.m
 //  VLCController
 //
-//  Created by mojingyu on 16/3/7.
-//  Copyright © 2016年 Mojy. All rights reserved.
-//
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
+//  Created by Mojy on 2017/6/2.
+//  Copyright © 2017年 Mojy. All rights reserved.
 //
 
 #import "BulbChannel+CoreDataProperties.h"
 
 @implementation BulbChannel (CoreDataProperties)
 
-@dynamic name;
++ (NSFetchRequest<BulbChannel *> *)fetchRequest {
+	return [[NSFetchRequest alloc] initWithEntityName:@"BulbChannel"];
+}
+
 @dynamic index;
+@dynamic name;
 @dynamic lightController;
 
 @end

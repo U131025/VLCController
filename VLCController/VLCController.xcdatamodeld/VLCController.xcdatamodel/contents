@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G1004" minimumToolsVersion="Automatic">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Xcode 7.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="BulbChannel" representedClassName="BulbChannel" syncable="YES">
-        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="lightController" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LightController" inverseName="bulbChannels" inverseEntity="LightController" syncable="YES"/>
     </entity>
@@ -9,8 +9,8 @@
         <attribute name="colorName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="colorType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstColorValue" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="isCustom" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isCustom" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="secondColorValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="showColor" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,22 +22,23 @@
     </entity>
     <entity name="ColorFavorites" representedClassName="ColorFavorites" syncable="YES">
         <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isCustom" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isCustom" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="warm" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="LightController" representedClassName="LightController" syncable="YES">
-        <attribute name="controllerType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="controllerType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="deviceName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isCustomSchedule" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="isPairBulbs" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="isPowerOn" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isCustomSchedule" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isPairBulbs" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isPowerOn" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lightID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="macAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="themeName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="useLightSchedule" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="useLightSchedule" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="bulbChannels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BulbChannel" inverseName="lightController" inverseEntity="BulbChannel" syncable="YES"/>
         <relationship name="lightThemes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Theme" inverseName="lightController" inverseEntity="Theme" syncable="YES"/>
         <relationship name="master" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LightController" inverseName="slave" inverseEntity="LightController" syncable="YES"/>
@@ -45,8 +46,8 @@
         <relationship name="slave" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LightController" inverseName="master" inverseEntity="LightController" syncable="YES"/>
     </entity>
     <entity name="Schedule" representedClassName="Schedule" syncable="YES">
-        <attribute name="isCustomSchedule" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="isPhotoCell" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isCustomSchedule" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isPhotoCell" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeOff" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeOn" optional="YES" attributeType="String" syncable="YES"/>
@@ -55,13 +56,13 @@
     </entity>
     <entity name="ScheduleItem" representedClassName="ScheduleItem" syncable="YES">
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isSelected" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isSelected" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="themeName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="schedule" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Schedule" inverseName="items" inverseEntity="Schedule" syncable="YES"/>
     </entity>
     <entity name="Theme" representedClassName="Theme" syncable="YES">
-        <attribute name="isDefualt" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isDefualt" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="themeName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="channels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Channel" inverseName="myTheme" inverseEntity="Channel" syncable="YES"/>
@@ -71,7 +72,7 @@
         <element name="BulbChannel" positionX="63" positionY="-403" width="128" height="88"/>
         <element name="Channel" positionX="304" positionY="-459" width="128" height="240"/>
         <element name="ColorFavorites" positionX="117" positionY="-288" width="128" height="105"/>
-        <element name="LightController" positionX="-110" positionY="-270" width="128" height="285"/>
+        <element name="LightController" positionX="-110" positionY="-270" width="128" height="300"/>
         <element name="Schedule" positionX="90" positionY="-130" width="128" height="148"/>
         <element name="ScheduleItem" positionX="331" positionY="-205" width="128" height="118"/>
         <element name="Theme" positionX="117" positionY="-295" width="128" height="120"/>

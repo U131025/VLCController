@@ -9,6 +9,17 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 
+//typedef NS_ENUM(NSInteger, BLERespondType) {
+//    BLERespondTypeRead,
+//    BLERespondTypePairPWD,
+//    BLERespondTypeMacAddr,
+//};
+
+typedef void(^RespondBlock)(NSData *data);
+typedef void(^BluetoothCompleteBlock)(CBPeripheral *peripheral, id data, BLERespondType type);
+typedef void(^BLEConnectSuccess)(CBPeripheral *peripheral);
+typedef void(^BLEConnectFailed)(CBPeripheral *peripheral);
+
 @protocol BluetoothLibaryDelegate <NSObject>
 
 //发现蓝牙设备
@@ -33,11 +44,17 @@
     id<BluetoothLibaryDelegate> delegate;
 }
 
+@property (nonatomic, strong) NSString *passwordOld;
+@property (nonatomic, strong) NSString *passwordNew;
+
 @property (nonatomic, strong) NSString *serviceUUID;
 @property (nonatomic, strong) NSString *readUUID;
 @property (nonatomic, strong) NSString *writeUUID;
 @property (nonatomic, strong) NSString *notifyUUID;
 @property (nonatomic, strong) NSMutableArray *devices; //of CBPeripheral
+
+@property (nonatomic, copy) BLEConnectSuccess connectSuccessBlock;
+@property (nonatomic, copy) BLEConnectFailed connectFailedBlock;
 
 @property (nonatomic, weak) id<BluetoothLibaryDelegate> delegate;
 
@@ -58,11 +75,23 @@
 //手动连接蓝牙外设
 - (void)connectPeripheral:(CBPeripheral *)peripheral;
 
+- (void)connectPeripheral:(CBPeripheral *)peripheral success:(BLEConnectSuccess)success failed:(BLEConnectFailed)failed;
+
+
 // 断开连接
+- (void)disconnectAllPeripheral;
+
+- (void)disConnectPeripheralWithNotify;
 - (void)disConnectPeripheral;
 - (void)disConnectPeripheral:(CBPeripheral *)peripheral onFinished:(void (^)())onFinished;
 
 // 发送数据至蓝牙设备
 - (void)sendDataToPeripheral:(NSData *)sendData;
+
+// 读取mac地址
+- (void)readMacAddr:(RespondBlock)success failed:(RespondBlock)failed;
+
+//配对
+- (void)pairDeviceWithOldPassword:(NSString *)oldPassword newPassWord:(NSString *)newPassword withResponds:(RespondBlock)respondsBlock;
 
 @end

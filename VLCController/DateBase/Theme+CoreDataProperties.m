@@ -2,20 +2,21 @@
 //  Theme+CoreDataProperties.m
 //  VLCController
 //
-//  Created by mojingyu on 16/3/24.
-//  Copyright © 2016年 Mojy. All rights reserved.
-//
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
+//  Created by Mojy on 2017/6/2.
+//  Copyright © 2017年 Mojy. All rights reserved.
 //
 
 #import "Theme+CoreDataProperties.h"
 
 @implementation Theme (CoreDataProperties)
 
++ (NSFetchRequest<Theme *> *)fetchRequest {
+	return [[NSFetchRequest alloc] initWithEntityName:@"Theme"];
+}
+
+@dynamic isDefualt;
 @dynamic name;
 @dynamic themeName;
-@dynamic isDefualt;
 @dynamic channels;
 @dynamic lightController;
 

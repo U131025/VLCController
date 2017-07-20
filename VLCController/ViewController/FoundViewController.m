@@ -243,6 +243,34 @@
     return cellView;
 }
 
+//- (void)showInputView:(void (^)(NSString *password))confire cancel:(void (^)())cancel
+//{
+//    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Tip" message:nil preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    [controller addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+//        textField.placeholder = @"Please input your password.";
+//    }];
+//    
+//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//        if (cancel) {
+//            cancel();
+//        }
+//    }];
+//    [controller addAction:cancelAction];
+//    
+//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        
+//        NSString *password = [[controller textFields] objectAtIndex:0].text;
+//        
+//        if (confire) {
+//            confire(password);
+//        }
+//    }];
+//    [controller addAction:okAction];
+//    
+//    [self presentViewController:controller animated:YES completion:nil];
+//}
+
 - (void)pairControllerAction
 {
     //连接设备后发送配对指令
@@ -250,52 +278,81 @@
     
     if (_selectedLightController) {
         
-        [MBProgressHUD showMessage:nil];
-        
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        //弹出配对密码输入框
+        [self showInputView:^(NSString *password) {
             //
             CBPeripheral *peripheral = [[BluetoothManager sharedInstance].device objectAtIndex:_selectedLightControllerIndex];
             
-            [[BluetoothManager sharedInstance] disConnectPeripheral];
-            [[BluetoothManager sharedInstance] connectPeripheral:peripheral onSuccessBlock:^{
-                //success
-                if (peripheral.state == CBPeripheralStateConnected) {
-                                     
-                    [self showPairSuccess:peripheral];
-                    
-//                    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand] onRespond:^(NSData *data) {
-//                        //success
-//                        Byte value[30] = {0};
-//                        [data getBytes:&value length:sizeof(value)];
-//                        
-//                        if (value[0] == 0xaa && value[1] == 0x0a) {
-//                            //paired success
-//                            //                            [MBProgressHUD showSuccess:@"Paired Success."];
-//                            [self showPairSuccess:peripheral];
-//                        }
-//                        else {
-//                            dispatch_async(dispatch_get_main_queue(), ^{
-//                                [MBProgressHUD hideHUD];
-//                                [MBProgressHUD showError:@"Paired Error!"];
-//                            });
-//                        }
-//                        
-//                        
-//                    } onTimeOut:^{
-//                        //timeout
-//                        
-//                        dispatch_async(dispatch_get_main_queue(), ^{
-//                            [MBProgressHUD hideHUD];
-//                            [MBProgressHUD showError:@"No Respond."];
-//                        });
-//                    }];
-                }
-            } onTimeoutBlock:nil];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD showMessage:nil];
+            });
             
+            [[BluetoothManager sharedInstance] connectWithName:peripheral.name oldPassword:password newPassword:password successBlock:^(CBPeripheral *peripheral, id data, BLERespondType type) {
+                
+                [self showPairSuccess:peripheral];
+            } faileBlock:^(CBPeripheral *peripheral, id data, BLERespondType type) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MBProgressHUD hideHUD];
+                });
+            }];
             
-        });
-        
+        } cancel:nil];
     }
+    
+//            [[BluetoothManager sharedInstance] disconnectAllPeripheral];
+//            
+//            [[BluetoothManager sharedInstance] pairDeviceWithOldPassword:password newPassWord:password withResponds:^(NSData *data) {
+//                //
+//                const char *pData = [data bytes];
+//                
+//                if (pData[0] == 0) {
+//                    //success
+//                    NSLog(@"\n ==== 配对成功 ===== \n");
+//                    
+//                    //success
+//                    if (peripheral.state == CBPeripheralStateConnected) {
+//                        
+//                        [self showPairSuccess:peripheral];
+//                    }
+//                }
+//                else if (pData[0] == 1) {
+//                    //password error
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [MBProgressHUD hideHUD];
+//                        [MBProgressHUD showError:@"Invalid password"];
+//                    });
+//                    
+//                }
+//                else if (pData[0] == 2) {
+//                    //modify success
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [MBProgressHUD hideHUD];
+//                    });
+//                }
+//                else if (pData[0] == 3) {
+//                    //cancel password
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [MBProgressHUD hideHUD];
+//                    });
+//                }
+//                
+//            }];
+//             
+//            [[BluetoothManager sharedInstance] connectPeripheral:peripheral onSuccessBlock:^{
+//                //success
+//                
+//            } onTimeoutBlock:^{
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [MBProgressHUD hideHUD];
+//                });
+//            }];
+//            
+//        } cancel:^{
+//            nil;
+//        }];
+//        
+//    }
 }
 
 - (void)showPairSuccess:(CBPeripheral *)peripheral
@@ -316,7 +373,7 @@
     [APPDELEGATE saveContext];
     
     //配对命令
-    [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand pairMainControllerCommand:newObject.lightID]];
+    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:newObject.lightID] onRespond:nil onTimeOut:nil];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [MBProgressHUD hideHUD];
@@ -358,11 +415,6 @@
         deviceName = [deviceName lowercaseString];
   
 #ifdef TEST_FILTER_NAME
-        LightControllerModel *device = [[LightControllerModel alloc] init];
-        device.deviceName = peripheral.name;
-        device.identifier = [peripheral.identifier UUIDString];
-        [self.dropDownListDataArray addObject:device];
-#else
         if ([deviceName hasPrefix:@"vlc"] || [deviceName hasPrefix:@"tv"]) {
             
             LightControllerModel *device = [[LightControllerModel alloc] init];
@@ -370,6 +422,12 @@
             device.identifier = [peripheral.identifier UUIDString];
             [self.dropDownListDataArray addObject:device];
         }
+        
+#else
+        LightControllerModel *device = [[LightControllerModel alloc] init];
+        device.deviceName = peripheral.name;
+        device.identifier = [peripheral.identifier UUIDString];
+        [self.dropDownListDataArray addObject:device];
 #endif
         
         

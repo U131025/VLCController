@@ -275,21 +275,6 @@ typedef enum
 - (void)syncController
 {
     //发送蓝牙命令
-    CBPeripheral *masterPeriptheral = [[BluetoothManager sharedInstance] getPeripheralWithIdentifier:self.masterSelected.identifier];
-    if (masterPeriptheral.state != CBPeripheralStateConnected) {
-        [[BluetoothManager sharedInstance] connectPeripheral:masterPeriptheral onSuccessBlock:^{
-            
-            //配对指令
-//            [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand pairMainControllerCommand]];
-            
-            //success
-            [self syncControllerAction];
-        } onTimeoutBlock:^{
-            //timeout
-        }];
-    }
-    //send Command
-    
     [self syncControllerAction];
 }
 
@@ -307,7 +292,9 @@ typedef enum
         [APPDELEGATE saveContext];
         
         //配对指令
-        [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand pairSlaveControllerCommand:master.lightID]];
+        [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairSlaveControllerCommand:master.lightID] onRespond:nil onTimeOut:nil];
+        
+//        [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand pairSlaveControllerCommand:master.lightID]];
     }
     
     //提示

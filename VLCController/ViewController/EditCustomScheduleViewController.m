@@ -165,33 +165,47 @@
     self.isPhotoCell = [self.schedule.isPhotoCell boolValue];
     
     NSDate *nextDay = [NSDate date];
+//    nextDay = [DateFuncation getNextDate:nextDay];
+//    nextDay = [DateFuncation getNextDate:nextDay];
+    
     NSDateFormatter *dateformatter=[[NSDateFormatter alloc] init];
     [dateformatter setDateFormat:ScheduleDateFormat];
     
-    NSArray *items = [ScheduleItem fetchWithSchedule:schedule inManageObjectContext:APPDELEGATE.managedObjectContext];
+//    NSArray *items = [ScheduleItem fetchWithSchedule:schedule inManageObjectContext:APPDELEGATE.managedObjectContext];
     
-    if (items.count > 0) {
-        for (ScheduleItem *item in items) {
-            
-            ScheduleItemModel *itemModel = [[ScheduleItemModel alloc] initWithScheduleItem:item];
-            itemModel.date = [dateformatter stringFromDate:nextDay];
-            [self.daysArray addObject:itemModel];
-            
-            nextDay = [DateFuncation getNextDate:nextDay];
-        }
-    }
-    else {
-        
+//    if (items.count > 0) {
+//        for (ScheduleItem *item in items) {
+//            
+//            ScheduleItemModel *itemModel = [[ScheduleItemModel alloc] initWithScheduleItem:item];
+////            itemModel.date = [dateformatter stringFromDate:nextDay];
+//
+//            [self.daysArray addObject:itemModel];
+//            
+//            nextDay = [DateFuncation getNextDate:nextDay];
+//        }
+//    }
+//    else {
+    
         for (int i = 0; i < 60; i++) {
             
-            ScheduleItemModel *itemModel = [[ScheduleItemModel alloc] init];
-            itemModel.name = [NSString stringWithFormat:@"%d", i];
-            itemModel.date = [dateformatter stringFromDate:nextDay];
-            [self.daysArray addObject:itemModel];
+            NSString *currentDate = [dateformatter stringFromDate:nextDay];
+            ScheduleItem *item = [ScheduleItem getObjectWithDate:currentDate withSchedule:schedule inManageObjectContext:APPDELEGATE.managedObjectContext];
+            
+            if (item) {
+                ScheduleItemModel *itemModel = [[ScheduleItemModel alloc] initWithScheduleItem:item];
+                [self.daysArray addObject:itemModel];
+
+            }
+            else {
+                ScheduleItemModel *itemModel = [[ScheduleItemModel alloc] init];
+                itemModel.name = [NSString stringWithFormat:@"%d", i];
+                itemModel.date = [dateformatter stringFromDate:nextDay];
+                [self.daysArray addObject:itemModel];
+            }
             
             nextDay = [DateFuncation getNextDate:nextDay];
         }
-    }
+//    }
     
 }
 
@@ -224,8 +238,12 @@
 
 - (void)photoCellValueChange:(UISwitch *)photoCellSwitch
 {
-    //
-    if (photoCellSwitch.isOn) {
+    [self updateTurnOnTimeButton:photoCellSwitch.isOn];
+}
+
+- (void)updateTurnOnTimeButton:(BOOL)isOn
+{
+    if (isOn) {
         // 将on time 置灰
         self.turnOnTimeButton.enabled = NO;
         self.turnOnTimeButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -236,7 +254,7 @@
         [self.turnOnTimeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }
     
-    self.isPhotoCell = photoCellSwitch.isOn;
+    self.isPhotoCell = isOn;
 }
 
 #pragma mark TimePicker
@@ -388,6 +406,8 @@
             self.turnOnTimeButton = timeButton;
             [timeButton addTarget:self action:@selector(timePickerAction:) forControlEvents:UIControlEventTouchUpInside];
             [cell.contentView addSubview:timeButton];
+            
+            [self updateTurnOnTimeButton:self.isPhotoCell];
             
             if (self.onTimeValue) {
                 [timeButton setTitle:self.onTimeValue forState:UIControlStateNormal];
@@ -592,7 +612,9 @@
             NSString *timeOnBtye = [self getByteTimeWithDateString:customSchedule.timeOn withFormat:ScheduleDateFormat];
             NSString *timeOffBtye = [self getByteTimeWithDateString:customSchedule.timeOff withFormat:ScheduleDateFormat];
             
-            [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand updateController:NO withDayIndex:dayIndex withChannel:[[ChannelModel alloc] initWithChannel:channel] withOnTime:timeOnBtye withOffTime:timeOffBtye isPhotoCell:[self.light.useLightSchedule boolValue]] withIdentifier:self.light.identifier];
+            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateController:NO withDayIndex:dayIndex withChannel:[[ChannelModel alloc] initWithChannel:channel] withOnTime:timeOnBtye withOffTime:timeOffBtye isPhotoCell:[self.light.useLightSchedule boolValue]] onRespond:nil onTimeOut:nil];
+            
+//            [[BluetoothManager sharedInstance] sendDataToPeripheral: withIdentifier:self.light.identifier];
         }
         
         [NSThread sleepForTimeInterval:0.5];
@@ -600,7 +622,9 @@
         dayIndex++;
     }
     
-    [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand compeleteCommandOnUseSchedulePlan:[self.light.useLightSchedule boolValue]] withIdentifier:self.light.identifier];
+    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand compeleteCommandOnUseSchedulePlan:[self.light.useLightSchedule boolValue]] onRespond:nil onTimeOut:nil];
+    
+//    [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand compeleteCommandOnUseSchedulePlan:[self.light.useLightSchedule boolValue]]];
 }
 
 - (NSString *)getByteTimeWithDateString:(NSString *)dateStr withFormat:(NSString *)dateFormat

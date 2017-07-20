@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BulbChannel.h"
-#import "Channel.h"
+#import "BulbChannel+CoreDataClass.h"
+#import "Channel+CoreDataClass.h"
 
 @interface ChannelModel : NSObject
 

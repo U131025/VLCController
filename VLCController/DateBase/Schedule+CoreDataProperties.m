@@ -2,23 +2,24 @@
 //  Schedule+CoreDataProperties.m
 //  VLCController
 //
-//  Created by mojingyu on 16/3/8.
-//  Copyright © 2016年 Mojy. All rights reserved.
-//
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
+//  Created by Mojy on 2017/6/2.
+//  Copyright © 2017年 Mojy. All rights reserved.
 //
 
 #import "Schedule+CoreDataProperties.h"
 
 @implementation Schedule (CoreDataProperties)
 
-@dynamic name;
-@dynamic timeOn;
-@dynamic timeOff;
-@dynamic isPhotoCell;
++ (NSFetchRequest<Schedule *> *)fetchRequest {
+	return [[NSFetchRequest alloc] initWithEntityName:@"Schedule"];
+}
+
 @dynamic isCustomSchedule;
-@dynamic lightController;
+@dynamic isPhotoCell;
+@dynamic name;
+@dynamic timeOff;
+@dynamic timeOn;
 @dynamic items;
+@dynamic lightController;
 
 @end

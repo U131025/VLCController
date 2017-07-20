@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Mojy. All rights reserved.
 //
 
-#import "ScheduleItem.h"
+#import "ScheduleItem+CoreDataClass.h"
 
 @interface ScheduleItem (Fetch)
 
@@ -17,5 +17,7 @@
 + (ScheduleItem *)addWithName:(NSString *)name withSchedule:(Schedule *)scheduleObject inManageObjectContext:(NSManagedObjectContext *)context;
 
 + (void)removeTheme:(ScheduleItem *)object inManageObjectContext:(NSManagedObjectContext *)context;
+
++ (ScheduleItem *)getObjectWithDate:(NSString *)date withSchedule:(Schedule *)scheduleObject inManageObjectContext:(NSManagedObjectContext *)context;
 
 @end

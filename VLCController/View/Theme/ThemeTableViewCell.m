@@ -39,7 +39,7 @@
         //primary color
         self.primaryColorName = [[myUILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.channelName.frame), 0, columnWidth*2 - 50, 40)];
         self.primaryColorName.verticalAlignment = VerticalAlignmentMiddle;
-        self.primaryColorName.textAlignment = NSTextAlignmentLeft;
+        self.primaryColorName.textAlignment = NSTextAlignmentRight;
         self.primaryColorName.font = Font(12);
         self.primaryColorName.textColor = WhiteColor;
         [self addSubview:self.primaryColorName];
@@ -53,7 +53,7 @@
         //fade to color
         self.fadeToColorName = [[myUILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.primaryColorButton.frame)+10, 0, columnWidth*2 - 40, 40)];
         self.fadeToColorName.verticalAlignment = VerticalAlignmentMiddle;
-        self.fadeToColorName.textAlignment = NSTextAlignmentLeft;
+        self.fadeToColorName.textAlignment = NSTextAlignmentRight;
         self.fadeToColorName.font = Font(12);
         self.fadeToColorName.textColor = WhiteColor;
         [self addSubview:self.fadeToColorName];

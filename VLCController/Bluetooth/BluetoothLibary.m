@@ -14,6 +14,15 @@
 #define LIGHTBLUETOOTH_NOTIFY_SERVICE_UUID @"FFE0"
 #define LIGHTBLUETOOTH_NOTIFY_CHARACTERISTICS_UUID @"FFE4"
 
+#define LIGHTBLUETOOTH_PAIR_SERVICE_UUID @"FFC0"
+#define LIGHTBLUETOOTH_PAIR_WRITE_CHARACTERISTICS_UUID @"FFC1"
+#define LIGHTBLUETOOTH_PAIR_NOTIFY_CHARACTERISTICS_UUID @"FFC2"
+
+#define LED_MACADDR_SERVICE_UUID @"FEE7"
+#define LED_MACADDR_WRITE_CHARACTERISTICS_UUID @"FEC7"
+#define LED_MACADDR_NOTIFY_CHARACTERISTICS_UUID @"FEC8"
+#define LED_MACADDR_READ_CHARACTERISTICS_UUID @"FEC9"
+
 //#define LIGHTBLUETOOTH_WRITE_SERVICE_UUID @"FFF0"
 //#define LIGHTBLUETOOTH_WRITE_CHARACTERISTICS_UUID @"FFF1"
 //
@@ -23,7 +32,9 @@
 // NSLog 不打印
 //#define NSLog(...) {}
 
+
 @interface BluetoothLibary () <CBCentralManagerDelegate, CBPeripheralDelegate>
+
 
 
 @property (nonatomic, strong) NSMutableArray *services; // of CBService
@@ -32,13 +43,23 @@
 @property (nonatomic, strong) CBPeripheral *peripheral;
 @property (nonatomic, strong) CBCharacteristic *writeCharacteristics;
 
-@property (nonatomic, strong) NSString *bluetoothMacAddress;    //匹配的蓝牙设备Mac地址
+@property (nonatomic, strong) CBCharacteristic *pairWriteCHaracteristics;   //配对特征码
+@property (nonatomic, strong) CBCharacteristic *readMacAddrCharacteristics; //mac地址读取特征码
+
+@property (nonatomic, strong) NSData *bluetoothMacAddress;    //匹配的蓝牙设备Mac地址
+
 @property BOOL isAutoConnect;
 @property BOOL cbReady;
 @property BOOL isRefreshing;
 @property BOOL foundDevice;
 
 @property (nonatomic, copy) void (^onDisconnectedFinished)();
+
+@property (nonatomic, copy) RespondBlock respondsBlock;
+@property (nonatomic, copy) RespondBlock pairRespondBlock;
+@property (nonatomic, copy) RespondBlock macAddrRespondBlock;
+
+@property (nonatomic, assign) BOOL isNotify;
 @end
 
 @implementation BluetoothLibary
@@ -87,6 +108,7 @@
     self = [super init];
     if (self) {
         NSLog(@"init ...");
+        self.isNotify = YES;
         self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
     }
     
@@ -153,6 +175,8 @@
             [self.centralManager stopScan];
             
             if (reset) {
+                [self disconnectAllPeripheral];
+                
                 [self.devices removeAllObjects];
             }
             
@@ -201,7 +225,7 @@
     
     NSLog(@"\n====================\n try connect peripheral: %@ \n====================\n", peripheral);
     if (_cbReady == NO) {
-        [self stopScan];
+//        [self stopScan];
         
         // connect device
         if (peripheral) {
@@ -219,6 +243,13 @@
     }
 }
 
+- (void)connectPeripheral:(CBPeripheral *)peripheral success:(BLEConnectSuccess)success failed:(BLEConnectFailed)failed
+{
+    self.connectSuccessBlock = success;
+    self.connectFailedBlock = failed;
+    [self connectPeripheral:peripheral];
+}
+
 // 手动连接设备
 - (void)connectPeripheral:(CBPeripheral *)peripheral withServiceUUID:(NSString *)serviceUUID withReadUUID:(NSString *)readUUID withWriteUUID:(NSString *)writeUUID
 {
@@ -231,18 +262,39 @@
 //断开连接
 - (void)disConnectPeripheral
 {
+    self.isNotify = YES;
+    self.bluetoothMacAddress = nil;
     [self cleanup];
+}
+//断开连接
+- (void)disConnectPeripheralWithNotify
+{
+    self.isNotify = NO;
+    [self cleanup];
+}
+
+- (void)disconnectAllPeripheral
+{
+    for (CBPeripheral *peripheral in self.devices) {
+        if (peripheral.state == CBPeripheralStateConnected) {
+            [self cleanupPeripheral:peripheral];
+        }
+    }
+    
+//    [NSThread sleepForTimeInterval:2.0];
 }
 
 - (void)disConnectPeripheral:(CBPeripheral *)peripheral onFinished:(void (^)())onFinished
 {
     self.onDisconnectedFinished = onFinished;
-    if ([peripheral isEqual:self.peripheral]) {
-        [self cleanup];
-    }
-    else {
-        [self cleanupPeripheral:peripheral];
-    }
+    [self disconnectAllPeripheral];
+    
+//    if ([peripheral isEqual:self.peripheral]) {
+//        [self cleanup];
+//    }
+//    else {
+//        [self cleanupPeripheral:peripheral];
+//    }
 }
 
 - (void)cleanupPeripheral:(CBPeripheral *)peripheral
@@ -283,7 +335,8 @@
 //关闭通知并断开连接
 -(void)cleanup
 {
-    [self cleanupPeripheral:_peripheral];
+    [self disconnectAllPeripheral];
+//    [self cleanupPeripheral:_peripheral];
     self.peripheral = nil;
     _cbReady = NO;
 }
@@ -308,6 +361,25 @@
         
         [self.peripheral writeValue:sendData forCharacteristic:_writeCharacteristics type:type];
     }
+}
+
+//配对
+- (void)pairDeviceWithOldPassword:(NSString *)oldPassword newPassWord:(NSString *)newPassword withResponds:(void (^)(NSData *data))respondsBlock
+{
+    self.pairRespondBlock = respondsBlock;
+    self.passwordOld = oldPassword;
+    self.passwordNew = newPassword;
+    
+//    if (self.peripheral && self.pairWriteCHaracteristics) {
+//        
+//        NSMutableData *sendData = [[NSMutableData alloc] init];
+//        [sendData appendData:[oldPassword dataUsingEncoding:NSASCIIStringEncoding]];
+//        [sendData appendData:[newPassword dataUsingEncoding:NSASCIIStringEncoding]];
+//        
+//        NSLog(@"pair sendData : %@", sendData);
+//
+//        [self.peripheral writeValue:sendData forCharacteristic:self.pairWriteCHaracteristics type:CBCharacteristicWriteWithResponse];
+//    }
 }
 
 #pragma mark - CBCentralManagerDelegate
@@ -344,7 +416,7 @@
     // stop scan
     //[self.centralManager stopScan];
     
-#ifndef TEST_FILTER_NAME
+#ifdef TEST_FILTER_NAME
     //过滤其他设备
     NSString *deviceName = peripheral.name;
     if (!deviceName) return;
@@ -364,11 +436,7 @@
             replace = YES;
         }
     }
-    
-//#ifdef TEST_FILTER_NAME
-    MyLog(@"Discover Peripheral:%@ identifier:%@ at %@", peripheral, peripheral.identifier, RSSI);
-//#endif
-    
+      
     if (!replace) {
         
         [self.devices addObject:peripheral];
@@ -385,6 +453,8 @@
         
     }
 }
+
+
 
 //连接外设成功，开始发现服务
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
@@ -411,9 +481,12 @@
         self.onDisconnectedFinished = nil;
     }
     
-    if ([self.delegate respondsToSelector:@selector(didDisconnectPeripheral)]) {
-        [self.delegate didDisconnectPeripheral];
+    if (self.isNotify) {
+        if ([self.delegate respondsToSelector:@selector(didDisconnectPeripheral)]) {
+            [self.delegate didDisconnectPeripheral];
+        }
     }
+    
 }
 
 //连接失败
@@ -428,25 +501,44 @@
 //发现服务
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
 {
+//    BOOL macAddrServiceExist = NO;
+    BOOL pairServiceExist = NO;
+    BOOL serviceExist = NO;
+    
     for (CBService *service in peripheral.services) {
         NSLog(@"Discover services: %@, UUID: %@", service, service.UUID);
         [self.services addObject:service];
         
-        if ([service.UUID isEqual:[CBUUID UUIDWithString:LIGHTBLUETOOTH_WRITE_SERVICE_UUID]]) {
-            //写服务
+        if ([service.UUID isEqual:[CBUUID UUIDWithString:LIGHTBLUETOOTH_WRITE_SERVICE_UUID]]
+            || [service.UUID isEqual:[CBUUID UUIDWithString:LIGHTBLUETOOTH_NOTIFY_SERVICE_UUID]]
+            || [service.UUID isEqual:[CBUUID UUIDWithString:LIGHTBLUETOOTH_PAIR_SERVICE_UUID]]
+            ) {
+
             [peripheral discoverCharacteristics:nil forService:service];
+            serviceExist = YES;
             
-        } else if ([service.UUID isEqual:[CBUUID UUIDWithString:LIGHTBLUETOOTH_NOTIFY_SERVICE_UUID]]) {
-            //通知
-            [peripheral discoverCharacteristics:nil forService:service];
+            if ([service.UUID isEqual:[CBUUID UUIDWithString:LIGHTBLUETOOTH_PAIR_SERVICE_UUID]]) {
+                pairServiceExist = YES;
+            }
             
-        } else {
+//            else if ([service.UUID isEqual:[CBUUID UUIDWithString:LED_MACADDR_SERVICE_UUID]]) {
+//                macAddrServiceExist = YES;
+//            }
+        }
+        else {
             //测试
-#ifdef TEST_FILTER_NAME
-           [peripheral discoverCharacteristics:nil forService:service];
+#ifndef TEST_FILTER_NAME
+            [peripheral discoverCharacteristics:nil forService:service];
 #endif
         }
+    }
+    //没有对应的特征码则直接返回失败
+    if (!serviceExist) {
+        if (self.connectFailedBlock) {
+            self.connectFailedBlock(peripheral);
+        }
         
+        [self disConnectPeripheral];
     }
 }
 
@@ -470,22 +562,46 @@
             if ([self.delegate respondsToSelector:@selector(connetctSuccess:)]) {
                 [self.delegate connetctSuccess:peripheral];
             }
+            
+            if (self.connectSuccessBlock) {
+                self.connectSuccessBlock(peripheral);
+            }
 
         }
         
         if ([characteristics.UUID isEqual:[CBUUID UUIDWithString:LIGHTBLUETOOTH_NOTIFY_CHARACTERISTICS_UUID]]) {
             
-            [self.peripheral readValueForCharacteristic:characteristics];
-            [self.peripheral setNotifyValue:YES forCharacteristic:characteristics];
+            [peripheral readValueForCharacteristic:characteristics];
+            [peripheral setNotifyValue:YES forCharacteristic:characteristics];
         }
         
         // other characteristics
+        if ([characteristics.UUID isEqual:[CBUUID UUIDWithString:LIGHTBLUETOOTH_PAIR_NOTIFY_CHARACTERISTICS_UUID]]) {
+            
+            [peripheral setNotifyValue:YES forCharacteristic:characteristics];
+        }
+        
+        if ([characteristics.UUID isEqual:[CBUUID UUIDWithString:LIGHTBLUETOOTH_PAIR_WRITE_CHARACTERISTICS_UUID]]) {
+            
+            self.pairWriteCHaracteristics = characteristics;
+           
+            NSMutableData *sendData = [[NSMutableData alloc] init];
+            [sendData appendData:[self.passwordOld dataUsingEncoding:NSASCIIStringEncoding]];
+            [sendData appendData:[self.passwordNew dataUsingEncoding:NSASCIIStringEncoding]];
+            [peripheral writeValue:sendData forCharacteristic:characteristics type:CBCharacteristicWriteWithResponse];
+        }
+        
+        if ([characteristics.UUID isEqual:[CBUUID UUIDWithString:LED_MACADDR_READ_CHARACTERISTICS_UUID]]) {
+
+            self.readMacAddrCharacteristics = characteristics;
+            [peripheral readValueForCharacteristic:characteristics];
+        }
         
     }
     
     self.peripheral = peripheral;
     
-#ifdef TEST_FILTER_NAME
+#ifndef TEST_FILTER_NAME
     //连接成功通知 因为有2个服务需要扫描，这里会触发2次连接成功的通知
     if ([self.delegate respondsToSelector:@selector(connetctSuccess:)]) {
         [self.delegate connetctSuccess:peripheral];
@@ -518,6 +634,36 @@
     }
     // other peripheral data
     
+    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:LIGHTBLUETOOTH_PAIR_NOTIFY_CHARACTERISTICS_UUID]]) {
+        
+        if (characteristic.value.length > 0) {
+            
+            NSLog(@"readData: %@", characteristic.value);
+            if (self.pairRespondBlock) {
+                self.pairRespondBlock(characteristic.value);
+                self.pairRespondBlock = nil;
+            }
+        }
+        
+    }
+    
+    //mac地址
+    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:LED_MACADDR_READ_CHARACTERISTICS_UUID]]) {
+        if (characteristic.value.length > 0) {
+            
+            NSLog(@"readData: %@", characteristic.value);
+            self.bluetoothMacAddress = characteristic.value;
+            
+            if (self.macAddrRespondBlock) {
+                self.macAddrRespondBlock(characteristic.value);
+            }
+            
+            if ([self.delegate respondsToSelector:@selector(reciveMacAddressData:)]) {
+                [self.delegate reciveMacAddressData:characteristic.value];
+                
+            }
+        }
+    }
 }
 
 //中心读取外设实时数据
@@ -533,7 +679,7 @@
     } else {
         NSLog(@"cancelPeripheralConnection: ");
         // Notification has stopped, so disconnect from the peripheral
-        [self.centralManager cancelPeripheralConnection:peripheral];
+//        [self.centralManager cancelPeripheralConnection:peripheral];
         
     }
 }
@@ -547,5 +693,34 @@
        NSLog(@"Write Success.");
     }
 }
+
+// 读取mac地址
+- (void)readMacAddr:(RespondBlock)success failed:(RespondBlock)failed
+{
+    if (self.bluetoothMacAddress && success) {
+        success(self.bluetoothMacAddress);
+        success = nil;
+        return;
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    self.macAddrRespondBlock = ^(NSData *data) {
+        if (weakSelf.bluetoothMacAddress && success) {
+            success(weakSelf.bluetoothMacAddress);
+        }
+    };
+    
+    if (self.readMacAddrCharacteristics) {
+        [self.peripheral readValueForCharacteristic:self.readMacAddrCharacteristics];
+    }
+    else {
+        if (failed) {
+            failed(nil);
+            failed = nil;
+        }
+    }
+}
+
+
 
 @end

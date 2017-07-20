@@ -19,6 +19,9 @@
 @property (nonatomic, assign) BOOL useDefaultTableView;
 @property (nonatomic, strong) LightController *light;   //
 @property (nonatomic, strong) UIImageView *backgroundImageView;
+@property (nonatomic, strong) CBPeripheral *peripheral;
+
+- (instancetype)initWithPeripheral:(CBPeripheral *)peripheral;
 
 - (void)setupTableViewWithFrame:(CGRect)frame;
 
@@ -35,5 +38,12 @@
 - (UIButton *)createDropDownButtonWithView:(UIView *)view withFrame:(CGRect)frame withTitle:(NSString *)title useArrow:(BOOL)useArrow;
 
 - (void)showTipWithMessage:(NSString *)message withTitle:(NSString *)title useCancel:(BOOL)useCancel onOKBlock:(void (^)())onOKBlock;
+
+- (void)showInputView:(void (^)(NSString *password))confire cancel:(void (^)())cancel;
+
+- (UIView *)creteaViewWithTitle:(NSString *)title detail:(NSString *)detail;
+- (void)goBack;
+
+- (BOOL)popToViewControllerClass:(Class)viewCotrollerClass animated:(BOOL)animated;
 
 @end

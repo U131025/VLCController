@@ -1,7 +1,12 @@
 platform :ios, "8.1"
 
-pod 'Bugly'
+target 'VLCController' do
+    pod 'Bugly'
+    pod 'Masonry'
+    pod 'AFNetworking'
+    pod 'FCFileManager', '~> 1.0.7'
+end
 
-target :VLCControllerTests, :exclusive => true do
+target 'VLCControllerTests' do
   pod 'Kiwi'
 end

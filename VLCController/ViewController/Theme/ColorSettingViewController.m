@@ -165,7 +165,7 @@ typedef NS_ENUM(NSInteger, CurrentColorUpdateType) {
 
 - (IBAction)okAction:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
     if (self.onSelecteColorBlock) {
         self.onSelecteColorBlock(self.currentColor, @"0x00");
     }

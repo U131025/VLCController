@@ -95,6 +95,39 @@
     return finder;
 }
 
++ (ScheduleItem *)getObjectWithDate:(NSString *)date withSchedule:(Schedule *)scheduleObject inManageObjectContext:(NSManagedObjectContext *)context
+{
+    if (date == nil) {
+        return nil;
+    }
+    
+    ScheduleItem *finder = nil;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"ScheduleItem" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    
+    NSPredicate *predicate = nil;
+    predicate = [NSPredicate predicateWithFormat:@"date == %@ AND schedule == %@", date, scheduleObject];
+    
+    [fetchRequest setPredicate:predicate];
+    [fetchRequest setFetchLimit:1];
+    
+    NSError *error = NULL;
+    NSArray *array = [context executeFetchRequest:fetchRequest error:&error];
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+    }
+    
+    if (array && (array.count > 0)) {
+        finder = [array objectAtIndex:0];
+    }
+    return finder;
+}
+
 + (ScheduleItem *)addWithName:(NSString *)name withSchedule:(Schedule *)scheduleObject inManageObjectContext:(NSManagedObjectContext *)context
 {
     if (name == nil) {

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Mojy. All rights reserved.
 //
 
-#import "Channel.h"
+#import "Channel+CoreDataClass.h"
 
 @interface Channel (Fetch)
 

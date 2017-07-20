@@ -606,14 +606,19 @@
             NSString *timeOnBtye = [self getByteTimeWithDateString:simpleSchedule.timeOn withFormat:ScheduleTimeFormat];
             NSString *timeOffBtye = [self getByteTimeWithDateString:simpleSchedule.timeOff withFormat:ScheduleTimeFormat];
             
-            [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand updateController:YES withDayIndex:dayIndex withChannel:[[ChannelModel alloc] initWithChannel:channel] withOnTime:timeOnBtye withOffTime:timeOffBtye isPhotoCell:[simpleSchedule.isPhotoCell boolValue]] withIdentifier:self.light.identifier];
+//            [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand updateController:YES withDayIndex:dayIndex withChannel:[[ChannelModel alloc] initWithChannel:channel] withOnTime:timeOnBtye withOffTime:timeOffBtye isPhotoCell:[simpleSchedule.isPhotoCell boolValue]] withIdentifier:self.light.identifier];
+            
+            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateController:YES withDayIndex:dayIndex withChannel:[[ChannelModel alloc] initWithChannel:channel] withOnTime:timeOnBtye withOffTime:timeOffBtye isPhotoCell:[simpleSchedule.isPhotoCell boolValue]] onRespond:nil onTimeOut:nil];
+            
             [NSThread sleepForTimeInterval:0.5];
         }
         
         dayIndex++;
     }
     
-    [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand compeleteCommandOnUseSchedulePlan:[self.light.useLightSchedule boolValue]] withIdentifier:self.light.identifier];
+    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand compeleteCommandOnUseSchedulePlan:[self.light.useLightSchedule boolValue]] onRespond:nil onTimeOut:nil];
+    
+    
     
 }
 

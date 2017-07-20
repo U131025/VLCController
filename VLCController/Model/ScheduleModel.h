@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ScheduleItem.h"
+#import "ScheduleItem+CoreDataClass.h"
 
 #define SimpleSchedule @"SimpleSchedule"
 #define CustomSchedule @"CustomSchedule"

@@ -2,21 +2,21 @@
 //  BulbChannel+CoreDataProperties.h
 //  VLCController
 //
-//  Created by mojingyu on 16/3/7.
-//  Copyright © 2016年 Mojy. All rights reserved.
-//
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
+//  Created by Mojy on 2017/6/2.
+//  Copyright © 2017年 Mojy. All rights reserved.
 //
 
-#import "BulbChannel.h"
+#import "BulbChannel+CoreDataClass.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BulbChannel (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *name;
-@property (nullable, nonatomic, retain) NSNumber *index;
++ (NSFetchRequest<BulbChannel *> *)fetchRequest;
+
+@property (nullable, nonatomic, copy) NSNumber *index;
+@property (nullable, nonatomic, copy) NSString *name;
 @property (nullable, nonatomic, retain) LightController *lightController;
 
 @end

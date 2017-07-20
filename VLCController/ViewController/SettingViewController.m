@@ -24,6 +24,8 @@
 #import "ScheduleModel.h"
 #import "NSString+Extension.h"
 #import "UIColor+extension.h"
+#import "FirmwareService.h"
+#import "FirmwareListViewController.h"
 
 #define Notify_ChangeTheme @"ChangeTheme"
 
@@ -40,6 +42,7 @@
 @property (nonatomic, strong) NSMutableArray *selThemeChannelArray;
 
 @property (nonatomic, strong) MBProgressHUD *hud;
+
 
 @end
 
@@ -170,7 +173,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 4) {
-        return 4;
+        return 5;
     }
     return 0;
 }
@@ -187,7 +190,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return 50;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -303,50 +306,83 @@
 //    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.accessoryView.tintColor = WhiteColor;
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 60)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
     
     UILabel *lineLabel = [[UILabel alloc] init];
     lineLabel.backgroundColor = WhiteColor;
     lineLabel.frame = (CGRect){0, 0, ScreenWidth, 1};
     [view addSubview:lineLabel];
     
-    UILabel *titleLLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, 200, 50)];
+    UILabel *titleLLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 5, 200, 44)];
     [view addSubview:titleLLabel];
     titleLLabel.textAlignment = NSTextAlignmentLeft;
     titleLLabel.font = Font(16);
     titleLLabel.textColor = WhiteColor;
+    [titleLLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(view).offset(40);
+        make.top.bottom.right.equalTo(view);
+    }];
     
     if (indexPath.row == 0) {
         
         titleLLabel.text = @"Edit Schedule";
-        CGSize titleSize = [titleLLabel.text sizeWithFont:Font(16) maxSize:CGSizeMake(MAXFLOAT, MAXFLOAT)];
-        UILabel *subTitle = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(titleLLabel.frame)+titleSize.width+5, 5, 200, CGRectGetHeight(titleLLabel.frame))];
-//        subTitle.text = @"M\tT\tW\tTh\tF\tSa\tSu";
-        subTitle.textColor = WhiteColor;
-        subTitle.textAlignment = NSTextAlignmentCenter;
-        subTitle.font = Font(12);
-        [view addSubview:subTitle];
+//        CGSize titleSize = [titleLLabel.text sizeWithFont:Font(16) maxSize:CGSizeMake(MAXFLOAT, MAXFLOAT)];
+//        UILabel *subTitle = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(titleLLabel.frame)+titleSize.width+5, 5, 200, CGRectGetHeight(titleLLabel.frame))];
+////        subTitle.text = @"M\tT\tW\tTh\tF\tSa\tSu";
+//        subTitle.textColor = WhiteColor;
+//        subTitle.textAlignment = NSTextAlignmentCenter;
+//        subTitle.font = Font(12);
+//        [view addSubview:subTitle];
+        
         
     } else if (indexPath.row == 1) {
         titleLLabel.text = @"Manage Bulbs";
     } else if (indexPath.row == 2) {
         titleLLabel.text = @"Manage Themes/Colors";
     } else if (indexPath.row == 3) {
-        titleLLabel.text = @"Manage Wireless Plug";
+        titleLLabel.text = @"Manage Wireless Switch";
+    }
+    else if (indexPath.row == 4) {
+        titleLLabel.text = @"Update Firmware";
+        cell.accessoryType = UITableViewCellAccessoryNone;
         
         UILabel *lineBottomLabel = [[UILabel alloc] init];
         lineBottomLabel.backgroundColor = WhiteColor;
-        lineBottomLabel.frame = (CGRect){0, CGRectGetMaxY(view.frame)-1, ScreenWidth, 1};
-        [view addSubview:lineBottomLabel];
+        [cell.contentView addSubview:lineBottomLabel];
+        [lineBottomLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.equalTo(cell.contentView);
+            make.height.mas_equalTo(1);
+        }];
     }
-    
-    //arrow
-    UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth- 40, 10, 20, 40)];
-    arrowImageView.image = [UIImage imageNamed:@"arrow"];
-    [cell.contentView addSubview:arrowImageView];
     
     cell.backgroundColor = [UIColor clearColor];
     [cell.contentView addSubview:view];
+    
+    //arrow
+    if (indexPath.row != 4) {
+        UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth- 40, 2, 20, 40)];
+        arrowImageView.contentMode = UIViewContentModeScaleAspectFit;
+        arrowImageView.image = [UIImage imageNamed:@"arrow"];
+        [cell.contentView addSubview:arrowImageView];
+        [arrowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(cell.contentView).offset(-20);
+            make.centerY.equalTo(cell.contentView);
+            make.width.mas_equalTo(20);
+            make.height.mas_equalTo(30);
+        }];
+        
+        [view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.bottom.equalTo(cell.contentView);
+            make.right.equalTo(arrowImageView.mas_left).offset(10);
+        }];
+    }
+    else {
+        [view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(cell.contentView);
+        }];
+    }
+    
+    
     return cell;
 }
 
@@ -390,6 +426,14 @@
         wirelessVC.light = self.light;
         [self.navigationController pushViewController:wirelessVC animated:YES];
     }
+    else if (indexPath.row == 4) {        
+        //固件更新
+        FirmwareListViewController *firmwareListVC = [[FirmwareListViewController alloc] init];
+        [self.navigationController pushViewController:firmwareListVC animated:YES];
+        
+      
+    }
+    
 }
 
 #pragma mark Action
@@ -407,6 +451,11 @@
 - (void)updateControllerAction
 {
 //    [MBProgressHUD showMessage:nil];
+    
+    //重新加载主题,防止数据改变，没有刷新
+    if (self.selectedTheme) {
+        self.selectedTheme = [Theme getThemeWithWithName:self.selectedTheme.themeName withLightController:self.light inManageObjectContext:APPDELEGATE.managedObjectContext];
+    }
     
     //使用计划
     if (self.useSchedulePlan) {
@@ -518,7 +567,7 @@
             NSString *timeOnBtye = [self getByteTimeWithDateString:simpleSchedule.timeOn withFormat:ScheduleTimeFormat];
             NSString *timeOffBtye = [self getByteTimeWithDateString:simpleSchedule.timeOff withFormat:ScheduleTimeFormat];
             
-            [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand updateController:YES withDayIndex:dayIndex withChannel:[[ChannelModel alloc] initWithChannel:channel] withOnTime:timeOnBtye withOffTime:timeOffBtye isPhotoCell:[simpleSchedule.isPhotoCell boolValue]] withIdentifier:self.light.identifier];
+            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateController:YES withDayIndex:dayIndex withChannel:[[ChannelModel alloc] initWithChannel:channel] withOnTime:timeOnBtye withOffTime:timeOffBtye isPhotoCell:[simpleSchedule.isPhotoCell boolValue]] onRespond:nil onTimeOut:nil];
             
             progress = (1.0f / (float)items.count) * ((float)chanenlIndex / (float)channelArray.count);
             progress += ((float)(dayIndex-1) / (float)items.count);
@@ -535,16 +584,14 @@
         dayIndex++;
     }
     
-    //结束
-    [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand compeleteCommandOnUseSchedulePlan:YES] withIdentifier:self.light.identifier];
+    //结束命令
+    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand compeleteCommandOnUseSchedulePlan:YES] onRespond:nil onTimeOut:nil];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.hud hide:YES];
-        _hud =nil;        
-//        [MBProgressHUD showSuccess:@"Complete"];
-
+        _hud =nil;
+        //        [MBProgressHUD showSuccess:@"Complete"];
     });
-    
 }
 
 - (void)setCustomSchedulePlan
@@ -595,7 +642,7 @@
             NSString *timeOnBtye = [self getByteTimeWithDateString:customSchedule.timeOn withFormat:ScheduleTimeFormat];
             NSString *timeOffBtye = [self getByteTimeWithDateString:customSchedule.timeOff withFormat:ScheduleTimeFormat];
             
-            [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand updateController:NO withDayIndex:dayIndex withChannel:[[ChannelModel alloc] initWithChannel:channel] withOnTime:timeOnBtye withOffTime:timeOffBtye isPhotoCell:[customSchedule.isPhotoCell boolValue]] withIdentifier:self.light.identifier];
+            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateController:NO withDayIndex:dayIndex withChannel:[[ChannelModel alloc] initWithChannel:channel] withOnTime:timeOnBtye withOffTime:timeOffBtye isPhotoCell:[customSchedule.isPhotoCell boolValue]] onRespond:nil onTimeOut:nil];
             
             progress = (1.0f/ (float)items.count) * ( (float)chanenlIndex / (float)channelArray.count);
             progress += ((float)(dayIndex-1) / (float)items.count);
@@ -617,15 +664,16 @@
         dayIndex++;
     }
     
+    
     //结束
-    [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand compeleteCommandOnUseSchedulePlan:YES] withIdentifier:self.light.identifier];
+    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand compeleteCommandOnUseSchedulePlan:YES] onRespond:nil onTimeOut:nil];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.hud hide:YES];
         _hud =nil;
-//        [MBProgressHUD showSuccess:@"Complete"];
-        
+        //        [MBProgressHUD showSuccess:@"Complete"];
     });
+    
 }
 
 - (void)scheduleSwitchAction:(UISwitch *)scheduleSwitch
@@ -669,6 +717,11 @@
             powerSwitch.on = !powerSwitch.isOn;
             weakSelf.light.isPowerOn = [[NSNumber alloc] initWithBool:powerSwitch.isOn];
             [APPDELEGATE saveContext];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.tableView reloadData];
+            });
+            
             return YES;
         }
         
@@ -734,68 +787,76 @@
 {
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.hud.labelText = @"Updating...";
+        self.hud.labelText = @"Updating Controller...";
     });
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        NSArray *channelsArray = [Channel getChannelWithTheme:theme inManageObjectContext:APPDELEGATE.managedObjectContext];
-        
-        float progress = 0.0f;
-        NSInteger index = 1;
-        [self.selThemeChannelArray removeAllObjects];
-        for (Channel *channel in channelsArray) {
-            
-            [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand setTheColorThemeWithChannel:[Channel convertToModel:channel]]];
-            
-            [self.selThemeChannelArray addObject:[[ChannelModel alloc] initWithChannel:channel]];
-            
-            progress = ((float)(index) / (float)channelsArray.count);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // Instead we could have also passed a reference to the HUD
-                // to the HUD to myProgressTask as a method parameter.
-                [MBProgressHUD HUDForView:self.navigationController.view].progress = progress;
-            });
-            index++;
-            
-            [NSThread sleepForTimeInterval:0.5];
-        }
-        
-        //发送完成命令
-        [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand compeleteCommandOnUseSchedulePlan:NO] withIdentifier:self.light.identifier];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.hud hide:YES];
-            _hud =nil;
-            //        [MBProgressHUD showSuccess:@"Complete"];
-        });
-    });
-    
-//    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand compeleteCommandOnUseSchedulePlan:NO] onRespond:^(NSData *data) {
-//        //
-//        Byte value[30] = {0};
-//        [data getBytes:&value length:sizeof(value)];
-//        if (value[0] != 0xaa || value[1] != 0x0a) {
-//            //error
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [MBProgressHUD showError:@"Response error."];
-//            });
-//        }
-//        else {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                //main
-//                [MBProgressHUD hideHUD];
-//            });
-//        }
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //        
-//    } onTimeOut:^{
-//        //time out
-//        //主线程更新
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            //                [MBProgressHUD hideHUD];
-//            [MBProgressHUD showError:@"No Response."];
-//        });
-//    }];
+//        
+//    });
+    
+    NSArray *channelsArray = [Channel getChannelWithTheme:theme inManageObjectContext:APPDELEGATE.managedObjectContext];
+    
+    float progress = 0.0f;
+    NSInteger index = 1;
+    [self.selThemeChannelArray removeAllObjects];
+    for (Channel *channel in channelsArray) {
+        
+        [[BluetoothManager sharedInstance] sendData:[LightControllerCommand setTheColorThemeWithChannel:[Channel convertToModel:channel]] onRespond:nil onTimeOut:nil];
+        
+        [self.selThemeChannelArray addObject:[[ChannelModel alloc] initWithChannel:channel]];
+        
+        progress = ((float)(index) / (float)channelsArray.count);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Instead we could have also passed a reference to the HUD
+            // to the HUD to myProgressTask as a method parameter.
+            [MBProgressHUD HUDForView:self.navigationController.view].progress = progress;
+        });
+        index++;
+        
+        [NSThread sleepForTimeInterval:0.5];
+    }
+    
+    //发送完成命令
+    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand compeleteCommandOnUseSchedulePlan:NO] onRespond:nil onTimeOut:nil];
+    
+    //        dispatch_async(dispatch_get_main_queue(), ^{
+    //            [self.hud hide:YES];
+    //            _hud =nil;
+    //            //        [MBProgressHUD showSuccess:@"Complete"];
+    //        });
+    
+    //新进度条 22秒
+    __block CGFloat progressValue = 0.0f;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.hud.labelText = @"Updating Bulbs";
+        [MBProgressHUD HUDForView:self.navigationController.view].progress = progressValue;
+    });
+    
+    NSTimeInterval period = 1.0; //设置时间间隔
+    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, 0);
+    dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, period * NSEC_PER_SEC, 0);
+    dispatch_source_set_event_handler(timer, ^{
+        
+        progressValue += 1.0 / 22.0 ;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Instead we could have also passed a reference to the HUD
+            // to the HUD to myProgressTask as a method parameter.
+            [MBProgressHUD HUDForView:self.navigationController.view].progress = progressValue;
+        });
+        
+        if (progressValue >= 1.0) {
+            //结束
+            dispatch_source_cancel(timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.hud hide:YES];
+                _hud =nil;
+                
+            });
+        }
+    });
+    dispatch_resume(timer);
     
 }
 

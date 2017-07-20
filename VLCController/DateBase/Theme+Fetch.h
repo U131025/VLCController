@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Mojy. All rights reserved.
 //
 
-#import "Theme.h"
+#import "Theme+CoreDataClass.h"
 
 @interface Theme (Fetch)
 

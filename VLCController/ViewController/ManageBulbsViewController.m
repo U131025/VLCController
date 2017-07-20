@@ -158,7 +158,8 @@
         if (![self.light.isPairBulbs boolValue]) {
             //未配对
             __weak typeof(self) weakSelf = self;
-            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairOrUnpairBulbs:isPair withTimeSp:self.light.lightID] withIdentifier:self.light.identifier onRespond:^BOOL(NSData *data) {
+            
+            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairOrUnpairBulbs:isPair withTimeSp:self.light.lightID] onRespond:^BOOL(NSData *data) {
                 //success
                 Byte value[30] = {0};
                 [data getBytes:&value length:sizeof(value)];
@@ -175,7 +176,9 @@
         }
         else {
             //已配对则取消配对
-            [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand pairOrUnpairBulbs:isPair withTimeSp:self.light.lightID] withIdentifier:self.light.identifier];
+            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairOrUnpairBulbs:isPair withTimeSp:self.light.lightID] onRespond:nil onTimeOut:nil];
+            
+//            [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand pairOrUnpairBulbs:isPair withTimeSp:self.light.lightID] withIdentifier:self.light.identifier];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{

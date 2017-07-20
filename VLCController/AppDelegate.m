@@ -11,7 +11,7 @@
 #import "Theme+Fetch.h"
 #import "MBProgressHUD+NJ.h"
 
-@interface AppDelegate ()<BluetoothManagerDelegate>
+@interface AppDelegate ()
 
 @end
 
@@ -24,9 +24,6 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self setupBugly];
     });
-    
-    [BluetoothManager sharedInstance].delegate = self;
-    [[BluetoothManager sharedInstance] startScanBluetooth];
     
     HomeViewController *mainViewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
     UINavigationController *naveigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
@@ -141,28 +138,28 @@
     }
 }
 
-#pragma mark - BlueManagerDelegate
-- (void)receiveTimeOut:(CBPeripheral *)peripheral
-{
-    //弹出提示框
-//    [MBProgressHUD showError:@"No Respond."];
-}
-
-- (void)receiveSuccess:(NSData *)data
-{
-    Byte value[30] = {0};
-    [data getBytes:&value length:sizeof(value)];
-    
-    if (value[0] == 0xaa && value[1] == 0x0a) {
-        //paired success
-//        [MBProgressHUD showSuccess:@"Paired Success."];
-    }
-    else if (value[0] == 0xaa && value[1] == 0xee){
-        //paired error
-        [MBProgressHUD showError:@"Paired Failure."];
-    }
-    
-}
+//#pragma mark - BlueManagerDelegate
+//- (void)receiveTimeOut:(CBPeripheral *)peripheral
+//{
+//    //弹出提示框
+////    [MBProgressHUD showError:@"No Respond."];
+//}
+//
+//- (void)receiveSuccess:(NSData *)data
+//{
+//    Byte value[30] = {0};
+//    [data getBytes:&value length:sizeof(value)];
+//    
+//    if (value[0] == 0xaa && value[1] == 0x0a) {
+//        //paired success
+////        [MBProgressHUD showSuccess:@"Paired Success."];
+//    }
+//    else if (value[0] == 0xaa && value[1] == 0xee){
+//        //paired error
+//        [MBProgressHUD showError:@"Paired Failure."];
+//    }
+//    
+//}
 
 #pragma mark - Bugly
 - (void)setupBugly

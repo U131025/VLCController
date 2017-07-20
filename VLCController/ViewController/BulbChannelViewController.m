@@ -12,6 +12,7 @@
 #import "SettingViewController.h"
 #import "BulbChannel+Fetch.h"
 #import "ManageBulbsViewController.h"
+#import "NSString+Extension.h"
 
 @interface BulbChannelViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -234,6 +235,16 @@
     
     tip.okActionBlock = ^() {
         
+        //发送删除通道命令
+        if (ch) {
+            
+            ChannelModel *clearModel = [[ChannelModel alloc] init];
+            clearModel.index = 0x00;
+            
+            ChannelModel *model = [[ChannelModel alloc] initWithBulbChannel:ch];
+            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand changeBulbChannel:clearModel changedChannelIndex:model.index] onRespond:nil onTimeOut:nil];
+        }
+        
         //返回 setting 界面
         [self deleteChannelAction:ch];
     };
@@ -265,9 +276,6 @@
     
     [tip show];
     
-    
-    
-
 }
 
 

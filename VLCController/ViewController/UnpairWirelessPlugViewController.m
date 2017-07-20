@@ -32,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"Unpair Wireless Plug";
+    self.navigationItem.title = @"Unpair Wireless Switch";
     
     [self loadPlugsData];
     
@@ -228,9 +228,9 @@
     
     //
     TipMessageView *tip = [[TipMessageView alloc] init];
-    tip.headTitleText = @"Unpair Wireless Plug";
+    tip.headTitleText = @"Unpair Wireless Switch";
     tip.tiptilteText = @"Success!";
-    tip.tipDetailText = @"Your wireless plug has been unpaired.";
+    tip.tipDetailText = @"Your wireless switch has been unpaired.";
     tip.okButtonContent = @"Return";
     tip.cancelButtonContent = nil;
     

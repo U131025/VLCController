@@ -28,20 +28,43 @@
     return self;
 }
 
+- (instancetype)initWithPeripheral:(CBPeripheral *)peripheral
+{
+    self = [super init];
+    if (self) {
+        self.isBackButton = YES;
+        self.useDefaultTableView = YES;
+        self.peripheral = peripheral;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Background"]];
-    _backgroundImageView.frame = (CGRect){0, 0, ScreenWidth, ScreenHeight};
-    [self.view addSubview:_backgroundImageView];
-    [self.view sendSubviewToBack:_backgroundImageView];
+    [self.view addSubview:self.backgroundImageView];
+    [self.view sendSubviewToBack:self.backgroundImageView];
     
     if (self.useDefaultTableView)
         [self setupTableViewWithFrame:CGRectMake(0, NavBarHeight, ScreenWidth, ScreenHeight-NavBarHeight-50)];
     
-    if (_isBackButton)
+    if (_isBackButton) {
         [self loadBackBtn];
+    }
+    else {
+        UIBarButtonItem *buttonItem=[[UIBarButtonItem alloc]initWithCustomView:[[UIView alloc] init]];
+        [self.navigationItem setLeftBarButtonItem:buttonItem animated:YES];
+    }
+}
+
+- (UIImageView *)backgroundImageView
+{
+    if (!_backgroundImageView) {
+        _backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Background"]];
+        _backgroundImageView.frame = (CGRect){0, 0, ScreenWidth, ScreenHeight};
+    }
+    return _backgroundImageView;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,6 +82,41 @@
     
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:DefaultCellIdentifier];
     [self.view addSubview:_tableView];
+}
+
+- (UIView *)creteaViewWithTitle:(NSString *)title detail:(NSString *)detail
+{
+    UIView *view = [[UIView alloc] init];
+    UILabel *tipLabel = [[UILabel alloc] init];
+    tipLabel.text = title;
+    tipLabel.font = Font(30);
+    tipLabel.textAlignment = NSTextAlignmentCenter;
+    tipLabel.textColor = [UIColor whiteColor];
+    [view addSubview:tipLabel];
+    [tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(view);
+        make.left.right.equalTo(view);
+        make.height.mas_equalTo(30);
+    }];
+    
+    CGSize detailSize = [detail sizeWithFont:Font(14) maxSize:CGSizeMake(ScreenWidth-100, MAXFLOAT)];
+    
+    UITextView *detailTextView = [[UITextView alloc] init];
+    detailTextView.backgroundColor = [UIColor clearColor];
+    detailTextView.text = detail;
+    detailTextView.textAlignment = NSTextAlignmentCenter;
+    detailTextView.font = Font(14);
+    detailTextView.textColor = WhiteColor;
+    detailTextView.userInteractionEnabled = NO;
+    [view addSubview:detailTextView];
+    [detailTextView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(tipLabel.mas_bottom).offset(10);
+        make.centerX.equalTo(view);
+        make.width.mas_equalTo(ScreenWidth - 100);
+        make.height.mas_equalTo(detailSize.height+10);
+    }];
+    
+    return view;
 }
 
 #pragma mark UITalbeViewDataSource 消除警告
@@ -135,7 +193,7 @@
 {
 //    [[BluetoothManager sharedInstance] disConnectPeripheral];
     
-    if (![[BluetoothManager sharedInstance] startScanBluetooth]) {
+    if (![BluetoothManager sharedInstance].isBluetoothOpen) {
         //        __weak typeof(self) weakSelf = self;
         [MBProgressHUD hideHUD];
         
@@ -200,6 +258,50 @@
     
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)showInputView:(void (^)(NSString *password))confire cancel:(void (^)())cancel
+{
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Tip" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    [controller addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"Please input your password.";
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        if (cancel) {
+            cancel();
+        }
+    }];
+    [controller addAction:cancelAction];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSString *password = [[controller textFields] objectAtIndex:0].text;
+        
+        if (confire) {
+            confire(password);
+        }
+    }];
+    [controller addAction:okAction];
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)goBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (BOOL)popToViewControllerClass:(Class)viewCotrollerClass animated:(BOOL)animated
+{
+    for (UIViewController *vc in self.navigationController.viewControllers) {
+        if ([vc isKindOfClass:viewCotrollerClass]) {
+            [self.navigationController popToViewController:vc animated:animated];
+            return YES;
+        }
+    }
+    return NO;
 }
 
 @end

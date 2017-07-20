@@ -459,4 +459,48 @@
     return [[NSData alloc] initWithBytes:commandData length:20];
 }
 
+//固件更新命令
++ (NSData *)updateFirmwareCommand
+{
+    Byte commandData[20] = {0};
+    for (NSInteger index = 0; index < 20; index++) {
+        commandData[index] = 0x7f;
+    }
+    
+    return [[NSData alloc] initWithBytes:commandData length:20];
+}
+
+//文件长度
++ (NSData *)readyUpdateFirmwareCommandWithDataLen:(NSInteger)dataLen
+{
+    int pos = 0;
+    Byte commandData[20] = {0};
+    commandData[pos] = (dataLen >> 8) & 0xff; pos++;
+    commandData[pos] = dataLen & 0xff; pos++;
+    
+    Byte verify = [self getVerify:commandData datalength:19];
+    commandData[19] = verify;
+    return [[NSData alloc] initWithBytes:commandData length:20];
+}
+
+//格式化发送字符串
++ (NSData *)formatCommand:(NSData *)data
+{
+    if (data.length >= 20) {
+        return data;
+    }
+    
+    Byte commandData[20] = {0};
+    
+    Byte *pData = (Byte *)[data bytes];
+    
+    for (int i = 0; i < data.length; i++) {
+        commandData[i] = pData[i];
+    }
+    
+    Byte verify = [self getVerify:commandData datalength:19];
+    commandData[19] = verify;
+    return [[NSData alloc] initWithBytes:commandData length:20];
+}
+
 @end

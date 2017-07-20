@@ -31,5 +31,6 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define ClearColor  [UIColor clearColor]
 #define GrayColor  [UIColor grayColor]
 #define AmberColor RGBFromColor(0xFFE4C4)
+#define BlueColor RGBAlphaColor(0, 135, 180, 1)
 
 #endif /* ColorDefine_h */

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Mojy. All rights reserved.
 //
 
-#import "Schedule.h"
+#import "Schedule+CoreDataClass.h"
 
 @interface Schedule (Fetch)
 

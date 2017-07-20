@@ -2,23 +2,23 @@
 //  ColorFavorites+CoreDataProperties.h
 //  VLCController
 //
-//  Created by mojingyu on 16/3/10.
-//  Copyright © 2016年 Mojy. All rights reserved.
-//
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
+//  Created by Mojy on 2017/6/2.
+//  Copyright © 2017年 Mojy. All rights reserved.
 //
 
-#import "ColorFavorites.h"
+#import "ColorFavorites+CoreDataClass.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ColorFavorites (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *color;
-@property (nullable, nonatomic, retain) NSString *name;
-@property (nullable, nonatomic, retain) NSString *warm;
-@property (nullable, nonatomic, retain) NSNumber *isCustom;
++ (NSFetchRequest<ColorFavorites *> *)fetchRequest;
+
+@property (nullable, nonatomic, copy) NSString *color;
+@property (nullable, nonatomic, copy) NSNumber *isCustom;
+@property (nullable, nonatomic, copy) NSString *name;
+@property (nullable, nonatomic, copy) NSString *warm;
 
 @end
 

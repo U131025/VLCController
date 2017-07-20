@@ -10,6 +10,7 @@
 #import "ColorButton.h"
 #import "ColorSettingViewController.h"
 #import "UIColor+extension.h"
+#import "EditThemeViewController.h"
 
 @interface ColorSelectorViewController ()<ColorButtonDelegate>
 
@@ -105,7 +106,11 @@
 - (void)colorButtonClick:(ColorButton *)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
-    
+    [self selectColorHandle:sender];
+}
+
+- (void)selectColorHandle:(ColorButton *)sender
+{
     if (self.onSelecteColorBlock) {
         
         UIColor *selColor, *showColor;
@@ -121,7 +126,7 @@
         showColor = sender.backgroundColor;
         
         if ([sender.text isEqualToString:@"Warm Clear"]
-//            || [sender.text isEqualToString:@"Winter White"]
+            //            || [sender.text isEqualToString:@"Winter White"]
             || [sender.text isEqualToString:@"Red"]
             || [sender.text isEqualToString:@"Green"]
             || [sender.text isEqualToString:@"Blue"]) {
@@ -149,6 +154,8 @@
         settingColor = [self.colorsDic objectForKey:sender.text];
     }
     
+    
+    
     ColorSettingViewController *viewController = [[ColorSettingViewController alloc] initWithColor:sender.backgroundColor withSettingColor:settingColor];
     [self.navigationController pushViewController:viewController animated:YES];
     
@@ -159,6 +166,9 @@
         //将颜色保存到UserDefaults中
         [[NSUserDefaults standardUserDefaults] setObject:[UIColor hexFromUIColor:selColor] forKey:sender.text];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        [self popToViewControllerClass:[EditThemeViewController class] animated:YES];
+        [self selectColorHandle:sender];
     };
 }
 

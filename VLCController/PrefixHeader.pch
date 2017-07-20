@@ -19,12 +19,9 @@
 #endif
 
 
-
-#define TEST_FILTER_NAME @"fliter_name"
-
 #ifdef DEBUG
 //    #define TEST_CLOSE_BLUETOOTH @"test_close_bluetooth"
-//    #define TEST_FILTER_RESPOND @"fliter_respond"
+    #define TEST_FILTER_RESPOND @"fliter_respond"
 #endif
 
 #define BUGLY_APP_ID @"08db302b27"
@@ -43,7 +40,6 @@
     #import "NotifyDefine.h"
     #import "BluetoothManager.h"
     #import "LightController+Fetch.h"
-    #import "SlaveLightController+Fetch.h"
 
     #import "AppDelegate.h"
     #import "DropDownListView.h"
@@ -52,8 +48,12 @@
     #import "UIView+Extension.h"
     #import "TipMessageView.h"
     #import "MBProgressHUD+NJ.h"
+    #import <Masonry.h>
+    #import "MJRefresh.h"
 
     #import <Bugly/Bugly.h>
+    #import "NSObject+YYModel.h"
+
 #endif
 
 #endif /* PrefixHeader_pch */

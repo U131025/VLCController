@@ -135,7 +135,7 @@ typedef enum
         }
         
     } else if (indexPath.section == 2) {
-        title = @"NOTE:All bulbs must be plugged into the controller, on linked slave controller or a paired wireless plug.";
+        title = @"NOTE:All bulbs must be plugged into the controller, on linked slave controller or a paired wireless switch.";
     }
     
     CGFloat rowHeight = 80;

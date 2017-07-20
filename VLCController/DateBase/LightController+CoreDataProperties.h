@@ -2,30 +2,31 @@
 //  LightController+CoreDataProperties.h
 //  VLCController
 //
-//  Created by mojingyu on 16/9/24.
-//  Copyright © 2016年 Mojy. All rights reserved.
-//
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
+//  Created by Mojy on 2017/6/2.
+//  Copyright © 2017年 Mojy. All rights reserved.
 //
 
-#import "LightController.h"
+#import "LightController+CoreDataClass.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LightController (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSNumber *controllerType;
-@property (nullable, nonatomic, retain) NSString *deviceName;
-@property (nullable, nonatomic, retain) NSString *identifier;
-@property (nullable, nonatomic, retain) NSNumber *isCustomSchedule;
-@property (nullable, nonatomic, retain) NSNumber *isPairBulbs;
-@property (nullable, nonatomic, retain) NSNumber *isPowerOn;
-@property (nullable, nonatomic, retain) NSString *macAddress;
-@property (nullable, nonatomic, retain) NSString *name;
-@property (nullable, nonatomic, retain) NSString *themeName;
-@property (nullable, nonatomic, retain) NSNumber *useLightSchedule;
-@property (nullable, nonatomic, retain) NSString *lightID;
++ (NSFetchRequest<LightController *> *)fetchRequest;
+
+@property (nullable, nonatomic, copy) NSNumber *controllerType;
+@property (nullable, nonatomic, copy) NSString *deviceName;
+@property (nullable, nonatomic, copy) NSString *identifier;
+@property (nullable, nonatomic, copy) NSNumber *isCustomSchedule;
+@property (nullable, nonatomic, copy) NSNumber *isPairBulbs;
+@property (nullable, nonatomic, copy) NSNumber *isPowerOn;
+@property (nullable, nonatomic, copy) NSString *lightID;
+@property (nullable, nonatomic, copy) NSString *macAddress;
+@property (nullable, nonatomic, copy) NSString *name;
+@property (nullable, nonatomic, copy) NSString *password;
+@property (nullable, nonatomic, copy) NSString *themeName;
+@property (nullable, nonatomic, copy) NSNumber *useLightSchedule;
 @property (nullable, nonatomic, retain) NSSet<BulbChannel *> *bulbChannels;
 @property (nullable, nonatomic, retain) NSSet<Theme *> *lightThemes;
 @property (nullable, nonatomic, retain) LightController *master;

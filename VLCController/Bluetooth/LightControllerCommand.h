@@ -39,4 +39,13 @@
 //字节处理
 + (Byte)getVerify:(Byte *)sendData datalength:(int)length;
 
+//固件更新命令
++ (NSData *)updateFirmwareCommand;
+
+//文件长度
++ (NSData *)readyUpdateFirmwareCommandWithDataLen:(NSInteger)dataLen;
+
+//格式化发送字符串
++ (NSData *)formatCommand:(NSData *)data;
+
 @end

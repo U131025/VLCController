@@ -7,7 +7,7 @@
 //
 
 #import "BulbChannel.h"
-#import "LightController.h"
+#import "LightController+CoreDataClass.h"
 
 @implementation BulbChannel
 

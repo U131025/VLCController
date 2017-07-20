@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"Manage Wireless Plug";
+    self.navigationItem.title = @"Manage Wireless Switch";
     [self.tableView registerClass:[TextTableViewCell class] forCellReuseIdentifier:TextCellIdentifer];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnectAction:) name:Notify_Disconnect object:nil];
@@ -59,9 +59,9 @@
     cell.backgroundColor = [UIColor clearColor];
     
     if (indexPath.row == 0) {
-        cell.titleText = @"Pair Wireless Plug";
+        cell.titleText = @"Pair Wireless Switch";
     } else {
-        cell.titleText = @"Unpair Wireless Plug";
+        cell.titleText = @"Unpair Wireless Switch";
     }
     
     UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(cell.frame)-1, ScreenWidth, 1)];
@@ -86,7 +86,7 @@
 
 - (void)checkPairWirelessPlug
 {
-    [self showAlerViewWithMessage:@"Please unplug all other cords from this controller and plug in the wireless plug that you intend to pair. " onOKBlock:^{
+    [self showAlerViewWithMessage:@"Please unplug all other cords from this controller and plug in the wireless switch that you intend to pair. " onOKBlock:^{
         [self pairWirelessPlug];
     }];
     
@@ -124,9 +124,9 @@
         if (value[0] == 0xaa && value[1] == 0x0a) {
             
             TipMessageView *tip = [[TipMessageView alloc] init];
-            tip.headTitleText = @"Pair Wireless Plug";
+            tip.headTitleText = @"Pair Wireless Switch";
             tip.tiptilteText = @"Success!";
-            tip.tipDetailText = @"Your wireless plug is paired.";
+            tip.tipDetailText = @"Your wireless switch is paired.";
             tip.okButtonContent = @"Return";
             tip.isCancelIcon = YES;
             
@@ -152,7 +152,7 @@
     } onTimeOut:^{
         
         [MBProgressHUD hideHUD];
-        [MBProgressHUD showError:@"Your wireless plug could not be paired at this time.Please try again."];
+        [MBProgressHUD showError:@"Your wireless switch could not be paired at this time.Please try again."];
         
     }];
     
@@ -160,7 +160,7 @@
 
 - (void)checkUnpairWirelessPlug
 {
-    [self showAlerViewWithMessage:@"Please unplug all other cords from this controller and plug in the wireless plug that you intend to unpair. " onOKBlock:^{
+    [self showAlerViewWithMessage:@"Please unplug all other cords from this controller and plug in the wireless switch that you intend to unpair. " onOKBlock:^{
         [self unpairWireless];
     }];
 }
@@ -188,9 +188,9 @@
         if (value[0] == 0xaa && value[1] == 0x0a) {
             
             TipMessageView *tip = [[TipMessageView alloc] init];
-            tip.headTitleText = @"Unpair Wireless Plug";
+            tip.headTitleText = @"Unpair Wireless Switch";
             tip.tiptilteText = @"Success!";
-            tip.tipDetailText = @"Your wireless plug has been unpaired.";
+            tip.tipDetailText = @"Your wireless switch has been unpaired.";
             tip.okButtonContent = @"Return";
             tip.cancelButtonContent = nil;
             
@@ -212,7 +212,7 @@
     } onTimeOut:^{
         //time out
         [MBProgressHUD hideHUD];
-        [MBProgressHUD showError:@"Your wireless plug could not be unpaired at this time.Please try again."];
+        [MBProgressHUD showError:@"Your wireless switch could not be unpaired at this time.Please try again."];
     }];
     
     //

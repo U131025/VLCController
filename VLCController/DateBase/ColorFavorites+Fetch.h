@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Mojy. All rights reserved.
 //
 
-#import "ColorFavorites.h"
+#import "ColorFavorites+CoreDataClass.h"
 
 @interface ColorFavorites (Fetch)
 
