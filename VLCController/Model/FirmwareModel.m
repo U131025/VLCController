@@ -9,7 +9,9 @@
 #import "FirmwareModel.h"
 #import "CLNetworking.h"
 
-#define GetFirmwareListUrl @"https://cdn.shopify.com/s/files/1/2095/9331/files/update.txt?4474227432324224464"
+//#define GetFirmwareListUrl @"https://cdn.shopify.com/s/files/1/2095/9331/files/update.txt?4474227432324224464"
+
+#define GetFirmwareListUrl @"http://eeev01.hk79.2ifree.com/update.txt"
 
 @implementation FirmwareModel
 
