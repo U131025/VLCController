@@ -63,5 +63,6 @@ DECLARE_SINGLETON(BluetoothManager);
 
 - (void)sendData:(NSData *)sendData onRespond:(BOOL (^)(NSData *))respond timeOutValue:(NSInteger)timeOutValue onTimeOut:(void (^)())timeOut;
 
+- (void)readDataWithRespond:(BOOL (^)(NSData *data))respond timeOutValue:(NSInteger)timeOutValue onTimeOut:(void (^)())timeOut;
 
 @end

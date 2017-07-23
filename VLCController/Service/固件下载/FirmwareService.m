@@ -179,14 +179,14 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
                 //擦除
-                [weakSelf erasingData:fileData];
+                [weakSelf readyToEarsing:fileData];
             });
             
             return YES;
         }
         
         return NO;
-    } timeOutValue:10 onTimeOut:^{
+    } timeOutValue:2 onTimeOut:^{
         
         //超时
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -197,6 +197,36 @@
     }];
 }
 
+- (void)readyToEarsing:(NSData *)fileData
+{
+    __weak typeof(self) weakSelf = self;
+    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateFirmwareCommand] onRespond:^BOOL(NSData *data) {
+        
+        Byte value[2] = {0};
+        [data getBytes:&value length:sizeof(value)];
+        if (value[0] == 0xaa && value[1] == 0x0a) {
+            ;
+            //等待擦除完成
+            [weakSelf erasingData:fileData];
+            
+            return YES;
+        }
+        
+        return NO;
+    } timeOutValue:2 onTimeOut:^{
+        
+        //超时
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.downloadViwe hide];
+            [MBProgressHUD showError:@"Timeout"];
+        });
+        
+    }];
+    
+    
+    
+}
+
 - (void)erasingData:(NSData *)fileData
 {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -205,7 +235,8 @@
     });
     
     __weak typeof(self) weakSelf = self;
-    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateFirmwareCommand] onRespond:^BOOL(NSData *data) {
+    
+    [[BluetoothManager sharedInstance] readDataWithRespond:^BOOL(NSData *data) {
         
         Byte value[2] = {0};
         [data getBytes:&value length:sizeof(value)];
@@ -228,15 +259,16 @@
         }
         
         return NO;
-    } timeOutValue:1 onTimeOut:^{
+        
+    } timeOutValue:10 onTimeOut:^{
         
         //超时
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.downloadViwe hide];
             [MBProgressHUD showError:@"Timeout"];
         });
-        
     }];
+    
 }
 
 - (void)readyUpdating:(NSData *)fileData

@@ -35,22 +35,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VLCController/Service/&#x56fa;&#x4ef6;&#x4e0b;&#x8f7d;/FirmwareService.m"
-            timestampString = "521876044.610054"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "-erasingData:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "VLCController/ViewController/&#x4e8c;&#x7ef4;&#x7801;/ScanViewController.m"
             timestampString = "521914764.814399"
             startingColumnNumber = "9223372036854775807"

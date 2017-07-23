@@ -134,6 +134,23 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
 #endif
 }
 
+- (void)readDataWithRespond:(BOOL (^)(NSData *data))respond timeOutValue:(NSInteger)timeOutValue onTimeOut:(void (^)())timeOut
+{
+    self.onRespondBlock = respond;
+    self.OnRespondTimeoutBlock = timeOut;
+    
+    [[DeviceManager sharedInstance] readData];
+    
+    //超时设置
+    if (timeOut) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self timerClean];
+            _timer = [NSTimer scheduledTimerWithTimeInterval:timeOutValue target:self selector:@selector(runTimer) userInfo:nil repeats:NO];
+        });
+        
+    }
+}
+
 #pragma mark - DeviceManagerDelegate
 - (void)peripheralDiscovered:(CBPeripheral *)peripheral
 {
