@@ -82,13 +82,39 @@
 
 - (void)startFirmwareUpdate:(FirmwareModel *)model
 {
-    FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:self.light.identifier url:model.url completionHandler:^{
-
-        //更新完成
-
+    //校验版本
+    __weak typeof(self) weakSelf = self;
+    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand checkVersionCommand:model.version] onRespond:^BOOL(NSData *data) {
+        
+        Byte value[2] = {0};
+        [data getBytes:&value length:sizeof(value)];
+        
+        if (value[0] == 0xaa && value[1] == 0x0a) {
+            
+            [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" okTitle:@"YES" onOKBlock:^{
+                
+                FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:self.light.identifier url:model.url completionHandler:^{
+                    //更新完成
+                }];
+                
+                [service startUpdating];    //开始更新
+            }];
+            
+            return YES;
+        }
+        else if (value[0] == 0xaa && value[1] == 0xee) {
+            [weakSelf showTipWithMessage:@"There is no firmware available" withTitle:@"" useCancel:NO onOKBlock:nil];
+            return YES;
+        }
+        
+        return NO;
+        
+    } onTimeOut:^{
+        
+        [weakSelf showTipWithMessage:@"There is no firmware available" withTitle:@"" useCancel:NO onOKBlock:nil];
+        
     }];
-
-    [service startUpdating];    //开始更新
+    
 }
 
 #pragma mark - Getter

@@ -246,17 +246,41 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         if (onOKBlock) {
             onOKBlock();
         }
     }];
+    if (onOKBlock) {
+        [alertController addAction:okAction];
+    }
     
     if (useCancel) {
         [alertController addAction:cancleAction];
     }
     
-    [alertController addAction:okAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)showMessage:(NSString *)message withTitle:(NSString *)title cancleTitle:(NSString *)cancelTitle okTitle:(NSString *)okTitle onOKBlock:(void (^)())onOKBlock
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:okTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (onOKBlock) {
+            onOKBlock();
+        }
+    }];
+    if (onOKBlock) {
+        [alertController addAction:okAction];
+    }
+    
+    if (cancelTitle) {
+        UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:cancelTitle style:UIAlertActionStyleCancel handler:nil];
+        [alertController addAction:cancleAction];
+    }
+    
     [self presentViewController:alertController animated:YES completion:nil];
 }
 

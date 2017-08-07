@@ -45,6 +45,9 @@
 //文件长度
 + (NSData *)readyUpdateFirmwareCommandWithDataLen:(NSInteger)dataLen;
 
+//校验版本命令
++ (NSData *)checkVersionCommand:(NSString *)version;
+
 //格式化发送字符串
 + (NSData *)formatCommand:(NSData *)data;
 

@@ -359,7 +359,7 @@
     [cell.contentView addSubview:view];
     
     //arrow
-    if (indexPath.row != 4) {
+    if (indexPath.row != 5) {
         UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth- 40, 2, 20, 40)];
         arrowImageView.contentMode = UIViewContentModeScaleAspectFit;
         arrowImageView.image = [UIImage imageNamed:@"arrow"];

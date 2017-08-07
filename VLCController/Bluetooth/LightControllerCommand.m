@@ -483,6 +483,22 @@
     return [[NSData alloc] initWithBytes:commandData length:20];
 }
 
+//校验版本命令
++ (NSData *)checkVersionCommand:(NSString *)version
+{
+    version = [version lowercaseString];
+    NSInteger ver = [[version stringByReplacingOccurrencesOfString:@"v" withString:@""] integerValue];
+    
+    int pos = 0;
+    Byte commandData[20] = {0};
+    commandData[pos] = 0xDF; pos++;
+    commandData[pos] = ver; pos++;
+    
+    Byte verify = [self getVerify:commandData datalength:19];
+    commandData[19] = verify;
+    return [[NSData alloc] initWithBytes:commandData length:20];
+}
+
 //格式化发送字符串
 + (NSData *)formatCommand:(NSData *)data
 {
