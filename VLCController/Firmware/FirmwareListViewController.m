@@ -109,9 +109,16 @@
         
         return NO;
         
-    } onTimeOut:^{
+    } timeOutValue:3.0 onTimeOut:^{
         
-        [weakSelf showTipWithMessage:@"There is no firmware available" withTitle:@"" useCancel:NO onOKBlock:nil];
+        [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" okTitle:@"YES" onOKBlock:^{
+            
+            FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:self.light.identifier url:model.url completionHandler:^{
+                //更新完成
+            }];
+            
+            [service startUpdating];    //开始更新
+        }];
         
     }];
     

@@ -22,8 +22,9 @@
         NSArray *array = [data objectForKey:@"firmwares"];
         if (array) {
             NSArray *modelList = [NSArray yy_modelArrayWithClass:[FirmwareModel class] json:array];
-            if (successBlock) {
-                successBlock(modelList);
+            
+            if (successBlock && modelList.count > 0) {
+                successBlock([NSArray arrayWithObject:[modelList objectAtIndex:0]]);
             }
         }        
         
