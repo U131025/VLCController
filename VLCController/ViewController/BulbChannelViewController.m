@@ -51,8 +51,8 @@
 //    [self.channelArray removeAllObjects];
     NSArray *bulbChannelArray = [BulbChannel fetchWithLightController:self.light inManageObjectContext:APPDELEGATE.managedObjectContext];
     if (bulbChannelArray.count == 0) {
-        //添加默认的1~4个通道
-        for (int index = 1; index < 5; index++) {
+        //添加默认的1~6个通道
+        for (int index = 1; index < 7; index++) {
             
             NSString *channelName = [NSString stringWithFormat:@"Channel %d", index];
             BulbChannel *bulbChannel = [BulbChannel addWithName:channelName withLightController:self.light inManageObjectContext:APPDELEGATE.managedObjectContext];

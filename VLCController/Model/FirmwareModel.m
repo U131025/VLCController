@@ -23,8 +23,9 @@
         if (array) {
             NSArray *modelList = [NSArray yy_modelArrayWithClass:[FirmwareModel class] json:array];
             
-            if (successBlock && modelList.count > 0) {
-                successBlock([NSArray arrayWithObject:[modelList objectAtIndex:0]]);
+            if (successBlock) {
+//                successBlock([NSArray arrayWithObject:[modelList objectAtIndex:0]]);
+                successBlock(modelList);
             }
         }        
         

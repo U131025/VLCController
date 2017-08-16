@@ -26,6 +26,7 @@
 #import "UIColor+extension.h"
 #import "FirmwareService.h"
 #import "FirmwareListViewController.h"
+#import "FirmwareModel.h"
 
 #define Notify_ChangeTheme @"ChangeTheme"
 
@@ -426,15 +427,82 @@
         wirelessVC.light = self.light;
         [self.navigationController pushViewController:wirelessVC animated:YES];
     }
-    else if (indexPath.row == 4) {        
-        //固件更新
-        FirmwareListViewController *firmwareListVC = [[FirmwareListViewController alloc] init];
-        [self.navigationController pushViewController:firmwareListVC animated:YES];
+    else if (indexPath.row == 4) {
         
+        //判断是否有固件更新
+        [MBProgressHUD showMessage:nil toView:self.view];
+        [FirmwareModel fetchListSuccess:^(id data) {
+            
+            [MBProgressHUD hideHUDForView:self.view];
+            NSArray *dataArray = data;
+            if (dataArray.count > 0) {
+                //固件更新
+                FirmwareModel *model = [dataArray objectAtIndex:0];
+                [self startFirmwareUpdate:model];
+                
+//                FirmwareListViewController *firmwareListVC = [[FirmwareListViewController alloc] init];
+//                [self.navigationController pushViewController:firmwareListVC animated:YES];
+            }
+            else {
+                [MBProgressHUD showError:@"No firmware updates currently available."];
+            }
+            
+        } failure:^(id error) {
+            
+            //加载失败
+            [MBProgressHUD hideHUD];
+        }];
       
     }
     
 }
+
+#pragma mark - 固件升级判断
+
+- (void)startFirmwareUpdate:(FirmwareModel *)model
+{
+    //校验版本
+    __weak typeof(self) weakSelf = self;
+    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand checkVersionCommand:model.version] onRespond:^BOOL(NSData *data) {
+        
+        Byte value[2] = {0};
+        [data getBytes:&value length:sizeof(value)];
+        
+        if (value[0] == 0xaa && value[1] == 0x0a) {
+            
+            [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" okTitle:@"YES" onOKBlock:^{
+                
+                FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:self.light.identifier url:model.url completionHandler:^{
+                    //更新完成
+                }];
+                
+                [service startUpdating];    //开始更新
+            }];
+            
+            return YES;
+        }
+        else if (value[0] == 0xaa && value[1] == 0xee) {
+            [weakSelf showTipWithMessage:@"There is no firmware available" withTitle:@"" useCancel:NO onOKBlock:nil];
+            return YES;
+        }
+        
+        return NO;
+        
+    } timeOutValue:3.0 onTimeOut:^{
+        
+        [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" okTitle:@"YES" onOKBlock:^{
+            
+            FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:self.light.identifier url:model.url completionHandler:^{
+                //更新完成
+            }];
+            
+            [service startUpdating];    //开始更新
+        }];
+        
+    }];
+    
+}
+
 
 #pragma mark Action
 - (void)updateControllerButtonClick
