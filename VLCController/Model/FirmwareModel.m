@@ -17,6 +17,14 @@
 
 + (void)fetchListSuccess:(FetchDataSuccess)successBlock failure:(FetchDataFailure)failure
 {
+    [CLNetworkingManager checkNetworkLinkStatus];
+    if ([CLNetworkingManager theNetworkStatus] == 0) {
+        if (failure) {
+            failure(nil);
+        }
+        return;
+    }
+    
     [CLNetworkingManager getNetworkRequestWithUrlString:GetFirmwareListUrl parameters:nil isCache:NO succeed:^(id data) {
         
         NSArray *array = [data objectForKey:@"firmwares"];

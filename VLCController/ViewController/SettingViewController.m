@@ -450,7 +450,7 @@
         } failure:^(id error) {
             
             //加载失败
-            [MBProgressHUD hideHUD];
+            [MBProgressHUD hideHUDForView:self.view];
         }];
       
     }
