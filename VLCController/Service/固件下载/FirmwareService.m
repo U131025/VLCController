@@ -186,7 +186,7 @@
         }
         
         return NO;
-    } timeOutValue:2 onTimeOut:^{
+    } timeOutValue:10 onTimeOut:^{
         
         //超时
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -213,7 +213,7 @@
         }
         
         return NO;
-    } timeOutValue:2 onTimeOut:^{
+    } timeOutValue:10 onTimeOut:^{
         
         //超时
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -222,8 +222,6 @@
         });
         
     }];
-    
-    
     
 }
 
@@ -265,7 +263,7 @@
         //超时
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.downloadViwe hide];
-            [MBProgressHUD showError:@"Timeout"];
+            [MBProgressHUD showError:@"Erasing Error: Timeout"];
         });
     }];
     
