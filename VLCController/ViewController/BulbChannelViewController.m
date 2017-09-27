@@ -122,6 +122,9 @@
             if (index == 4) {
                 offsetY = 10;
                 offsetX += channelViewWidth+10;
+            }
+            
+            if (index > 5) {
                 useDeleteButton = YES;
             }
             
