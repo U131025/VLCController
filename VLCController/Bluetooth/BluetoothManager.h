@@ -26,7 +26,7 @@ typedef void(^RespondBlock)(NSData *data);
 typedef void(^BluetoothCompleteBlock)(CBPeripheral *peripheral, id data, BLERespondType type);
 typedef void(^BLEConnectSuccess)(CBPeripheral *peripheral);
 typedef void(^BLEConnectFailed)(CBPeripheral *peripheral);
-
+typedef void (^DisconnectedPeripheral)(CBPeripheral *peripheral);
 
 /////////////////// BluetoothManagerDelegate
 //@protocol BluetoothManagerDelegate <NSObject>
@@ -55,6 +55,8 @@ DECLARE_SINGLETON(BluetoothManager);
 @property (nonatomic, assign) BOOL isBluetoothOpen;
 @property (nonatomic, assign) BOOL isConnectedPeripheral;
 
+@property (nonatomic, copy) DisconnectedPeripheral disconnectedBlock;
+
 - (void)connectWithName:(NSString *)name oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword successBlock:(BluetoothCompleteBlock)success faileBlock:(BluetoothCompleteBlock)failed;
 
 - (void)disconnectAllPeripheral;
@@ -64,5 +66,7 @@ DECLARE_SINGLETON(BluetoothManager);
 - (void)sendData:(NSData *)sendData onRespond:(BOOL (^)(NSData *))respond timeOutValue:(NSInteger)timeOutValue onTimeOut:(void (^)())timeOut;
 
 - (void)readDataWithRespond:(BOOL (^)(NSData *data))respond timeOutValue:(NSInteger)timeOutValue onTimeOut:(void (^)())timeOut;
+
+- (void)setBlockForDisconnected:(DisconnectedPeripheral)disconnectedBlock;
 
 @end

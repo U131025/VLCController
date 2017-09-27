@@ -17,6 +17,7 @@
 #import "SlaveControllerViewController.h"
 #import "SetupResultViewController.h"
 #import "WkWebViewController.h"
+#import "UIViewController+Visible.h"
 
 @interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -107,7 +108,8 @@
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     self.useDefaultTableView = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -126,11 +128,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scanTimeOutAction:) name:Notify_ScanTimeOut object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnectAction:) name:Notify_Disconnect object:nil];
     
-    //启动扫描
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [[BluetoothManager sharedInstance] startScanBluetooth];
-//    });
-    
+    [[BluetoothManager sharedInstance] setBlockForDisconnected:^(CBPeripheral *peripheral) {
+        
+        UIViewController *viewController = [UIViewController visibleViewController];
+        if (viewController && ![viewController isKindOfClass:[HomeViewController class]]) {
+            
+            [viewController.navigationController popToViewController:self animated:YES];
+        }
+    }];
 }
 
 - (UIView *)createHeaderView
@@ -192,93 +197,7 @@
                     nil;
                 }];
             }
-            
-//            [self showInputView:^(NSString *password) {
-//                //
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [MBProgressHUD showMessage:nil];
-//                });
-//                
-//                [[BluetoothManager sharedInstance] pairDeviceWithOldPassword:password newPassWord:password withResponds:^(NSData *data) {
-//                    //
-//                    const char *pData = [data bytes];
-//                    
-//                    if (pData[0] == 0) {
-//                        //success
-//                        NSLog(@"\n ==== 配对成功 ===== \n");
-//                        
-//                        //success
-//                        if (periphseral.state == CBPeripheralStateConnected) {
-//                            
-//                            //配对指令
-//                            [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand pairMainControllerCommand:_lightModel.lightID]];
-//                            
-//                            //success
-//                            TipMessageView *tip = [[TipMessageView alloc] init];
-//                            tip.headTitleText = @"Pair Controller";
-//                            tip.tiptilteText = @"Success!";
-//                            tip.tipDetailText = @"Your controller is ready.Please make sure you set up your bulbs,themes and then your schedule.";
-//                            tip.okButtonContent = @"Continue";
-//                            tip.cancelButtonContent = nil;
-//                            
-//                            [tip show];
-//                            //            [self.navigationController pushViewController:tip animated:YES];
-//                            
-//                            //    __weak typeof(tip) temp = tip;
-//                            tip.okActionBlock = ^() {
-//                                
-//                                LightController *light = [LightController getObjectWithIdentifier:[periphseral.identifier UUIDString] inManagedObjectContext:APPDELEGATE.managedObjectContext];
-//                                if (!light) {
-//                                    [MBProgressHUD showError:@"获取对象失败"];
-//                                    return;
-//                                }
-//                                
-//                                //点击事件
-//                                SettingViewController *settingVC = [[SettingViewController alloc] init];
-//                                settingVC.headerTitle = _lightModel.name;
-//                                settingVC.light = light;
-//                                [self.navigationController pushViewController:settingVC animated:YES];
-//                            };
-//                        }
-//                    }
-//                    else if (pData[0] == 1) {
-//                        //password error
-//                        dispatch_async(dispatch_get_main_queue(), ^{
-//                            [MBProgressHUD hideHUD];
-//                            [MBProgressHUD showError:@"Invalid password"];
-//                        });
-//                        
-//                    }
-//                    else if (pData[0] == 2) {
-//                        //modify success
-//                        dispatch_async(dispatch_get_main_queue(), ^{
-//                            [MBProgressHUD hideHUD];
-//                        });
-//                    }
-//                    else if (pData[0] == 3) {
-//                        //cancel password
-//                        dispatch_async(dispatch_get_main_queue(), ^{
-//                            [MBProgressHUD hideHUD];
-//                        });
-//                    }
-//                    
-//                }];
-//                
-//                [[BluetoothManager sharedInstance] connectPeripheral:periphseral onSuccessBlock:^{
-//                    //success
-//                    
-//                } onTimeoutBlock:^{
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        [MBProgressHUD hideHUD];
-//                        [self showSorryView];
-//                    });
-//                }];
-//                
-//            } cancel:^{
-//                nil;
-//            }];
-            
-            
+
         }
     }
     

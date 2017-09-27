@@ -109,6 +109,7 @@
 		D590FDD11C9116810049E0B1 /* BulbChannel+Fetch.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDD01C9116810049E0B1 /* BulbChannel+Fetch.m */; };
 		D590FDE01C915BCF0049E0B1 /* ColorFavorites+Fetch.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDDF1C915BCF0049E0B1 /* ColorFavorites+Fetch.m */; };
 		D590FDE31C91CA830049E0B1 /* SlaveControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDE21C91CA830049E0B1 /* SlaveControllerViewController.m */; };
+		D5A7E5331F7BE5D00012D044 /* UIViewController+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A7E5321F7BE5D00012D044 /* UIViewController+Visible.m */; };
 		D5BAD1231C76B5BD000B6966 /* ZJSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = D5BAD1221C76B5BD000B6966 /* ZJSwitch.m */; };
 		D5DDD3E51C586010002D1264 /* TipMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DDD3E41C586010002D1264 /* TipMessageView.m */; };
 		D5DDD3E81C58AC82002D1264 /* ColorOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DDD3E71C58AC82002D1264 /* ColorOptionsViewController.m */; };
@@ -398,6 +399,8 @@
 		D590FDDF1C915BCF0049E0B1 /* ColorFavorites+Fetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ColorFavorites+Fetch.m"; path = "DateBase/ColorFavorites+Fetch.m"; sourceTree = "<group>"; };
 		D590FDE11C91CA830049E0B1 /* SlaveControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlaveControllerViewController.h; path = ViewController/SlaveControllerViewController.h; sourceTree = "<group>"; };
 		D590FDE21C91CA830049E0B1 /* SlaveControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlaveControllerViewController.m; path = ViewController/SlaveControllerViewController.m; sourceTree = "<group>"; };
+		D5A7E5311F7BE5D00012D044 /* UIViewController+Visible.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Visible.h"; path = "Category/UIViewController+Visible.h"; sourceTree = "<group>"; };
+		D5A7E5321F7BE5D00012D044 /* UIViewController+Visible.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Visible.m"; path = "Category/UIViewController+Visible.m"; sourceTree = "<group>"; };
 		D5BAD1211C76B5BD000B6966 /* ZJSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSwitch.h; sourceTree = "<group>"; };
 		D5BAD1221C76B5BD000B6966 /* ZJSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSwitch.m; sourceTree = "<group>"; };
 		D5DDD3E31C586010002D1264 /* TipMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TipMessageView.h; path = View/TipMessageView.h; sourceTree = "<group>"; };
@@ -1158,6 +1161,8 @@
 				D5E6B7001CA97C7300F05F24 /* MyLongPressGestureRecognizer.m */,
 				E59E80821EE10C7000824319 /* NSData+Convert.h */,
 				E59E80831EE10C7000824319 /* NSData+Convert.m */,
+				D5A7E5311F7BE5D00012D044 /* UIViewController+Visible.h */,
+				D5A7E5321F7BE5D00012D044 /* UIViewController+Visible.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1737,6 +1742,7 @@
 				D5F58EFC1C575E8700DE602A /* UIView+Extension.m in Sources */,
 				D57DF0C61EDD937F0038E7A7 /* UIImage+SGHelper.m in Sources */,
 				D57DF0C71EDD937F0038E7A7 /* SGQRCodeScanningVC.m in Sources */,
+				D5A7E5331F7BE5D00012D044 /* UIViewController+Visible.m in Sources */,
 				D5F6092F1D84DBBA0094EEFF /* ColorSelectorViewController.m in Sources */,
 				E59E80C51EE1111500824319 /* MJRefreshNormalHeader.m in Sources */,
 				D5DDD3E51C586010002D1264 /* TipMessageView.m in Sources */,

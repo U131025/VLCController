@@ -36,7 +36,10 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     [request addValue:self.cookieString forHTTPHeaderField:@"Cookie"];
     
-    [self loadRequest:request];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self loadRequest:request];
+    });
+
 }
 
 @end

@@ -429,29 +429,32 @@
     }
     else if (indexPath.row == 4) {
         
+        [MBProgressHUD showError:@"No firmware updates currently available!"];
+        return;
+        
         //判断是否有固件更新
-        [MBProgressHUD showMessage:nil toView:self.view];
-        [FirmwareModel fetchListSuccess:^(id data) {
-            
-            [MBProgressHUD hideHUDForView:self.view];
-            NSArray *dataArray = data;
-            if (dataArray.count > 0) {
-                //固件更新
-                FirmwareModel *model = [dataArray objectAtIndex:0];
-                [self startFirmwareUpdate:model];
-                
-//                FirmwareListViewController *firmwareListVC = [[FirmwareListViewController alloc] init];
-//                [self.navigationController pushViewController:firmwareListVC animated:YES];
-            }
-            else {
-                [MBProgressHUD showError:@"No firmware updates currently available."];
-            }
-            
-        } failure:^(id error) {
-            
-            //加载失败
-            [MBProgressHUD hideHUDForView:self.view];
-        }];
+//        [MBProgressHUD showMessage:nil toView:self.view];
+//        [FirmwareModel fetchListSuccess:^(id data) {
+//            
+//            [MBProgressHUD hideHUDForView:self.view];
+//            NSArray *dataArray = data;
+//            if (dataArray.count > 0) {
+//                //固件更新
+//                FirmwareModel *model = [dataArray objectAtIndex:0];
+//                [self startFirmwareUpdate:model];
+//                
+////                FirmwareListViewController *firmwareListVC = [[FirmwareListViewController alloc] init];
+////                [self.navigationController pushViewController:firmwareListVC animated:YES];
+//            }
+//            else {
+//                [MBProgressHUD showError:@"No firmware updates currently available."];
+//            }
+//            
+//        } failure:^(id error) {
+//            
+//            //加载失败
+//            [MBProgressHUD hideHUDForView:self.view];
+//        }];
       
     }
     

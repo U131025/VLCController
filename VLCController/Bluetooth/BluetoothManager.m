@@ -151,10 +151,15 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
     }
 }
 
+- (void)setBlockForDisconnected:(DisconnectedPeripheral)disconnectedBlock
+{
+    self.disconnectedBlock = disconnectedBlock;
+}
+
 #pragma mark - DeviceManagerDelegate
 - (void)peripheralDiscovered:(CBPeripheral *)peripheral
 {
-    
+    //发现设备
 }
 
 - (void)peripheralConnectedAtChannel:(NSString *)channel
@@ -175,6 +180,10 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
 - (void)peripheralDisconnectedAtChannel:(NSString *)channel
 {
     //断开成功
+    if (self.disconnectedBlock) {
+        DeviceModel *model = [DeviceManager sharedInstance].model;
+        self.disconnectedBlock(model.periperal);
+    }
 }
 
 - (void)peripheralAtCharateristic:(CBCharacteristic *)charateristic notifyData:(NSData *)notifyData
