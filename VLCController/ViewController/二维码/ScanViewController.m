@@ -306,7 +306,8 @@ static const CGFloat kMargin = 80;
         NSString *stringValue = metadataObject.stringValue;
         if (stringValue.length > 0 && !self.isConnecting) {
             self.isConnecting = YES;
-            [MBProgressHUD showMessage:@"" toView:self.view];
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
             //解析mac地址
             [self connectPeripheralWithMacAddrAndPasswordString:stringValue];
         }
@@ -449,7 +450,7 @@ static const CGFloat kMargin = 80;
 
 - (void)pairControllerWithMacAddrAndPasswordString:(NSString *)string
 {
-    [MBProgressHUD showMessage:@""];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [self connectPeripheralWithMacAddrAndPasswordString:string];
     
@@ -494,7 +495,7 @@ static const CGFloat kMargin = 80;
                 
                 if ([data isKindOfClass:[NSString class]]) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [MBProgressHUD showError:data];
+//                        [MBProgressHUD showError:data];
                     });
                 }
                 
@@ -525,7 +526,7 @@ static const CGFloat kMargin = 80;
 - (void)hideHUD
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [MBProgressHUD hideHUD];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     });
 }
 

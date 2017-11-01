@@ -20,7 +20,7 @@
 
 
 #ifdef DEBUG
-//    #define TEST_CLOSE_BLUETOOTH @"test_close_bluetooth"
+    #define TEST_CLOSE_BLUETOOTH @"test_close_bluetooth"
 //    #define TEST_FILTER_RESPOND @"fliter_respond"
 #endif
 
@@ -47,6 +47,7 @@
     #import "LightControllerCommand.h"
     #import "UIView+Extension.h"
     #import "TipMessageView.h"
+    #import <MBProgressHUD.h>
     #import "MBProgressHUD+NJ.h"
     #import <Masonry.h>
     #import "MJRefresh.h"

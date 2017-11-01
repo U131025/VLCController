@@ -30,15 +30,13 @@
 		D50F541A1C50E01D00F5D292 /* FoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D50F54181C50E01D00F5D292 /* FoundViewController.xib */; };
 		D50F541D1C51C39B00F5D292 /* TextFieldWithBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D50F541C1C51C39B00F5D292 /* TextFieldWithBorderView.m */; };
 		D50F54221C520B1100F5D292 /* SvUDIDTools.m in Sources */ = {isa = PBXBuildFile; fileRef = D50F54211C520B1000F5D292 /* SvUDIDTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D51B3A491C71D423005D72CC /* MBProgressHUD+NJ.m in Sources */ = {isa = PBXBuildFile; fileRef = D51B3A451C71D423005D72CC /* MBProgressHUD+NJ.m */; };
-		D51B3A4A1C71D423005D72CC /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D51B3A461C71D423005D72CC /* MBProgressHUD.bundle */; };
-		D51B3A4B1C71D423005D72CC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D51B3A481C71D423005D72CC /* MBProgressHUD.m */; };
 		D524D9401C893A3200044B08 /* BulbChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D524D93F1C893A3200044B08 /* BulbChannelViewController.m */; };
 		D524D9491C895D0D00044B08 /* AssignBulbChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D524D9481C895D0D00044B08 /* AssignBulbChannelViewController.m */; };
 		D524D94D1C897A9000044B08 /* ChannelItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D524D94C1C897A9000044B08 /* ChannelItemView.m */; };
 		D524D9561C8D6FE300044B08 /* ManageWirelessPlugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D524D9551C8D6FE300044B08 /* ManageWirelessPlugsViewController.m */; };
 		D524D9591C8D734500044B08 /* UnpairWirelessPlugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D524D9581C8D734500044B08 /* UnpairWirelessPlugViewController.m */; };
 		D5356B6A9BDEF860A539EB2E /* libPods-VLCControllerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F8E26CFE610D6417E0C21B /* libPods-VLCControllerTests.a */; };
+		D536D16D1F932F200004FEA9 /* MBProgressHUD+NJ.m in Sources */ = {isa = PBXBuildFile; fileRef = D536D16C1F932F200004FEA9 /* MBProgressHUD+NJ.m */; };
 		D53E112F1EF2CE910014B8C0 /* DownloadProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D53E112E1EF2CE910014B8C0 /* DownloadProgressView.m */; };
 		D56009511C6B1515006DE648 /* PopBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D56009501C6B1515006DE648 /* PopBaseView.m */; };
 		D564F7271F123A0E0094B517 /* FirmwareListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D564F7261F123A0E0094B517 /* FirmwareListViewController.m */; };
@@ -254,11 +252,6 @@
 		D50F541C1C51C39B00F5D292 /* TextFieldWithBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextFieldWithBorderView.m; path = View/TextFieldWithBorderView.m; sourceTree = "<group>"; };
 		D50F54201C520B1000F5D292 /* SvUDIDTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SvUDIDTools.h; sourceTree = "<group>"; };
 		D50F54211C520B1000F5D292 /* SvUDIDTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SvUDIDTools.m; sourceTree = "<group>"; };
-		D51B3A441C71D423005D72CC /* MBProgressHUD+NJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+NJ.h"; sourceTree = "<group>"; };
-		D51B3A451C71D423005D72CC /* MBProgressHUD+NJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+NJ.m"; sourceTree = "<group>"; };
-		D51B3A461C71D423005D72CC /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
-		D51B3A471C71D423005D72CC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		D51B3A481C71D423005D72CC /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		D524D93E1C893A3200044B08 /* BulbChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BulbChannelViewController.h; path = ViewController/BulbChannelViewController.h; sourceTree = "<group>"; };
 		D524D93F1C893A3200044B08 /* BulbChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BulbChannelViewController.m; path = ViewController/BulbChannelViewController.m; sourceTree = "<group>"; };
 		D524D9471C895D0D00044B08 /* AssignBulbChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssignBulbChannelViewController.h; path = ViewController/AssignBulbChannelViewController.h; sourceTree = "<group>"; };
@@ -269,6 +262,8 @@
 		D524D9551C8D6FE300044B08 /* ManageWirelessPlugsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManageWirelessPlugsViewController.m; path = ViewController/ManageWirelessPlugsViewController.m; sourceTree = "<group>"; };
 		D524D9571C8D734500044B08 /* UnpairWirelessPlugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnpairWirelessPlugViewController.h; path = ViewController/UnpairWirelessPlugViewController.h; sourceTree = "<group>"; };
 		D524D9581C8D734500044B08 /* UnpairWirelessPlugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnpairWirelessPlugViewController.m; path = ViewController/UnpairWirelessPlugViewController.m; sourceTree = "<group>"; };
+		D536D16B1F932F200004FEA9 /* MBProgressHUD+NJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+NJ.h"; path = "MBHudEX/MBProgressHUD+NJ.h"; sourceTree = "<group>"; };
+		D536D16C1F932F200004FEA9 /* MBProgressHUD+NJ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MBProgressHUD+NJ.m"; path = "MBHudEX/MBProgressHUD+NJ.m"; sourceTree = "<group>"; };
 		D53E112D1EF2CE910014B8C0 /* DownloadProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadProgressView.h; path = "Service/固件下载/DownloadProgressView.h"; sourceTree = "<group>"; };
 		D53E112E1EF2CE910014B8C0 /* DownloadProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadProgressView.m; path = "Service/固件下载/DownloadProgressView.m"; sourceTree = "<group>"; };
 		D560094F1C6B1515006DE648 /* PopBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopBaseView.h; path = "View/弹出框/PopBaseView.h"; sourceTree = "<group>"; };
@@ -705,21 +700,8 @@
 				E59E80861EE1111400824319 /* MJRefresh */,
 				D5BAD1201C76B5BD000B6966 /* ZJSwitch */,
 				D5081D341C72CF8700B556D7 /* InputHelper */,
-				D51B3A431C71D423005D72CC /* MBProgressHUD */,
 			);
 			path = Library;
-			sourceTree = "<group>";
-		};
-		D51B3A431C71D423005D72CC /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				D51B3A441C71D423005D72CC /* MBProgressHUD+NJ.h */,
-				D51B3A451C71D423005D72CC /* MBProgressHUD+NJ.m */,
-				D51B3A461C71D423005D72CC /* MBProgressHUD.bundle */,
-				D51B3A471C71D423005D72CC /* MBProgressHUD.h */,
-				D51B3A481C71D423005D72CC /* MBProgressHUD.m */,
-			);
-			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		D524D9411C893A3900044B08 /* Bulb */ = {
@@ -831,6 +813,19 @@
 				D590FDE21C91CA830049E0B1 /* SlaveControllerViewController.m */,
 			);
 			name = SlaveCotroller;
+			sourceTree = "<group>";
+		};
+		D536D1681F9250F90004FEA9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D58ABC2E1C3F472A00270C1F /* HomeViewController.h */,
+				D58ABC2F1C3F472A00270C1F /* HomeViewController.m */,
+				D58ABC301C3F472A00270C1F /* HomeViewController.xib */,
+				D58ABCA31C48BBF700270C1F /* SettingViewController.h */,
+				D58ABCA41C48BBF700270C1F /* SettingViewController.m */,
+				D58ABCA51C48BBF700270C1F /* SettingViewController.xib */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 		D560094E1C6B132F006DE648 /* 弹出框 */ = {
@@ -1023,6 +1018,7 @@
 		D58ABC231C3E39D200270C1F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D536D1681F9250F90004FEA9 /* Home */,
 				D50D94341F1B014B00DD892C /* WebView */,
 				D564F7241F121CD10094B517 /* 固件更新 */,
 				E5BBCDD81EDE8E0A00AB32CD /* ControllerSetup */,
@@ -1035,12 +1031,6 @@
 				D524D9431C893A4B00044B08 /* Tip */,
 				D524D9421C893A4100044B08 /* Theme */,
 				D524D9411C893A3900044B08 /* Bulb */,
-				D58ABC2E1C3F472A00270C1F /* HomeViewController.h */,
-				D58ABC2F1C3F472A00270C1F /* HomeViewController.m */,
-				D58ABC301C3F472A00270C1F /* HomeViewController.xib */,
-				D58ABCA31C48BBF700270C1F /* SettingViewController.h */,
-				D58ABCA41C48BBF700270C1F /* SettingViewController.m */,
-				D58ABCA51C48BBF700270C1F /* SettingViewController.xib */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -1163,6 +1153,8 @@
 				E59E80831EE10C7000824319 /* NSData+Convert.m */,
 				D5A7E5311F7BE5D00012D044 /* UIViewController+Visible.h */,
 				D5A7E5321F7BE5D00012D044 /* UIViewController+Visible.m */,
+				D536D16B1F932F200004FEA9 /* MBProgressHUD+NJ.h */,
+				D536D16C1F932F200004FEA9 /* MBProgressHUD+NJ.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1586,7 +1578,6 @@
 				D58ABC9F1C487F8800270C1F /* DuplicateControllerViewController.xib in Resources */,
 				D58ABC861C438B8C00270C1F /* Background.png in Resources */,
 				E59E80C71EE1111500824319 /* MJRefresh.bundle in Resources */,
-				D51B3A4A1C71D423005D72CC /* MBProgressHUD.bundle in Resources */,
 				D50F53E21C4F1C2A00F5D292 /* icon_green@2x.png in Resources */,
 				D58ABCD61C4DD59300270C1F /* EditThemeViewController.xib in Resources */,
 				D50F53E81C4F599D00F5D292 /* backArrow@2x.png in Resources */,
@@ -1792,7 +1783,6 @@
 				D50D94371F1B015700DD892C /* WkWebViewController.m in Sources */,
 				D58ABC991C47890A00270C1F /* AddControllerViewController.m in Sources */,
 				E59B970E1EF28B9E00944142 /* FirmwareService.m in Sources */,
-				D51B3A491C71D423005D72CC /* MBProgressHUD+NJ.m in Sources */,
 				E59E81231EE14F6F00824319 /* BabyPeripheralManager.m in Sources */,
 				D5E824A81D87861B00BA2053 /* ColorButton.m in Sources */,
 				D50F541D1C51C39B00F5D292 /* TextFieldWithBorderView.m in Sources */,
@@ -1829,9 +1819,9 @@
 				D524D94D1C897A9000044B08 /* ChannelItemView.m in Sources */,
 				E59E81241EE14F6F00824319 /* BabyRhythm.m in Sources */,
 				E59E80FD1EE1399800824319 /* Channel+CoreDataClass.m in Sources */,
+				D536D16D1F932F200004FEA9 /* MBProgressHUD+NJ.m in Sources */,
 				D58ABCC81C4DC7D000270C1F /* ManageBulbsViewController.m in Sources */,
 				D590FDC71C8EB8500049E0B1 /* ScheduleItem+Fetch.m in Sources */,
-				D51B3A4B1C71D423005D72CC /* MBProgressHUD.m in Sources */,
 				D5F6092A1D84D9580094EEFF /* ColorSettingViewController.m in Sources */,
 				E59E80BA1EE1111500824319 /* MJRefreshBackFooter.m in Sources */,
 				D58ABC311C3F472A00270C1F /* HomeViewController.m in Sources */,

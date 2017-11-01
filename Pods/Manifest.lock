@@ -18,6 +18,7 @@ PODS:
   - FCFileManager (1.0.18)
   - Kiwi (2.4.0)
   - Masonry (1.0.2)
+  - MBProgressHUD (1.0.0)
 
 DEPENDENCIES:
   - AFNetworking
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - FCFileManager (~> 1.0.7)
   - Kiwi
   - Masonry
+  - MBProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
@@ -32,7 +34,8 @@ SPEC CHECKSUMS:
   FCFileManager: 3d13576da1f709d37460bd7669cdf07b9d6d8bc3
   Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
 
-PODFILE CHECKSUM: 9c81466aeb2a07b13bd1451ee7d43b71bec8b9cc
+PODFILE CHECKSUM: 38d9adfe12eb07d609d0e2b5c0d01fb19acd2047
 
 COCOAPODS: 1.1.1

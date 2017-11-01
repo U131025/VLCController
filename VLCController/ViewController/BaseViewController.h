@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LightController+Fetch.h"
+#import "MBProgressHUD.h"
 
 #define DefaultCellIdentifier @"DefaultCell"
 

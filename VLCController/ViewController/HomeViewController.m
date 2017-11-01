@@ -165,14 +165,11 @@
 
 - (void)disconnectAction:(NSNotification *)notify
 {
-//    [MBProgressHUD hideHUD];
     [self checkBluetoothDevice];
 }
 
 - (void)discoverDeviceAction:(NSNotification *)notify
 {
-//    [MBProgressHUD hideHUD];
-    
     if (self.isReciveNotify) {
         
         CBPeripheral *periphseral = [[BluetoothManager sharedInstance] peripheral];
@@ -223,7 +220,7 @@
         
         LightController *light = [LightController getObjectWithIdentifier:[periphseral.identifier UUIDString] inManagedObjectContext:APPDELEGATE.managedObjectContext];
         if (!light) {
-            [MBProgressHUD showError:@"获取对象失败"];
+            [MBProgressHUD showError:@"获取对象失败" toView:self.view];
             return;
         }
         
@@ -240,7 +237,7 @@
     
     if (self.addNewController) {
         
-        [MBProgressHUD hideHUD];
+        [self hideHUD];
         
         //将扫描到的设备与当前数据库中的设备进行比较，如果有不一样的设备则添加
         CBPeripheral *peripheral = (CBPeripheral *)[notify.userInfo objectForKey:@"CBPeripheral"];
@@ -284,7 +281,7 @@
 
 - (void)scanTimeOutAction:(NSNotification *)notify
 {
-    [MBProgressHUD hideHUD];
+    [self hideHUD];
     
     if (self.isReciveNotify  || self.addNewController) {
         
@@ -302,6 +299,12 @@
     
     [self checkBluetoothDevice];
     [self.tableView reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self hideHUD];
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -722,8 +725,8 @@
     __block LightController *light = [LightController getObjectWithIdentifier:ligntController.identifier inManagedObjectContext:APPDELEGATE.managedObjectContext];
     if (!light) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUD];
-            [MBProgressHUD showError:@"获取对象失败"];
+            [MBProgressHUD hideHUDForView:self.view];
+            [MBProgressHUD showError:@"获取对象失败" toView:self.view];
         });
         return;
     }
@@ -740,13 +743,13 @@
     if (![peripheral.name isEqualToString:light.macAddress]
         || peripheral.state != CBPeripheralStateConnected) {
         
-        [MBProgressHUD showMessage:@""];
+        [MBProgressHUD showMessage:@"" toView:self.view];
         
 //        __weak typeof(self) weakSelf = self;
         if (peripheral.state == CBPeripheralStateConnected) {
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUD];
+                [MBProgressHUD hideHUDForView:self.view];
             });
             
             SettingViewController *settingVC = [[SettingViewController alloc] initWithPeripheral:peripheral];
@@ -781,7 +784,7 @@
     else {
         //
         dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUD];
+            [MBProgressHUD hideHUDForView:self.view];
         });
         
         SettingViewController *settingVC = [[SettingViewController alloc] initWithPeripheral:peripheral];
@@ -795,8 +798,9 @@
 }
 
 - (void)connectPeripheralWithLightController:(LightController *)light password:(NSString *)password
-{
+{    
     [[BluetoothManager sharedInstance] connectWithName:light.macAddress oldPassword:password newPassword:password successBlock:^(CBPeripheral *peripheral, id data, BLERespondType type) {
+        
         [self hideHUD];
         
         SettingViewController *settingVC = [[SettingViewController alloc] initWithPeripheral:peripheral];
@@ -810,7 +814,7 @@
         
         if ([data isKindOfClass:[NSString class]]) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD showError:data];
+                [MBProgressHUD showError:data toView:self.view];
             });
         }
         
@@ -833,14 +837,15 @@
 - (void)hideHUD
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [MBProgressHUD hideHUD];
+        [MBProgressHUD hideHUDForView:self.view];
     });
 }
 
 - (void)pairControllerWithPassword:(NSString *)password peripheral:(CBPeripheral *)peripheral light:(LightController *)light
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [MBProgressHUD showMessage:nil];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        [MBProgressHUD showMessage:nil toView:self.view];
     });
     
     [[BluetoothManager sharedInstance] connectWithName:peripheral.name oldPassword:password newPassword:password successBlock:^(CBPeripheral *peripheral, id data, BLERespondType type) {
@@ -848,9 +853,7 @@
         [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:_lightModel.lightID] onRespond:nil onTimeOut:nil];
         
         //success
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUD];
-        });
+        [self hideHUD];
         
         SettingViewController *settingVC = [[SettingViewController alloc] initWithPeripheral:peripheral];
         settingVC.headerTitle = _lightModel.name;
@@ -858,7 +861,7 @@
         [self.navigationController pushViewController:settingVC animated:YES];
     } faileBlock:^(CBPeripheral *peripheral, id data, BLERespondType type) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUD];
+            [MBProgressHUD hideHUDForView:self.view];
             [self showSorryView];
         });
         

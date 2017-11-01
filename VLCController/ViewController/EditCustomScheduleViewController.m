@@ -18,6 +18,7 @@
 #import "ScheduleItem+Fetch.h"
 #import "Channel+Fetch.h"
 #import "UIColor+extension.h"
+#import "MBProgressHUD+NJ.h"
 
 @interface EditCustomScheduleViewController ()<UITableViewDataSource, UITableViewDelegate, DropdownListViewDelegate>
 
@@ -530,7 +531,7 @@
 - (void)saveAction
 {
     if (!self.onTimeValue && !self.photoCellSwitch.isOn) {
-        [MBProgressHUD showError:@"Please selecte time light turn on."];
+        [MBProgressHUD showError:@"Please selecte time light turn on." ];
         return;
     }
     

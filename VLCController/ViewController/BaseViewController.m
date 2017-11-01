@@ -195,7 +195,7 @@
     
     if (![BluetoothManager sharedInstance].isBluetoothOpen) {
         //        __weak typeof(self) weakSelf = self;
-        [MBProgressHUD hideHUD];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Please open the Bluetooth on system settings." message:nil preferredStyle:UIAlertControllerStyleAlert];
         
