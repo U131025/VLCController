@@ -70,7 +70,8 @@
         if (lightArray.count == 0) {
             
             LightControllerModel *blueControllerModel = [[LightControllerModel alloc] init];
-            blueControllerModel.name = @"Blue Front Tree Lights";
+            blueControllerModel.name = @"Tv221u_qwe";
+            blueControllerModel.macAddress = @"Tv221u_qwe";
             blueControllerModel.type = Normal;
             LightController *blueController = [LightController addObjectWithIdentifier:blueControllerModel.name inManagedObjectContext:APPDELEGATE.managedObjectContext];
             [_lightControllerArray addObject:blueController];
@@ -337,35 +338,36 @@
     
 #ifdef TEST_CLOSE_BLUETOOTH
     
-//    NSArray *lightArray = [LightController getAllLightControllersInManagedObjectContext:APPDELEGATE.managedObjectContext];
-//    
-//    if (lightArray.count == 0) {
-//        
-//        LightControllerModel *blueControllerModel = [[LightControllerModel alloc] init];
-//        blueControllerModel.name = @"Blue Front Tree Lights";
-//        blueControllerModel.type = Normal;
-//        LightController *blueController = [LightController addObjectWithIdentifier:blueControllerModel.name inManagedObjectContext:APPDELEGATE.managedObjectContext];
-//        blueController.name = blueControllerModel.name;
-//        blueController.deviceName = blueControllerModel.name;
-//        
-//        [_lightControllerArray addObject:blueController];
-//        
-//        LightControllerModel *christmasControllerModel = [[LightControllerModel alloc] init];
-//        christmasControllerModel.name = @"Christmas Tree-Front Room";
-//        christmasControllerModel.type = Normal;
-//        LightController *christmasController = [LightController addObjectWithIdentifier:christmasControllerModel.name inManagedObjectContext:APPDELEGATE.managedObjectContext];
-//        christmasController.name = christmasControllerModel.name;
-//        christmasController.deviceName = christmasControllerModel.name;
-//        
-//        [_lightControllerArray addObject:christmasController];
-//        
-//        [APPDELEGATE saveContext];
-//        
-//    } else {
-//        
-//        
-//        //            [_lightControllerArray addObjectsFromArray:lightArray];
-//    }
+    NSArray *lightArray = [LightController getAllLightControllersInManagedObjectContext:APPDELEGATE.managedObjectContext];
+    
+    if (lightArray.count == 0) {
+        
+        LightControllerModel *blueControllerModel = [[LightControllerModel alloc] init];
+        blueControllerModel.name = @"Tv221u_qwe";
+        blueControllerModel.macAddress = @"Tv221u_qwe12345";
+        blueControllerModel.type = Normal;
+        LightController *blueController = [LightController addObjectWithIdentifier:blueControllerModel.name inManagedObjectContext:APPDELEGATE.managedObjectContext];
+        blueController.name = blueControllerModel.name;
+        blueController.deviceName = blueControllerModel.name;
+        
+        [_lightControllerArray addObject:blueController];
+        
+        LightControllerModel *christmasControllerModel = [[LightControllerModel alloc] init];
+        christmasControllerModel.name = @"Christmas Tree-Front Room";
+        christmasControllerModel.type = Normal;
+        LightController *christmasController = [LightController addObjectWithIdentifier:christmasControllerModel.name inManagedObjectContext:APPDELEGATE.managedObjectContext];
+        christmasController.name = christmasControllerModel.name;
+        christmasController.deviceName = christmasControllerModel.name;
+        
+        [_lightControllerArray addObject:christmasController];
+        
+        [APPDELEGATE saveContext];
+        
+    } else {
+        
+        
+        //            [_lightControllerArray addObjectsFromArray:lightArray];
+    }
     
 #endif
     
@@ -529,7 +531,9 @@
         LightControllerCellView *cellView = [[LightControllerCellView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 60)];
         
         CBPeripheral *peripheral = [[BluetoothManager sharedInstance] peripheral];
-        if (peripheral && peripheral.state == CBPeripheralStateConnected) {
+        if ([identifier isEqualToString:[peripheral.identifier UUIDString]]
+             && peripheral
+             && peripheral.state == CBPeripheralStateConnected) {
             cellView.isConnected = YES;
         } else {
             cellView.isConnected = NO;
@@ -746,7 +750,8 @@
         [MBProgressHUD showMessage:@"" toView:self.view];
         
 //        __weak typeof(self) weakSelf = self;
-        if (peripheral.state == CBPeripheralStateConnected) {
+        if (peripheral.state == CBPeripheralStateConnected
+            && [peripheral.name isEqualToString:light.macAddress]) {
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view];

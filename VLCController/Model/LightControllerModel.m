@@ -27,6 +27,7 @@
         self.deviceName = lightController.deviceName;
         self.identifier = lightController.identifier;
         self.lightID = lightController.lightID;
+        self.macAddress = lightController.macAddress;
     }
     return self;
 }
@@ -37,5 +38,11 @@
         _slaveArray = [[NSMutableArray alloc] init];
     }
     return _slaveArray;
+}
+
+- (NSString *)debugDescription
+{
+    NSDictionary *dic = [self yy_modelToJSONObject];
+    return [NSString stringWithFormat:@"<%@:%p>:%@", [self class], self, dic];    
 }
 @end

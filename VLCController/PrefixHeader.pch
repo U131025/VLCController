@@ -20,7 +20,7 @@
 
 
 #ifdef DEBUG
-    #define TEST_CLOSE_BLUETOOTH @"test_close_bluetooth"
+//    #define TEST_CLOSE_BLUETOOTH @"test_close_bluetooth"
 //    #define TEST_FILTER_RESPOND @"fliter_respond"
 #endif
 
@@ -54,6 +54,7 @@
 
     #import <Bugly/Bugly.h>
     #import "NSObject+YYModel.h"
+    #import "YYModel.h"
 
 #endif
 

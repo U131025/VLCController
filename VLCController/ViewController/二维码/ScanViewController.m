@@ -478,6 +478,7 @@ static const CGFloat kMargin = 80;
         __block ConnectModel *model = [[ConnectModel alloc] initWithString:string];
         
         if (model) {
+                        
             [[BluetoothManager sharedInstance] connectWithName:model.deviceName oldPassword:model.password newPassword:model.password successBlock:^(CBPeripheral *peripheral, id data, BLERespondType type) {
                 
                 [self hideHUD];
