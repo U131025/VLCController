@@ -453,22 +453,7 @@ static const CGFloat kMargin = 80;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [self connectPeripheralWithMacAddrAndPasswordString:string];
-    
-//    NSArray *deviceArray = [[BluetoothManager sharedInstance] device];
-//    if (deviceArray.count == 0) {
-//        
-//        //重新扫描
-//        [[BluetoothManager sharedInstance] startScanBluetooth];
-//        
-//        //2秒后遍历扫描设备并尝试连接
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [self connectPeripheralWithMacAddrAndPasswordString:string];
-//        });
-//    }
-//    else {
-//        [self connectPeripheralWithMacAddrAndPasswordString:string];
-//        
-//    }
+ 
 }
 
 - (void)connectPeripheralWithMacAddrAndPasswordString:(NSString *)string
@@ -478,6 +463,8 @@ static const CGFloat kMargin = 80;
         __block ConnectModel *model = [[ConnectModel alloc] initWithString:string];
         
         if (model) {
+            
+            [[BluetoothManager sharedInstance] disconnectAllPeripheral];
                         
             [[BluetoothManager sharedInstance] connectWithName:model.deviceName oldPassword:model.password newPassword:model.password successBlock:^(CBPeripheral *peripheral, id data, BLERespondType type) {
                 

@@ -36,7 +36,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VLCController/ViewController/PairController/PaireControllerViewController.m"
-            timestampString = "522079113.032913"
+            timestampString = "531483622.861872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "224"
@@ -68,7 +68,7 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/Service/%E5%9B%BA%E4%BB%B6%E4%B8%8B%E8%BD%BD/FirmwareService.m"
-                  timestampString = "531334108.169664"
+                  timestampString = "531483622.983389"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "243"
@@ -83,7 +83,7 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/Service/%E5%9B%BA%E4%BB%B6%E4%B8%8B%E8%BD%BD/FirmwareService.m"
-                  timestampString = "531334108.171484"
+                  timestampString = "531483622.985823"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "243"
@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VLCController/ViewController/HomeViewController.m"
-            timestampString = "531334108.098356"
+            timestampString = "531483622.862589"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "-showPairSuccess:"
             landmarkType = "7">
          </BreakpointContent>
@@ -131,12 +131,60 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VLCController/ViewController/HomeViewController.m"
-            timestampString = "531334108.098992"
+            filePath = "VLCController/ViewController/FoundViewController.m"
+            timestampString = "531479279.013348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "747"
-            endingLineNumber = "747"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
+            landmarkName = "-pairControllerAction"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__43-[FoundViewController pairControllerAction]_block_invoke"
+                  moduleName = "VLCController"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/ViewController/FoundViewController.m"
+                  timestampString = "531483622.995953"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "290"
+                  endingLineNumber = "290"
+                  offsetFromSymbolStart = "288">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__43-[FoundViewController pairControllerAction]_block_invoke_3"
+                  moduleName = "VLCController"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/ViewController/FoundViewController.m"
+                  timestampString = "531483622.99783"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "290"
+                  endingLineNumber = "290"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VLCController/ViewController/HomeViewController.m"
+            timestampString = "531483622.863215"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "753"
+            endingLineNumber = "753"
             landmarkName = "-pairController:"
             landmarkType = "7">
          </BreakpointContent>
@@ -144,16 +192,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VLCController/ViewController/&#x4e8c;&#x7ef4;&#x7801;/ScanViewController.m"
+            timestampString = "531483622.863754"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "491"
+            endingLineNumber = "491"
+            landmarkName = "-connectPeripheralWithMacAddrAndPasswordString:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VLCController/ViewController/&#x4e8c;&#x7ef4;&#x7801;/ScanViewController.m"
+            timestampString = "531483622.863968"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "482"
+            endingLineNumber = "482"
+            landmarkName = "-connectPeripheralWithMacAddrAndPasswordString:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VLCController/ViewController/HomeViewController.m"
-            timestampString = "531334108.099477"
+            timestampString = "531483622.864091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "753"
-            endingLineNumber = "753"
-            landmarkName = "-pairController:"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "-disconnectAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VLCController/ViewController/HomeViewController.m"
+            timestampString = "531483642.072429"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

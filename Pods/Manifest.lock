@@ -16,26 +16,32 @@ PODS:
     - AFNetworking/NSURLSession
   - Bugly (2.3.1)
   - FCFileManager (1.0.18)
+  - IQKeyboardManager (4.0.8)
   - Kiwi (2.4.0)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
+  - YYKeyboardManager (1.0.1)
 
 DEPENDENCIES:
   - AFNetworking
   - Bugly
   - FCFileManager (~> 1.0.7)
+  - IQKeyboardManager
   - Kiwi
   - Masonry
   - MBProgressHUD
+  - YYKeyboardManager
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   Bugly: c8ece2fa5bdcb404abdd0e07131e8129f580d893
   FCFileManager: 3d13576da1f709d37460bd7669cdf07b9d6d8bc3
+  IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
   Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  YYKeyboardManager: ff53d2e80d1808567a7f004028bd200d9469a89f
 
-PODFILE CHECKSUM: 36477b8d6d1881902e9c89f2422fef9e1ec34fec
+PODFILE CHECKSUM: d90c78a0381f526319fc6cb2e49e0669955ef9dd
 
 COCOAPODS: 1.1.1

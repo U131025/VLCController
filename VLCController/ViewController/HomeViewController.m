@@ -18,6 +18,8 @@
 #import "SetupResultViewController.h"
 #import "WkWebViewController.h"
 #import "UIViewController+Visible.h"
+#import "ScanViewController.h"
+#import "PaireControllerViewController.h"
 
 @interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -130,10 +132,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnectAction:) name:Notify_Disconnect object:nil];
     
     [[BluetoothManager sharedInstance] setBlockForDisconnected:^(CBPeripheral *peripheral) {
-        
+
         UIViewController *viewController = [UIViewController visibleViewController];
-        if (viewController && ![viewController isKindOfClass:[HomeViewController class]]) {
-            
+        if (viewController
+            && ![viewController isKindOfClass:[HomeViewController class]]
+            && ![viewController isKindOfClass:[ScanViewController class]]
+            && ![viewController isKindOfClass:[PaireControllerViewController class]]) {
+
             [viewController.navigationController popToViewController:self animated:YES];
         }
     }];
@@ -300,6 +305,7 @@
     
     [self checkBluetoothDevice];
     [self.tableView reloadData];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
