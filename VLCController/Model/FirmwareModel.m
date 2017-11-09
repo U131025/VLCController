@@ -32,7 +32,6 @@
             NSArray *modelList = [NSArray yy_modelArrayWithClass:[FirmwareModel class] json:array];
             
             if (successBlock) {
-//                successBlock([NSArray arrayWithObject:[modelList objectAtIndex:0]]);
                 successBlock(modelList);
             }
         }        

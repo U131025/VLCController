@@ -519,4 +519,16 @@
     return [[NSData alloc] initWithBytes:commandData length:20];
 }
 
+/**
+ 擦除确认命令
+ */
++ (NSData *)erasingConfirmCommand
+{
+    int pos = 0;
+    Byte commandData[2] = {0};
+    commandData[pos] = 0x5a; pos++;
+    commandData[pos] = 0x69; pos++;
+    return [[NSData alloc] initWithBytes:commandData length:2];
+}
+
 @end

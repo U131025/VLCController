@@ -263,7 +263,7 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-- (void)showMessage:(NSString *)message withTitle:(NSString *)title cancleTitle:(NSString *)cancelTitle okTitle:(NSString *)okTitle onOKBlock:(void (^)())onOKBlock
+- (void)showMessage:(NSString *)message withTitle:(NSString *)title cancleTitle:(NSString *)cancelTitle cancel:(void (^)())cancel okTitle:(NSString *)okTitle onOKBlock:(void (^)())onOKBlock
 {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
@@ -277,7 +277,11 @@
     }
     
     if (cancelTitle) {
-        UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:cancelTitle style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:cancelTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            if (cancel) {
+                cancel();
+            }
+        }];
         [alertController addAction:cancleAction];
     }
     

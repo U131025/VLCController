@@ -51,4 +51,9 @@
 //格式化发送字符串
 + (NSData *)formatCommand:(NSData *)data;
 
+/**
+ 擦除确认命令
+ */
++ (NSData *)erasingConfirmCommand;
+
 @end

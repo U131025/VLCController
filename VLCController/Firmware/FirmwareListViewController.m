@@ -11,6 +11,7 @@
 #import "FirmwareTableViewCell.h"
 #import "FirmwareService.h"
 #import "FirmwareModel.h"
+#import "SettingViewController.h"
 
 @interface FirmwareListViewController ()
 
@@ -46,12 +47,21 @@
 
 - (void)loadDataFromService
 {
+    //获取固件版本
+    __weak typeof(self) weakSelf = self;
     [FirmwareModel fetchListSuccess:^(id data) {
         
         self.dataArray = data;
+        if (self.dataArray.count == 0) {
+            //提示
+            [weakSelf showTipWithMessage:@"There is no firmware available" withTitle:@"" useCancel:NO onOKBlock:nil];
+        }
+        
         self.tableConfig.items = self.dataArray;
         [self.firmwareTableView reloadData];
-    } failure:nil];
+    } failure:^(id error) {
+        [weakSelf showTipWithMessage:@"There is no firmware available" withTitle:@"" useCancel:NO onOKBlock:nil];
+    }];
 }
 
 - (void)setupTableConfig
@@ -91,7 +101,12 @@
         
         if (value[0] == 0xaa && value[1] == 0x0a) {
             
-            [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" okTitle:@"YES" onOKBlock:^{
+            [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" cancel:^ {
+                
+                //返回主页
+                [weakSelf popToViewControllerClass:[SettingViewController class] animated:YES];
+                
+            } okTitle:@"YES" onOKBlock:^{
                 
                 FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:self.light.identifier url:model.url completionHandler:^{
                     //更新完成
@@ -111,7 +126,10 @@
         
     } timeOutValue:3.0 onTimeOut:^{
         
-        [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" okTitle:@"YES" onOKBlock:^{
+        [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" cancel:^ {
+            [weakSelf popToViewControllerClass:[SettingViewController class] animated:YES];
+            
+        } okTitle:@"YES" onOKBlock:^{
             
             FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:self.light.identifier url:model.url completionHandler:^{
                 //更新完成

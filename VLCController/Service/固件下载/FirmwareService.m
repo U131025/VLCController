@@ -56,38 +56,6 @@
 - (void)startUpdating
 {
     [self startDownload];
-    
-//    __weak typeof(self) weakSelf = self;
-//    [MBProgressHUD showMessage:@""];
-//    
-//    //发送等待命令
-//    Byte commandData[20] = {0};
-//    for (NSInteger i = 0; i < 20; i++) {
-//        commandData[i] = 0x7F;
-//    }
-//    
-//    NSData *sendData = [[NSData alloc] initWithBytes:commandData length:20];
-//    [[BluetoothManager sharedInstance] sendData:sendData onRespond:^BOOL(NSData *data) {
-//        //        
-//        Byte value[2] = {0};
-//        [data getBytes:&value length:sizeof(value)];
-//        if (value[0] == 0xaa && value[1] == 0x0a) {
-//            
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [MBProgressHUD hideHUD];
-//            });
-//            
-////
-//            
-//            return YES;
-//        }
-//        else {
-//            
-//            return NO;
-//        }
-//    } onTimeOut:^{
-//        //
-//    }];
 }
 
 - (void)startDownload
@@ -160,38 +128,34 @@
         
     }];
 }
-
+//开始更新固件
 - (void)updateFirmwareStart:(NSData *)fileData
 {
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        self.downloadViwe.tipLabel.text = @"Erasing…";
-//        self.progressView.progress = 0.0;
-//    });
-    
+    //3：APP发送:7F 7F 7F 7F 7F 7F 7F 7F 7F 7F 7F 7F 7F 7F 7F 7F 7F 7F 7F 7F  （启动更新指令）
     __weak typeof(self) weakSelf = self;
     [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateFirmwareCommand] onRespond:^BOOL(NSData *data) {
         
         Byte value[2] = {0};
         [data getBytes:&value length:sizeof(value)];
         if (value[0] == 0xaa && value[1] == 0x0a) {
-            
-            //等待50m后再次发送删除
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
-                //擦除
-                [weakSelf readyToEarsing:fileData];
-            });
-            
+//            1秒内：
+//            MCU回复:AA 0A 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 A0 （下位机启动固件更新）
+            return NO;
+        }
+        else if (value[0] == 0x5a && value[1] == 0x55) {
+//            1秒内：
+//            MCU回复5A 55；（说明引导程序已经做好准备）
+            [weakSelf readyToEarsing:fileData];
             return YES;
         }
         
         return NO;
-    } timeOutValue:10 onTimeOut:^{
+    } timeOutValue:5 onTimeOut:^{
         
         //超时
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.downloadViwe hide];
-            [MBProgressHUD showError:@"Timeout"];
+            [MBProgressHUD showError:@"Unsuccessful"];
         });
         
     }];
@@ -199,26 +163,37 @@
 
 - (void)readyToEarsing:(NSData *)fileData
 {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.downloadViwe.tipLabel.text = @"Erasing…";
+        self.progressView.progress = 0.0;
+    });
+    
     __weak typeof(self) weakSelf = self;
-    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateFirmwareCommand] onRespond:^BOOL(NSData *data) {
+    //4:APP发送5A 69
+    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand erasingConfirmCommand] onRespond:^BOOL(NSData *data) {
         
         Byte value[2] = {0};
         [data getBytes:&value length:sizeof(value)];
-        if (value[0] == 0xaa && value[1] == 0x0a) {
-            ;
-            //等待擦除完成
-            [weakSelf erasingData:fileData];
+        if (value[0] == 0x5a && value[1] == 0xa5) {
+            //5秒内：
+//            MCU回复:5A A5 （程序擦除完成），
+            //表示擦除成功
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.downloadViwe.tipLabel.text = @"Erasing 100%";
+                self.progressView.progress = 100.0;
+            });
             
+            [weakSelf erasingData:fileData];
             return YES;
         }
         
         return NO;
-    } timeOutValue:10 onTimeOut:^{
+    } timeOutValue:5.0 onTimeOut:^{
         
         //超时
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.downloadViwe hide];
-            [MBProgressHUD showError:@"Timeout"];
+            [MBProgressHUD showError:@"Unsuccessful"];
         });
         
     }];
@@ -227,48 +202,14 @@
 
 - (void)erasingData:(NSData *)fileData
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.downloadViwe.tipLabel.text = @"Erasing…";
-        self.progressView.progress = 0.0;
-    });
+    //5:APP发送5A 69（无需等待MCU回复)
+    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand erasingConfirmCommand] onRespond:nil onTimeOut:nil];
     
-    __weak typeof(self) weakSelf = self;
-    
-    [[BluetoothManager sharedInstance] readDataWithRespond:^BOOL(NSData *data) {
-        
-        Byte value[2] = {0};
-        [data getBytes:&value length:sizeof(value)];
-        if (value[0] == 0xaa && value[1] == 0x0b) {
-            //表示擦除成功
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.downloadViwe.tipLabel.text = @"Erasing 100%";
-                self.progressView.progress = 100.0;
-            });
-            //发送文件长度
-            [weakSelf readyUpdating:fileData];
-            
-            return YES;
-        }
-        else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.downloadViwe hide];
-                [MBProgressHUD showError:@"Data Error"];
-            });
-        }
-        
-        return NO;
-        
-    } timeOutValue:10 onTimeOut:^{
-        
-        //超时
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.downloadViwe hide];
-            [MBProgressHUD showError:@"Erasing Error: Timeout"];
-        });
-    }];
-    
+    //6:APP发送2FC4(告知bin文件大小给MCU，2FC4是V26文件大小）
+    [self readyUpdating:fileData];
 }
 
+//更新文件 
 - (void)readyUpdating:(NSData *)fileData
 {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -277,33 +218,18 @@
         self.progressView.progress = 0.0;
     });
     
-    __weak typeof(self) weakSelf = self;
-    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand readyUpdateFirmwareCommandWithDataLen:fileData.length] onRespond:^BOOL(NSData *data) {
-        
-        Byte value[2] = {0};
-        [data getBytes:&value length:sizeof(value)];
-        if (value[0] == 0xaa && value[1] == 0x0a) {
-            
-            dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                //开始写文件
-                [weakSelf writeFirmwareData:fileData];
-            });
-            
-            return YES;
-        }
-        
-        return NO;
-    } timeOutValue:10 onTimeOut:^{
-        
-        //超时
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.downloadViwe hide];
-            [MBProgressHUD showError:@"Timeout"];
-        });
-        
-    }];
+    //6:APP发送2FC4(告知bin文件大小给MCU，2FC4是V26文件大小）
+    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand readyUpdateFirmwareCommandWithDataLen:fileData.length] onRespond:nil onTimeOut:nil];
+    
+    //延时100ms， （无需等待MCU回复)
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+
+        //7：APP传输bin文件的数据给mcu；直到程序下载完毕，mcu不再给回复；而是直接运行新程序；
+        [self readyToEarsing:fileData];
+    });
 }
 
+//开始写文件
 - (void)writeFirmwareData:(NSData *)fileData
 {
     NSInteger offset = 0;
@@ -350,9 +276,8 @@
         
     });
     
-    
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.downloadViwe.tipLabel.text = @"Updating Success";
+        self.downloadViwe.tipLabel.text = @"Successful";
     });
     
     //写数据完成

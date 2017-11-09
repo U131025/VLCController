@@ -40,7 +40,7 @@
 
 - (void)showTipWithMessage:(NSString *)message withTitle:(NSString *)title useCancel:(BOOL)useCancel onOKBlock:(void (^)())onOKBlock;
 
-- (void)showMessage:(NSString *)message withTitle:(NSString *)title cancleTitle:(NSString *)cancelTitle okTitle:(NSString *)okTitle onOKBlock:(void (^)())onOKBlock;
+- (void)showMessage:(NSString *)message withTitle:(NSString *)title cancleTitle:(NSString *)cancelTitle cancel:(void (^)())cancel okTitle:(NSString *)okTitle onOKBlock:(void (^)())onOKBlock;
 
 - (void)showInputView:(void (^)(NSString *password))confire cancel:(void (^)())cancel;
 

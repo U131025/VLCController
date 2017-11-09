@@ -473,7 +473,9 @@
         
         if (value[0] == 0xaa && value[1] == 0x0a) {
             
-            [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" okTitle:@"YES" onOKBlock:^{
+            [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" cancel:^{
+                
+            } okTitle:@"YES" onOKBlock:^{
                 
                 FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:self.light.identifier url:model.url completionHandler:^{
                     //更新完成
@@ -493,7 +495,9 @@
         
     } timeOutValue:3.0 onTimeOut:^{
         
-        [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" okTitle:@"YES" onOKBlock:^{
+        [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" cancel:^{
+            
+        } okTitle:@"YES" onOKBlock:^{
             
             FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:self.light.identifier url:model.url completionHandler:^{
                 //更新完成
