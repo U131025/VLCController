@@ -96,7 +96,10 @@
     _downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress *downloadProgress) {
         //下载进度
         CGFloat progress = downloadProgress.completedUnitCount / downloadProgress.totalUnitCount;
-        self.downloadViwe.tipLabel.text = [NSString stringWithFormat:@"Downloading %.f%%", progress*100.0];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.downloadViwe.tipLabel.text = [NSString stringWithFormat:@"Downloading %.f%%", progress*100.0];
+        });
         
         //一定要使用"setProgressWithDownloadProgressOfTask"方法设置进度,不然进度条无法刷新
         if (self.progressView) {
