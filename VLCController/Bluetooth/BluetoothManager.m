@@ -236,6 +236,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
             
             if (self.onRespondBlock(notifyData)) {
                 self.onRespondBlock = nil;
+                self.OnRespondTimeoutBlock = nil;
                 [self timerClean];
             }
         }

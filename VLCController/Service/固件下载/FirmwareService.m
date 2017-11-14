@@ -138,17 +138,31 @@
     __weak typeof(self) weakSelf = self;
     [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateFirmwareCommand] onRespond:^BOOL(NSData *data) {
         
-        Byte value[2] = {0};
+        Byte value[20] = {0};
         [data getBytes:&value length:sizeof(value)];
         if (value[0] == 0xaa && value[1] == 0x0a) {
-//            1秒内：
-//            MCU回复:AA 0A 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 A0 （下位机启动固件更新）
-            return NO;
-        }
-        else if (value[0] == 0x5a && value[1] == 0x55) {
-//            1秒内：
-//            MCU回复5A 55；（说明引导程序已经做好准备）
-            [weakSelf readyToEarsing:fileData];
+            //            1秒内：
+            //            MCU回复:AA 0A 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 A0 （下位机启动固件更新）
+            //继续读取
+            //            1秒内：
+            //            MCU回复5A 55；（说明引导程序已经做好准备）
+            [[BluetoothManager sharedInstance] readDataWithRespond:^BOOL(NSData *data) {
+
+                Byte value[20] = {0};
+                [data getBytes:&value length:sizeof(value)];
+                if (value[0] == 0x5a && value[1] == 0x55) {                    
+                    [weakSelf readyToEarsing:fileData];
+                    return YES;
+                }
+                return NO;
+            } timeOutValue:5 onTimeOut:^{
+                //超时
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.downloadViwe hide];
+                    [MBProgressHUD showError:@"Unsuccessful"];
+                });
+            }];
+            
             return YES;
         }
         
@@ -163,6 +177,8 @@
         
     }];
 }
+
+
 
 - (void)readyToEarsing:(NSData *)fileData
 {
