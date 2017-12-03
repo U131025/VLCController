@@ -715,10 +715,12 @@
         chanenlIndex = 1;
         for (Channel *channel in channelArray) {
             
-            NSString *timeOnBtye = [self getByteTimeWithDateString:simpleSchedule.timeOn withFormat:ScheduleTimeFormat];
-            NSString *timeOffBtye = [self getByteTimeWithDateString:simpleSchedule.timeOff withFormat:ScheduleTimeFormat];
-            
-            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateController:YES withDayIndex:dayIndex withChannel:[[ChannelModel alloc] initWithChannel:channel] withOnTime:timeOnBtye withOffTime:timeOffBtye isPhotoCell:[simpleSchedule.isPhotoCell boolValue]] onRespond:nil onTimeOut:nil];
+            if (channel.firstColorValue.length > 0 || channel.secondColorValue.length > 0) {
+                NSString *timeOnBtye = [self getByteTimeWithDateString:simpleSchedule.timeOn withFormat:ScheduleTimeFormat];
+                NSString *timeOffBtye = [self getByteTimeWithDateString:simpleSchedule.timeOff withFormat:ScheduleTimeFormat];
+                
+                [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateController:YES withDayIndex:dayIndex withChannel:[[ChannelModel alloc] initWithChannel:channel] withOnTime:timeOnBtye withOffTime:timeOffBtye isPhotoCell:[simpleSchedule.isPhotoCell boolValue]] onRespond:nil onTimeOut:nil];
+            }
             
             progress = (1.0f / (float)items.count) * ((float)chanenlIndex / (float)channelArray.count);
             progress += ((float)(dayIndex-1) / (float)items.count);
@@ -813,7 +815,7 @@
         for (Channel *channel in channelArray) {
             
             NSLog(@"channel : %@", channel);
-            if (channel.colorType || channel.subColorType) {
+            if (channel.firstColorValue.length > 0 || channel.secondColorValue.length > 0) {
                 NSString *timeOnBtye = [self getByteTimeWithDateString:customSchedule.timeOn withFormat:ScheduleTimeFormat];
                 NSString *timeOffBtye = [self getByteTimeWithDateString:customSchedule.timeOff withFormat:ScheduleTimeFormat];
                 
@@ -978,19 +980,18 @@
         self.hud.label.text = @"Updating Controller...";
     });
     
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        
-//        
-//    });
-    
+    NSLog(@"theme : %@", theme);
     NSArray *channelsArray = [Channel getChannelWithTheme:theme inManageObjectContext:APPDELEGATE.managedObjectContext];
     
     float progress = 0.0f;
     NSInteger index = 1;
     [self.selThemeChannelArray removeAllObjects];
     for (Channel *channel in channelsArray) {
-        
-        [[BluetoothManager sharedInstance] sendData:[LightControllerCommand setTheColorThemeWithChannel:[Channel convertToModel:channel]] onRespond:nil onTimeOut:nil];
+       
+        NSLog(@"channel : %@", channel);
+        if (channel.firstColorValue.length > 0 || channel.secondColorValue.length > 0) {
+            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand setTheColorThemeWithChannel:[Channel convertToModel:channel]] onRespond:nil onTimeOut:nil];
+        }
         
         [self.selThemeChannelArray addObject:[[ChannelModel alloc] initWithChannel:channel]];
         

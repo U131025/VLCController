@@ -68,7 +68,7 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/Service/%E5%9B%BA%E4%BB%B6%E4%B8%8B%E8%BD%BD/FirmwareService.m"
-                  timestampString = "533974007.290341"
+                  timestampString = "533986885.151699"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "244"
@@ -83,7 +83,7 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/Service/%E5%9B%BA%E4%BB%B6%E4%B8%8B%E8%BD%BD/FirmwareService.m"
-                  timestampString = "533974007.29537"
+                  timestampString = "533986885.155269"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "244"
@@ -132,7 +132,7 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/ViewController/FoundViewController.m"
-                  timestampString = "533974007.308912"
+                  timestampString = "533986885.166868"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "290"
@@ -147,7 +147,7 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/ViewController/FoundViewController.m"
-                  timestampString = "533974007.310747"
+                  timestampString = "533986885.1688"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "290"
@@ -186,6 +186,22 @@
             startingLineNumber = "237"
             endingLineNumber = "237"
             landmarkName = "-peripheralAtCharateristic:notifyData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VLCController/ViewController/SettingViewController.m"
+            timestampString = "533986885.022545"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "716"
+            endingLineNumber = "716"
+            landmarkName = "-setSimpleSchedulePlan"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

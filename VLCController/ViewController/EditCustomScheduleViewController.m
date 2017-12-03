@@ -543,47 +543,52 @@
     
     //校验时间
     [MBProgressHUD showMessage:@"Waiting..." toView:self.view];
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        //
-        Schedule *schedule = [Schedule addWithName:CustomSchedule withLightController:self.light inManageObjectContext:APPDELEGATE.managedObjectContext];
-        schedule.timeOn = self.onTimeValue;
-        schedule.timeOff = self.offTimeValue;
-        schedule.isPhotoCell = [[NSNumber alloc] initWithBool:self.photoCellSwitch.isOn];
-        schedule.isCustomSchedule = 0;
-        
-        //save
-        NSArray *tempArray = [NSArray arrayWithArray:self.daysArray];
-        for (int i = 0; i < tempArray.count; i++) {
-            ScheduleItemModel *itemModel = [tempArray objectAtIndex:i];
-            ScheduleItem *item = [ScheduleItem addWithName:itemModel.name withSchedule:schedule inManageObjectContext:APPDELEGATE.managedObjectContext];
+    @try {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            //
+            Schedule *schedule = [Schedule addWithName:CustomSchedule withLightController:self.light inManageObjectContext:APPDELEGATE.managedObjectContext];
+            schedule.timeOn = self.onTimeValue;
+            schedule.timeOff = self.offTimeValue;
+            schedule.isPhotoCell = [[NSNumber alloc] initWithBool:self.photoCellSwitch.isOn];
+            schedule.isCustomSchedule = 0;
             
-            if (item) {
-                item.name = itemModel.name;
-                item.date = itemModel.date;
-                item.themeName = itemModel.themeName;
-                if (!itemModel.themeName)
-                    item.isSelected = [[NSNumber alloc] initWithBool:NO];
-                else
-                    item.isSelected = [[NSNumber alloc] initWithBool:YES];
+            //save
+            NSArray *tempArray = [NSArray arrayWithArray:self.daysArray];
+            for (int i = 0; i < tempArray.count; i++) {
+                ScheduleItemModel *itemModel = [tempArray objectAtIndex:i];
+                ScheduleItem *item = [ScheduleItem addWithName:itemModel.name withSchedule:schedule inManageObjectContext:APPDELEGATE.managedObjectContext];
+                
+                if (item) {
+                    item.name = itemModel.name;
+                    item.date = itemModel.date;
+                    item.themeName = itemModel.themeName;
+                    if (!itemModel.themeName)
+                        item.isSelected = [[NSNumber alloc] initWithBool:NO];
+                    else
+                        item.isSelected = [[NSNumber alloc] initWithBool:YES];
+                }
+                
             }
             
-        }
-        
-        [APPDELEGATE saveContext];
-        
-//        [self setCustomSchedulePlan];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //
-            [MBProgressHUD hideHUDForView:self.view];
-            [MBProgressHUD showSuccess:@"Save Success!" toView:self.view];
+            [APPDELEGATE saveContext];
             
-            //设置完毕返回
-            [self returnViewController:[SettingViewController class]];
-
+            //        [self setCustomSchedulePlan];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //
+                [MBProgressHUD hideHUDForView:self.view];
+                [MBProgressHUD showSuccess:@"Save Success!" toView:self.view];
+                
+                //设置完毕返回
+                [self returnViewController:[SettingViewController class]];
+                
+            });
         });
-    });
+    } @catch (NSException *exception) {
+
+    } @finally {
+
+    }
     
 }
 

@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSFetchRequest<ScheduleItem *> *)fetchRequest;
 
 @property (nullable, nonatomic, copy) NSString *date;
-@property (nullable, nonatomic, copy) NSNumber *isSelected;
+@property (nullable, nonatomic, strong) NSNumber *isSelected;
 @property (nullable, nonatomic, copy) NSString *name;
 @property (nullable, nonatomic, copy) NSString *themeName;
 @property (nullable, nonatomic, retain) Schedule *schedule;
