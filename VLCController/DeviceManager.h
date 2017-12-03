@@ -77,4 +77,6 @@
 
 - (void)disconnectPeripheral;
 
+- (void)listenNotify;
+
 @end

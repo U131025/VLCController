@@ -208,8 +208,10 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
             if (self.connectSuccessBlock) {
                 self.connectSuccessBlock(model.periperal, charateristic.value, BLERespondTypeSuccess);
                 self.connectSuccessBlock = nil;
-            }
+            }            
             
+            //成功后监听FFE4
+//            [[DeviceManager sharedInstance] listenNotify];
         }
         else if (pData[0] == 1) {
             

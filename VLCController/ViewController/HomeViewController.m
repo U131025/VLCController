@@ -230,6 +230,8 @@
             return;
         }
         
+        [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:_lightModel.lightID] onRespond:nil onTimeOut:nil];
+        
         //点击事件
         SettingViewController *settingVC = [[SettingViewController alloc] initWithPeripheral:periphseral];
         settingVC.headerTitle = _lightModel.name;
@@ -763,6 +765,8 @@
                 [MBProgressHUD hideHUDForView:self.view];
             });
             
+            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:_lightModel.lightID] onRespond:nil onTimeOut:nil];
+            
             SettingViewController *settingVC = [[SettingViewController alloc] initWithPeripheral:peripheral];
             settingVC.headerTitle = _lightModel.name;
             settingVC.light = light;
@@ -798,6 +802,8 @@
             [MBProgressHUD hideHUDForView:self.view];
         });
         
+        [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:_lightModel.lightID] onRespond:nil onTimeOut:nil];
+        
         SettingViewController *settingVC = [[SettingViewController alloc] initWithPeripheral:peripheral];
         settingVC.headerTitle = _lightModel.name;
         settingVC.light = light;
@@ -813,6 +819,7 @@
     [[BluetoothManager sharedInstance] connectWithName:light.macAddress oldPassword:password newPassword:password successBlock:^(CBPeripheral *peripheral, id data, BLERespondType type) {
         
         [self hideHUD];
+        [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:_lightModel.lightID] onRespond:nil onTimeOut:nil];
         
         SettingViewController *settingVC = [[SettingViewController alloc] initWithPeripheral:peripheral];
         settingVC.headerTitle = _lightModel.name;

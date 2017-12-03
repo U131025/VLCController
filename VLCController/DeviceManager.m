@@ -261,6 +261,20 @@
     
 }
 
+- (void)listenNotify
+{
+    if (self.model.readCharateristic && self.model.periperal) {
+        [self.baby notify:self.model.periperal characteristic:self.model.readCharateristic block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
+            
+            for (id<DeviceManagerDelegate> delegate in self.delegateHashTable) {
+                if ([delegate respondsToSelector:@selector(peripheralAtCharateristic:notifyData:)]) {
+                    [delegate peripheralAtCharateristic:characteristics notifyData:characteristics.value];
+                }
+            }
+        }];
+    }
+}
+
 - (void)scanAndConnectToPeripheralAtChannel:(NSString *)channel
 {
     [self scanPeripheralAtChannel:channel autoConnect:YES];

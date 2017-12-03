@@ -454,6 +454,7 @@
         
         if (model.subColor)
             MyLog(@"subColor: %@", [UIColor hexFromUIColor:model.subColor]);
+        
         //颜色，名称
         newChannel.index = [[NSNumber alloc] initWithInteger:model.index];
         newChannel.firstColorValue = model.color ? [UIColor hexFromUIColor:model.color] : @"";

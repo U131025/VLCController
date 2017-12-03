@@ -168,8 +168,9 @@
     NSDate *nextDay = [NSDate date];
 //    nextDay = [DateFuncation getNextDate:nextDay];
 //    nextDay = [DateFuncation getNextDate:nextDay];
-    
-    NSDateFormatter *dateformatter=[[NSDateFormatter alloc] init];
+    NSTimeZone* localzone = [NSTimeZone localTimeZone];
+    NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
+    [dateformatter setTimeZone:localzone];
     [dateformatter setDateFormat:ScheduleDateFormat];
     
 //    NSArray *items = [ScheduleItem fetchWithSchedule:schedule inManageObjectContext:APPDELEGATE.managedObjectContext];
@@ -531,17 +532,17 @@
 - (void)saveAction
 {
     if (!self.onTimeValue && !self.photoCellSwitch.isOn) {
-        [MBProgressHUD showError:@"Please selecte time light turn on." ];
+        [MBProgressHUD showError:@"Please selecte time light turn on." toView:self.view];
         return;
     }
     
     if (!self.offTimeValue) {
-        [MBProgressHUD showError:@"Please selecte time light turn off."];
+        [MBProgressHUD showError:@"Please selecte time light turn off." toView:self.view];
         return;
     }
     
     //校验时间
-    [MBProgressHUD showMessage:@"Waiting..."];
+    [MBProgressHUD showMessage:@"Waiting..." toView:self.view];
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         //
@@ -575,8 +576,8 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             //
-            [MBProgressHUD hideHUD];
-            [MBProgressHUD showSuccess:@"Save Success!"];
+            [MBProgressHUD hideHUDForView:self.view];
+            [MBProgressHUD showSuccess:@"Save Success!" toView:self.view];
             
             //设置完毕返回
             [self returnViewController:[SettingViewController class]];

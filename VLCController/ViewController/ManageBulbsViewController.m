@@ -152,34 +152,43 @@
 //            channelArray = [bulbChannelArray copy];
         }
         
-        BOOL isPair = ![self.light.isPairBulbs boolValue];
+//        BOOL isPair = ![self.light.isPairBulbs boolValue];
         
-        //调用蓝牙接口
-        if (![self.light.isPairBulbs boolValue]) {
-            //未配对
-            __weak typeof(self) weakSelf = self;
-            
-            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairOrUnpairBulbs:isPair withTimeSp:self.light.lightID] onRespond:^BOOL(NSData *data) {
-                //success
-                Byte value[30] = {0};
-                [data getBytes:&value length:sizeof(value)];
-                if (value[0] == 0xaa && value[1] == 0x0a) {
-                    weakSelf.light.isPairBulbs = [[NSNumber alloc] initWithBool:isPair];
-                    [APPDELEGATE saveContext];
-                    return YES;
-                }
-                else {
-                    return NO;
-                }
-                
-            } onTimeOut:nil];
-        }
-        else {
-            //已配对则取消配对
-            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairOrUnpairBulbs:isPair withTimeSp:self.light.lightID] onRespond:nil onTimeOut:nil];
-            
-//            [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand pairOrUnpairBulbs:isPair withTimeSp:self.light.lightID] withIdentifier:self.light.identifier];
-        }
+        //调用蓝牙接口 取消DB2命令，只发送DB1
+        [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairOrUnpairBulbs:YES withTimeSp:self.light.lightID] onRespond:nil onTimeOut:nil];
+        
+//        if (![self.light.isPairBulbs boolValue]) {
+//            //未配对
+//            __weak typeof(self) weakSelf = self;
+//
+//#ifdef DEBUG
+//            self.light.isPairBulbs = [[NSNumber alloc] initWithBool:YES];
+//            [APPDELEGATE saveContext];
+//#endif
+//
+//            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairOrUnpairBulbs:YES withTimeSp:self.light.lightID] onRespond:^BOOL(NSData *data) {
+//                //success
+//                Byte value[30] = {0};
+//                [data getBytes:&value length:sizeof(value)];
+//                if (value[0] == 0xaa && value[1] == 0x0a) {
+//                    weakSelf.light.isPairBulbs = [[NSNumber alloc] initWithBool:YES];
+//                    [APPDELEGATE saveContext];
+//                    return YES;
+//                }
+//                else {
+//                    return NO;
+//                }
+//
+//            } onTimeOut:nil];
+//        }
+//        else {
+//            //已配对则取消配对
+//            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairOrUnpairBulbs:NO withTimeSp:self.light.lightID] onRespond:nil onTimeOut:nil];
+//
+//            self.light.isPairBulbs = [[NSNumber alloc] initWithBool:NO];
+//            [APPDELEGATE saveContext];
+////            [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand pairOrUnpairBulbs:isPair withTimeSp:self.light.lightID] withIdentifier:self.light.identifier];
+//        }
         
         dispatch_async(dispatch_get_main_queue(), ^{
             //

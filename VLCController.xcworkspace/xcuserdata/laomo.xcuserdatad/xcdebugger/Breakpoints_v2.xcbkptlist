@@ -64,49 +64,33 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__31-[FirmwareService erasingData:]_block_invoke.142"
+                  symbolName = "-[FirmwareService readyUpdating:]"
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/Service/%E5%9B%BA%E4%BB%B6%E4%B8%8B%E8%BD%BD/FirmwareService.m"
-                  timestampString = "531483622.983389"
+                  timestampString = "533974007.290341"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "243"
-                  endingLineNumber = "243"
-                  offsetFromSymbolStart = "168">
+                  startingLineNumber = "244"
+                  endingLineNumber = "244"
+                  offsetFromSymbolStart = "376">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__31-[FirmwareService erasingData:]_block_invoke_2"
+                  symbolName = "__33-[FirmwareService readyUpdating:]_block_invoke.178"
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/Service/%E5%9B%BA%E4%BB%B6%E4%B8%8B%E8%BD%BD/FirmwareService.m"
-                  timestampString = "531483622.985823"
+                  timestampString = "533974007.29537"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "243"
-                  endingLineNumber = "243"
+                  startingLineNumber = "244"
+                  endingLineNumber = "244"
                   offsetFromSymbolStart = "24">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VLCController/ViewController/SettingViewController.m"
-            timestampString = "529685627.812823"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "440"
-            endingLineNumber = "440"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -116,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VLCController/ViewController/HomeViewController.m"
-            timestampString = "531483622.862589"
+            timestampString = "533974007.171725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "-showPairSuccess:"
             landmarkType = "7">
          </BreakpointContent>
@@ -148,7 +132,7 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/ViewController/FoundViewController.m"
-                  timestampString = "531483622.995953"
+                  timestampString = "533974007.308912"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "290"
@@ -163,7 +147,7 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/ViewController/FoundViewController.m"
-                  timestampString = "531483622.99783"
+                  timestampString = "533974007.310747"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "290"
@@ -180,55 +164,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VLCController/ViewController/HomeViewController.m"
-            timestampString = "531483622.863215"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "753"
-            endingLineNumber = "753"
-            landmarkName = "-pairController:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VLCController/ViewController/&#x4e8c;&#x7ef4;&#x7801;/ScanViewController.m"
-            timestampString = "531483622.863754"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "491"
-            endingLineNumber = "491"
-            landmarkName = "-connectPeripheralWithMacAddrAndPasswordString:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VLCController/ViewController/&#x4e8c;&#x7ef4;&#x7801;/ScanViewController.m"
-            timestampString = "531483622.863968"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "482"
-            endingLineNumber = "482"
-            landmarkName = "-connectPeripheralWithMacAddrAndPasswordString:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VLCController/ViewController/HomeViewController.m"
-            timestampString = "531483622.864091"
+            timestampString = "533974007.17198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "174"
@@ -243,13 +179,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VLCController/ViewController/HomeViewController.m"
-            timestampString = "531483642.072429"
+            filePath = "VLCController/Bluetooth/BluetoothManager.m"
+            timestampString = "533974007.172071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "-peripheralAtCharateristic:notifyData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

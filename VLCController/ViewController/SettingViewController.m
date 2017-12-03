@@ -148,7 +148,7 @@
 - (void)disconnectAction:(NSNotification *)notify
 {
     if (_hud) {
-        [_hud hide:YES];
+        [_hud hideAnimated:YES];
         _hud = nil;
     }
     
@@ -200,12 +200,24 @@
     view.backgroundColor = [UIColor clearColor];
     
     if (section == 3) {
-        view.frame = (CGRect){0,0,ScreenWidth,100};
+        
         UIButton *updateButton = [[UIButton alloc] initWithFrame:CGRectMake(40, 20, ScreenWidth-80, 60)];
-        updateButton.layer.borderColor = WhiteColor.CGColor;
+        
+        UIColor *tiniColor = WhiteColor;
+        if (![self.light.isPowerOn boolValue]) {
+            tiniColor = GrayColor;
+            updateButton.enabled = NO;
+        }
+        else {
+            updateButton.enabled = YES;
+        }
+        
+        view.frame = (CGRect){0,0,ScreenWidth,100};
+        
+        updateButton.layer.borderColor = tiniColor.CGColor;
         updateButton.layer.borderWidth = 1;
         [updateButton setTitle:@"Update Controller" forState:UIControlStateNormal];
-        [updateButton setTitleColor:WhiteColor forState:UIControlStateNormal];
+        [updateButton setTitleColor:tiniColor forState:UIControlStateNormal];
         [updateButton addTarget:self action:@selector(updateControllerButtonClick) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:updateButton];
         
@@ -269,31 +281,60 @@
             
             self.themeComboxView.enable = !self.useSchedulePlan;
             
+            if (![self.light.isPowerOn boolValue]) {
+                self.themeComboxView.enable = NO;
+                titleLabel.textColor = GrayColor;
+            }
+            else {
+                titleLabel.textColor = WhiteColor;
+            }
+            
         } else if (section == 2) {
             titleLabel.text = @"Set light Schedule";
             ZJSwitch *scheduleSwitch = [[ZJSwitch alloc] initWithFrame:CGRectMake(ScreenWidth-80, 14, 60, 30)];
             scheduleSwitch.on = self.useSchedulePlan;
-            scheduleSwitch.borderColor = WhiteColor;
             scheduleSwitch.backgroundColor = [UIColor clearColor];
             
             scheduleSwitch.onText = @"ON";
             scheduleSwitch.offText = @"OFF";
             
-            if (scheduleSwitch.isOn)
-                scheduleSwitch.thumbTintColor = RGBAlphaColor(68, 167, 215, 1);
-            else
-                scheduleSwitch.thumbTintColor = WhiteColor;
-            
-            scheduleSwitch.offThumbTiniColor = WhiteColor;
-            scheduleSwitch.offTextColor = WhiteColor;
-            scheduleSwitch.tintColor = RGBAlphaColor(41, 118, 154, 1);
-            
-            scheduleSwitch.onThumbTiniColor = RGBAlphaColor(68, 167, 215, 1);
-            scheduleSwitch.onTextColor = RGBAlphaColor(68, 167, 215, 1);
-            scheduleSwitch.onTintColor = WhiteColor;
-            
             [scheduleSwitch addTarget:self action:@selector(scheduleSwitchAction:) forControlEvents:UIControlEventValueChanged];
             [view addSubview:scheduleSwitch];
+            
+            if (![self.light.isPowerOn boolValue]) {
+                titleLabel.textColor = GrayColor;
+                
+                scheduleSwitch.enabled = NO;
+                scheduleSwitch.borderColor = GrayColor;
+                scheduleSwitch.thumbTintColor = GrayColor;
+                
+                scheduleSwitch.offThumbTiniColor = GrayColor;
+                scheduleSwitch.offTextColor = GrayColor;
+                scheduleSwitch.tintColor = [UIColor lightGrayColor];
+                
+                scheduleSwitch.onThumbTiniColor = GrayColor;
+                scheduleSwitch.onTextColor = GrayColor;
+                scheduleSwitch.onTintColor = [UIColor lightGrayColor];
+            }
+            else {
+                scheduleSwitch.enabled = YES;
+                titleLabel.textColor = WhiteColor;
+                
+                scheduleSwitch.borderColor = WhiteColor;
+                
+                if (scheduleSwitch.isOn)
+                    scheduleSwitch.thumbTintColor = RGBAlphaColor(68, 167, 215, 1);
+                else
+                    scheduleSwitch.thumbTintColor = WhiteColor;
+                
+                scheduleSwitch.offThumbTiniColor = WhiteColor;
+                scheduleSwitch.offTextColor = WhiteColor;
+                scheduleSwitch.tintColor = RGBAlphaColor(41, 118, 154, 1);
+                
+                scheduleSwitch.onThumbTiniColor = RGBAlphaColor(68, 167, 215, 1);
+                scheduleSwitch.onTextColor = RGBAlphaColor(68, 167, 215, 1);
+                scheduleSwitch.onTintColor = WhiteColor;
+            }
         }
         
     }
@@ -305,7 +346,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DefaultCellIdentifier];
 //    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.accessoryView.tintColor = WhiteColor;
+//    cell.accessoryView.tintColor = WhiteColor;
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
     
@@ -323,6 +364,13 @@
         make.left.equalTo(view).offset(40);
         make.top.bottom.right.equalTo(view);
     }];
+    
+    if (![self.light.isPowerOn boolValue]) {
+        titleLLabel.textColor = GrayColor;
+        lineLabel.backgroundColor = GrayColor;
+//        cell.accessoryView.tintColor = GrayColor;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
     
     if (indexPath.row == 0) {
         
@@ -351,9 +399,14 @@
         lineBottomLabel.backgroundColor = WhiteColor;
         [cell.contentView addSubview:lineBottomLabel];
         [lineBottomLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.bottom.equalTo(cell.contentView);
+            make.left.bottom.equalTo(cell.contentView);
             make.height.mas_equalTo(1);
+            make.width.mas_equalTo(ScreenWidth);
         }];
+        
+        if (![self.light.isPowerOn boolValue]) {
+            lineBottomLabel.backgroundColor = GrayColor;
+        }
     }
     
     cell.backgroundColor = [UIColor clearColor];
@@ -361,21 +414,40 @@
     
     //arrow
     if (indexPath.row != 5) {
-        UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth- 40, 2, 20, 40)];
-        arrowImageView.contentMode = UIViewContentModeScaleAspectFit;
-        arrowImageView.image = [UIImage imageNamed:@"arrow"];
-        [cell.contentView addSubview:arrowImageView];
-        [arrowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(cell.contentView).offset(-20);
-            make.centerY.equalTo(cell.contentView);
-            make.width.mas_equalTo(20);
-            make.height.mas_equalTo(30);
-        }];
+        if ([self.light.isPowerOn boolValue]) {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+            UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 30)];
+            arrowImageView.image = [UIImage imageNamed:@"arrow"];
+            arrowImageView.contentMode = UIViewContentModeScaleAspectFit;
+            cell.accessoryView = arrowImageView;
+        }
+        else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.accessoryView = nil;
+        }
         
-        [view mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.bottom.equalTo(cell.contentView);
-            make.right.equalTo(arrowImageView.mas_left).offset(10);
-        }];
+        
+//
+//        if ([self.light.isPowerOn boolValue]) {
+//            arrowImageView.image = [UIImage imageNamed:@"arrow"];
+//        }
+//        else {
+//            arrowImageView.image = nil;
+//        }
+//
+//        [cell.contentView addSubview:arrowImageView];
+//        [arrowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.right.equalTo(cell.contentView).offset(-20);
+//            make.centerY.equalTo(cell.contentView);
+//            make.width.mas_equalTo(20);
+//            make.height.mas_equalTo(30);
+//        }];
+//
+//        [view mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.top.bottom.equalTo(cell.contentView);
+//            make.right.equalTo(arrowImageView.mas_left).offset(10);
+//        }];
     }
     else {
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -389,6 +461,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (![self.light.isPowerOn boolValue]) {
+        return;
+    }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 0) {
@@ -612,7 +688,7 @@
     
     float progress = 0.0f;
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.hud.labelText = @"Updating Controller...";
+        self.hud.label.text = @"Updating Controller...";
     });
     
     NSInteger dayIndex = 1;
@@ -663,7 +739,7 @@
     [[BluetoothManager sharedInstance] sendData:[LightControllerCommand compeleteCommandOnUseSchedulePlan:YES] onRespond:nil onTimeOut:nil];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.hud hide:YES];
+        [self.hud hideAnimated:YES];
         _hud =nil;
         //        [MBProgressHUD showSuccess:@"Complete"];
     });
@@ -685,7 +761,7 @@
     
     float progress = 0.0f;
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.hud.labelText = @"Updating Controller...";
+        self.hud.label.text = @"Updating Controller...";
     });
     
     NSInteger dayIndex = 1;
@@ -693,7 +769,23 @@
     for (ScheduleItem *item in items) {
         
         ScheduleItemModel *itemModel = [[ScheduleItemModel alloc] initWithScheduleItem:item];
-        if (!itemModel.isSelected) {
+        
+        //比较日期，如果主题日期小于当天的日期，获取下一天的主题
+        NSLog(@"date : %@", itemModel.date);
+//        NSDate *today = [NSDate date];
+        NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
+        NSTimeZone* localzone = [NSTimeZone localTimeZone];
+        [dateformatter setTimeZone:localzone];
+        [dateformatter setDateFormat:ScheduleDateFormat];
+        //December 03,2017
+        NSString *todayString = [dateformatter stringFromDate:[NSDate date]];
+        NSDate *today = [dateformatter dateFromString:todayString];
+        NSDate *themeDate = [dateformatter dateFromString:itemModel.date];
+        
+        NSTimeInterval interval = [themeDate timeIntervalSinceDate:today];
+        
+        if (!itemModel.isSelected
+            || interval < 0) {
             progress = ((float)(dayIndex) / (float)items.count);
             dispatch_async(dispatch_get_main_queue(), ^{
                 // Instead we could have also passed a reference to the HUD
@@ -701,7 +793,13 @@
                 [MBProgressHUD HUDForView:self.navigationController.view].progress = progress;
             });
             
-            dayIndex++;
+            if (interval < 0) {
+                dayIndex = 1;
+            }
+            else {
+                dayIndex++;
+            }
+            
             continue;
         }
         
@@ -714,10 +812,13 @@
         chanenlIndex = 1;
         for (Channel *channel in channelArray) {
             
-            NSString *timeOnBtye = [self getByteTimeWithDateString:customSchedule.timeOn withFormat:ScheduleTimeFormat];
-            NSString *timeOffBtye = [self getByteTimeWithDateString:customSchedule.timeOff withFormat:ScheduleTimeFormat];
-            
-            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateController:NO withDayIndex:dayIndex withChannel:[[ChannelModel alloc] initWithChannel:channel] withOnTime:timeOnBtye withOffTime:timeOffBtye isPhotoCell:[customSchedule.isPhotoCell boolValue]] onRespond:nil onTimeOut:nil];
+            NSLog(@"channel : %@", channel);
+            if (channel.colorType || channel.subColorType) {
+                NSString *timeOnBtye = [self getByteTimeWithDateString:customSchedule.timeOn withFormat:ScheduleTimeFormat];
+                NSString *timeOffBtye = [self getByteTimeWithDateString:customSchedule.timeOff withFormat:ScheduleTimeFormat];
+                
+                [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateController:NO withDayIndex:dayIndex withChannel:[[ChannelModel alloc] initWithChannel:channel] withOnTime:timeOnBtye withOffTime:timeOffBtye isPhotoCell:[customSchedule.isPhotoCell boolValue]] onRespond:nil onTimeOut:nil];
+            }
             
             progress = (1.0f/ (float)items.count) * ( (float)chanenlIndex / (float)channelArray.count);
             progress += ((float)(dayIndex-1) / (float)items.count);
@@ -744,7 +845,7 @@
     [[BluetoothManager sharedInstance] sendData:[LightControllerCommand compeleteCommandOnUseSchedulePlan:YES] onRespond:nil onTimeOut:nil];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.hud hide:YES];
+        [self.hud hideAnimated:YES];
         _hud =nil;
         //        [MBProgressHUD showSuccess:@"Complete"];
     });
@@ -770,6 +871,18 @@
     }
     
     [MBProgressHUD showMessage:nil];
+    
+#ifdef DEBUG
+    powerSwitch.on = !powerSwitch.isOn;
+    self.light.isPowerOn = [[NSNumber alloc] initWithBool:powerSwitch.isOn];
+    [APPDELEGATE saveContext];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
+    
+#else
+    
 //    [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand turnPowerOnorOff:powerSwitch.isOn]];
     __weak typeof(self) weakSelf = self;
     
@@ -808,7 +921,7 @@
         });
     }];
     
-    
+#endif
 }
 
 - (void)showTheme
@@ -862,7 +975,7 @@
 {
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.hud.labelText = @"Updating Controller...";
+        self.hud.label.text = @"Updating Controller...";
     });
     
 //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -905,7 +1018,7 @@
     __block CGFloat progressValue = 0.0f;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.hud.labelText = @"Updating Bulbs";
+        self.hud.label.text = @"Updating Bulbs";
         [MBProgressHUD HUDForView:self.navigationController.view].progress = progressValue;
     });
     
@@ -925,7 +1038,7 @@
             //结束
             dispatch_source_cancel(timer);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.hud hide:YES];
+                [self.hud hideAnimated:YES];
                 _hud =nil;
                 
             });
