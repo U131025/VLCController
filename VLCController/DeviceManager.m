@@ -388,7 +388,7 @@
 - (void)readData
 {
     DeviceModel *model = [self.peripheralDic objectForKey:ChannelOne];
-    if (model.periperal) {
+    if (model.periperal && model.readCharateristic) {
         [model.periperal readValueForCharacteristic:model.readCharateristic];
     }
 }

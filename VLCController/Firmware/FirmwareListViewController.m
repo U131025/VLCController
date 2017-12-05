@@ -126,17 +126,19 @@
         
     } timeOutValue:3.0 onTimeOut:^{
         
-        [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" cancel:^ {
-            [weakSelf popToViewControllerClass:[SettingViewController class] animated:YES];
-            
-        } okTitle:@"YES" onOKBlock:^{
-            
-            FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:self.light.identifier url:model.url completionHandler:^{
-                //更新完成
-            }];
-            
-            [service startUpdating];    //开始更新
-        }];
+        [weakSelf showTipWithMessage:@"There is no firmware available" withTitle:@"" useCancel:NO onOKBlock:nil];
+        
+//        [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" cancel:^ {
+//            [weakSelf popToViewControllerClass:[SettingViewController class] animated:YES];
+//
+//        } okTitle:@"YES" onOKBlock:^{
+//
+//            FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:self.light.identifier url:model.url completionHandler:^{
+//                //更新完成
+//            }];
+//
+//            [service startUpdating];    //开始更新
+//        }];
         
     }];
     

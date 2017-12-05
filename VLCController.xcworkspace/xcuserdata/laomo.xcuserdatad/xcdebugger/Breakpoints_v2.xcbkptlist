@@ -84,7 +84,7 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/ViewController/FoundViewController.m"
-                  timestampString = "533986885.166868"
+                  timestampString = "534172472.314342"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "290"
@@ -99,7 +99,7 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/ViewController/FoundViewController.m"
-                  timestampString = "533986885.1688"
+                  timestampString = "534172472.316244"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "290"
@@ -132,7 +132,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VLCController/Bluetooth/BluetoothManager.m"
-            timestampString = "533974007.172071"
+            timestampString = "534172162.516657"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "237"
@@ -148,13 +148,109 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VLCController/ViewController/SettingViewController.m"
-            timestampString = "533986885.022545"
+            timestampString = "534172472.165615"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "716"
-            endingLineNumber = "716"
+            startingLineNumber = "719"
+            endingLineNumber = "719"
             landmarkName = "-setSimpleSchedulePlan"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VLCController/Firmware/FirmwareListViewController.m"
+            timestampString = "534172472.166091"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "-startFirmwareUpdate:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__50-[FirmwareListViewController startFirmwareUpdate:]_block_invoke.119"
+                  moduleName = "VLCController"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/Firmware/FirmwareListViewController.m"
+                  timestampString = "534172472.336823"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "111"
+                  endingLineNumber = "111"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__50-[FirmwareListViewController startFirmwareUpdate:]_block_invoke_2.127"
+                  moduleName = "VLCController"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/Firmware/FirmwareListViewController.m"
+                  timestampString = "534172472.339434"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VLCController/Firmware/FirmwareListViewController.m"
+            timestampString = "534172472.166193"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-startFirmwareUpdate:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__50-[FirmwareListViewController startFirmwareUpdate:]_block_invoke"
+                  moduleName = "VLCController"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/Firmware/FirmwareListViewController.m"
+                  timestampString = "534172472.346216"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__50-[FirmwareListViewController startFirmwareUpdate:]_block_invoke_2"
+                  moduleName = "VLCController"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/Firmware/FirmwareListViewController.m"
+                  timestampString = "534172472.348347"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

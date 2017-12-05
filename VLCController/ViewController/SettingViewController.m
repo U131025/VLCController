@@ -507,12 +507,12 @@
         
 //        [MBProgressHUD showError:@"No firmware updates currently available!"];
 //        return;
+        [MBProgressHUD showMessage:nil toView:self.view];
         
         //判断是否有固件更新
-        [MBProgressHUD showMessage:nil toView:self.view];
         [FirmwareModel fetchListSuccess:^(id data) {
             
-            [MBProgressHUD hideHUDForView:self.view];
+//            [MBProgressHUD hideHUDForView:self.view];
             NSArray *dataArray = data;
             if (dataArray.count > 0) {
                 //固件更新
@@ -544,6 +544,10 @@
     __weak typeof(self) weakSelf = self;
     [[BluetoothManager sharedInstance] sendData:[LightControllerCommand checkVersionCommand:model.version] onRespond:^BOOL(NSData *data) {
         
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view];
+        });
+        
         Byte value[2] = {0};
         [data getBytes:&value length:sizeof(value)];
         
@@ -563,7 +567,9 @@
             return YES;
         }
         else if (value[0] == 0xaa && value[1] == 0xee) {
-            [weakSelf showTipWithMessage:@"There is no firmware available" withTitle:@"" useCancel:NO onOKBlock:nil];
+            [weakSelf showTipWithMessage:@"There is no firmware available" withTitle:@"" useCancel:NO onOKBlock:^{
+                
+            }];
             return YES;
         }
         
@@ -571,16 +577,13 @@
         
     } timeOutValue:3.0 onTimeOut:^{
         
-        [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" cancel:^{
-            
-        } okTitle:@"YES" onOKBlock:^{
-            
-            FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:self.light.identifier url:model.url completionHandler:^{
-                //更新完成
-            }];
-            
-            [service startUpdating];    //开始更新
-        }];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view];
+        });
+        
+//        [weakSelf showTipWithMessage:@"There is no firmware available" withTitle:@"" useCancel:NO onOKBlock:^{
+//
+//        }];
         
     }];
     
@@ -591,7 +594,7 @@
 - (void)updateControllerButtonClick
 {
     if (![[BluetoothManager sharedInstance] isConnectedPeripheral]) {
-        [MBProgressHUD showError:@"Bluetooth device has been disconnected."];
+        [MBProgressHUD showError:@"Bluetooth device has been disconnected." toView:self.view];
         return;
     }
     
@@ -872,27 +875,26 @@
         return;
     }
     
-    [MBProgressHUD showMessage:nil];
-    
-#ifdef DEBUG
+#ifdef TEST_POWER_ON_OFF
     powerSwitch.on = !powerSwitch.isOn;
     self.light.isPowerOn = [[NSNumber alloc] initWithBool:powerSwitch.isOn];
     [APPDELEGATE saveContext];
-    
+
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
     });
-    
+
 #else
+    [MBProgressHUD showMessage:nil toView:self.view];
     
-//    [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand turnPowerOnorOff:powerSwitch.isOn]];
     __weak typeof(self) weakSelf = self;
-    
     [BluetoothManager sharedInstance].timeOutSeconds = 8;
     [[BluetoothManager sharedInstance] sendData:[LightControllerCommand turnPowerOnorOff:!powerSwitch.isOn] onRespond:^BOOL(NSData *data) {
+        
+        __strong typeof(self) strongSelf = weakSelf;
         //判断返回
         dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUD];
+            [MBProgressHUD hideHUDForView:strongSelf.view];
         });
         
         //respond
@@ -905,11 +907,11 @@
         }
         else {
             powerSwitch.on = !powerSwitch.isOn;
-            weakSelf.light.isPowerOn = [[NSNumber alloc] initWithBool:powerSwitch.isOn];
+            strongSelf.light.isPowerOn = [[NSNumber alloc] initWithBool:powerSwitch.isOn];
             [APPDELEGATE saveContext];
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf.tableView reloadData];
+                [strongSelf.tableView reloadData];
             });
             
             return YES;
@@ -918,7 +920,7 @@
     } onTimeOut:^{
         //timeOut
         dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUD];
+            [MBProgressHUD hideHUDForView:self.view];
 //            [MBProgressHUD showError:@"No Response."];
         });
     }];
