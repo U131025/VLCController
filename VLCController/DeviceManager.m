@@ -182,7 +182,9 @@
     //特征码处理
     [self.baby setBlockOnDiscoverCharacteristicsAtChannel:channel block:^(CBPeripheral *peripheral, CBService *service, NSError *error) {
         //
-        DeviceModel *model = [weakSelf getModelAtChannel:channel];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        DeviceModel *model = [strongSelf getModelAtChannel:channel];
         if (model) {
             
             NSLog(@"service：%@  \n======\n", service);
@@ -203,14 +205,14 @@
                     if ([c.UUID.description isEqualToString:LIGHTBLUETOOTH_NOTIFY_CHARACTERISTICS_UUID]) {
                         model.readCharateristic = c;
                         
-                        [weakSelf.baby notify:peripheral characteristic:c block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
-                            
-                            for (id<DeviceManagerDelegate> delegate in weakSelf.delegateHashTable) {
-                                if ([delegate respondsToSelector:@selector(peripheralAtCharateristic:notifyData:)]) {
-                                    [delegate peripheralAtCharateristic:characteristics notifyData:characteristics.value];
-                                }
-                            }
-                        }];
+//                        [strongSelf.baby notify:peripheral characteristic:c block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
+//                            
+//                            for (id<DeviceManagerDelegate> delegate in weakSelf.delegateHashTable) {
+//                                if ([delegate respondsToSelector:@selector(peripheralAtCharateristic:notifyData:)]) {
+//                                    [delegate peripheralAtCharateristic:characteristics notifyData:characteristics.value];
+//                                }
+//                            }
+//                        }];
                     }
                 }
             }
@@ -233,7 +235,7 @@
                     if ([c.UUID.description isEqualToString:LIGHTBLUETOOTH_PAIR_NOTIFY_CHARACTERISTICS_UUID]) {
                         model.pairReadCharateristic = c;
                         
-                        [weakSelf.baby notify:peripheral characteristic:c block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
+                        [strongSelf.baby notify:peripheral characteristic:c block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
                             
                             for (id<DeviceManagerDelegate> delegate in weakSelf.delegateHashTable) {
                                 if ([delegate respondsToSelector:@selector(peripheralAtCharateristic:notifyData:)]) {
@@ -263,10 +265,11 @@
 
 - (void)listenNotify
 {
+    MJWeakSelf;
     if (self.model.readCharateristic && self.model.periperal) {
         [self.baby notify:self.model.periperal characteristic:self.model.readCharateristic block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
             
-            for (id<DeviceManagerDelegate> delegate in self.delegateHashTable) {
+            for (id<DeviceManagerDelegate> delegate in weakSelf.delegateHashTable) {
                 if ([delegate respondsToSelector:@selector(peripheralAtCharateristic:notifyData:)]) {
                     [delegate peripheralAtCharateristic:characteristics notifyData:characteristics.value];
                 }

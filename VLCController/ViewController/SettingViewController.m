@@ -544,33 +544,49 @@
     __weak typeof(self) weakSelf = self;
     [[BluetoothManager sharedInstance] sendData:[LightControllerCommand checkVersionCommand:model.version] onRespond:^BOOL(NSData *data) {
         
+        __strong typeof(self) strongSelf = weakSelf;
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view];
+//            [MBProgressHUD showSuccess:message toView:self.view];
+            
         });
+        
+        NSString *message = [NSString stringWithFormat:@"<%@>", data];
         
         Byte value[2] = {0};
         [data getBytes:&value length:sizeof(value)];
         
         if (value[0] == 0xaa && value[1] == 0x0a) {
             
-            [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" cancel:^{
+            [strongSelf showTipWithMessage:message withTitle:@"返回数据" useCancel:NO onOKBlock:^{
                 
-            } okTitle:@"YES" onOKBlock:^{
-                
-                FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:self.light.identifier url:model.url completionHandler:^{
-                    //更新完成
+                [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" cancel:^{
+                    
+                } okTitle:@"YES" onOKBlock:^{
+                    
+                    FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:strongSelf.light.identifier url:model.url completionHandler:^{
+                        //更新完成
+                    }];
+                    
+                    [service startUpdating];    //开始更新
                 }];
                 
-                [service startUpdating];    //开始更新
             }];
             
             return YES;
         }
         else if (value[0] == 0xaa && value[1] == 0xee) {
-            [weakSelf showTipWithMessage:@"There is no firmware available" withTitle:@"" useCancel:NO onOKBlock:^{
+            
+            [strongSelf showTipWithMessage:@"There is no firmware available" withTitle:@"" useCancel:NO onOKBlock:^{
                 
             }];
             return YES;
+        }
+        else  {
+            
+             [strongSelf showTipWithMessage:message withTitle:@"返回数据" useCancel:NO onOKBlock:^{
+             }];
         }
         
         return NO;
@@ -580,10 +596,6 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view];
         });
-        
-//        [weakSelf showTipWithMessage:@"There is no firmware available" withTitle:@"" useCancel:NO onOKBlock:^{
-//
-//        }];
         
     }];
     
@@ -895,6 +907,11 @@
         //判断返回
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:strongSelf.view];
+            
+            NSString *message = [NSString stringWithFormat:@"%@", data];
+            [strongSelf showTipWithMessage:message withTitle:@"返回数据" useCancel:NO onOKBlock:^{
+                
+            }];
         });
         
         //respond

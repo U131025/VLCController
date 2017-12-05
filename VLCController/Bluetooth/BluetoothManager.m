@@ -93,7 +93,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
     
     [[DeviceManager sharedInstance] sendDataToPeripheral:sendData];
     
-    [[DeviceManager sharedInstance] readData];
+//    [[DeviceManager sharedInstance] readData];
     
     //超时设置
     if (timeOut) {
@@ -116,7 +116,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
             int pos = 0;
             Byte commandData[20] = {0};
             commandData[pos] = 0xaa; pos++;
-            commandData[pos] = 0x0a; pos++;
+            commandData[pos] = 0x0b; pos++;
             //ID
             commandData[pos] = 0x00; pos++;
             
@@ -211,7 +211,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
             }            
             
             //成功后监听FFE4
-//            [[DeviceManager sharedInstance] listenNotify];
+            [[DeviceManager sharedInstance] listenNotify];
         }
         else if (pData[0] == 1) {
             
