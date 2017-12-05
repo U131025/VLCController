@@ -898,14 +898,9 @@
         });
         
         //respond
-        Byte value[30] = {0};
+        Byte value[20] = {0};
         [data getBytes:&value length:sizeof(value)];
-        if (value[0] != 0xaa || value[1] != 0x0a) {
-            //error
-//            [MBProgressHUD showError:@"Response time out."];
-            return NO;
-        }
-        else {
+        if (value[0] == 0xaa && value[1] == 0x0a) {
             powerSwitch.on = !powerSwitch.isOn;
             strongSelf.light.isPowerOn = [[NSNumber alloc] initWithBool:powerSwitch.isOn];
             [APPDELEGATE saveContext];
@@ -915,6 +910,11 @@
             });
             
             return YES;
+        }
+        else {
+            //error
+            //            [MBProgressHUD showError:@"Response time out."];
+            return NO;
         }
         
     } onTimeOut:^{
