@@ -496,7 +496,7 @@
         schedule.isPhotoCell = [[NSNumber alloc] initWithBool:self.photoCellSwitch.isOn];
         schedule.isCustomSchedule = 0;
         
-        NSArray *tempArray = [NSArray arrayWithArray:self.daysArray];
+        NSArray *tempArray = [self.daysArray copy];
         for (int i = 0; i < tempArray.count; i++) {
             
             ScheduleItemModel *itemModel = [tempArray objectAtIndex:i];

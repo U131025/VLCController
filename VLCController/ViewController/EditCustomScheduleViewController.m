@@ -553,7 +553,7 @@
             schedule.isCustomSchedule = 0;
             
             //save
-            NSArray *tempArray = [NSArray arrayWithArray:self.daysArray];
+            NSArray *tempArray = [self.daysArray copy];
             for (int i = 0; i < tempArray.count; i++) {
                 ScheduleItemModel *itemModel = [tempArray objectAtIndex:i];
                 ScheduleItem *item = [ScheduleItem addWithName:itemModel.name withSchedule:schedule inManageObjectContext:APPDELEGATE.managedObjectContext];
