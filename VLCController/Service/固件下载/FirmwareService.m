@@ -45,6 +45,11 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [self.downloadViwe hide];
+}
+
 - (DownloadProgressView *)downloadViwe
 {
     if (!_downloadViwe) {
