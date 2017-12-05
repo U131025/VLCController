@@ -475,11 +475,15 @@
 {
     int pos = 0;
     Byte commandData[20] = {0};
+    
+    pos = 16;
+    commandData[pos] = 0x5a; pos++;
+    commandData[pos] = 0x69; pos++;
     commandData[pos] = (dataLen >> 8) & 0xff; pos++;
     commandData[pos] = dataLen & 0xff; pos++;
     
-    Byte verify = [self getVerify:commandData datalength:19];
-    commandData[19] = verify;
+//    Byte verify = [self getVerify:commandData datalength:19];
+//    commandData[19] = verify;
     return [[NSData alloc] initWithBytes:commandData length:20];
 }
 
@@ -525,10 +529,10 @@
 + (NSData *)erasingConfirmCommand
 {
     int pos = 0;
-    Byte commandData[2] = {0};
+    Byte commandData[20] = {0};
     commandData[pos] = 0x5a; pos++;
     commandData[pos] = 0x69; pos++;
-    return [[NSData alloc] initWithBytes:commandData length:2];
+    return [[NSData alloc] initWithBytes:commandData length:20];
 }
 
 @end

@@ -83,7 +83,7 @@
 
 - (void)downloadFirmwareFile
 {
-//    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     if (!self.firmwareVerUrl) return;
     
     //远程地址
@@ -123,16 +123,25 @@
 //        NSData*data = [NSDatadataWithContentsOfFile:@"/Users/tarena/Desktop/app.txt"];
 //        NSData *fileData = [FCFileManager readFileAtPathAsData:filePath.absoluteString error:nil];
         
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.progressView.progress = 100.0;
-                self.downloadViwe.tipLabel.text = [NSString stringWithFormat:@"Downloading %.f%%", 100.0];
-            });
-            
-            NSData *fileData = [NSData dataWithContentsOfURL:filePath];
-            [self updateFirmwareStart:fileData];
+        __strong typeof(self) strongSelf = weakSelf;
+//        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                strongSelf.progressView.progress = 100.0;
+//                strongSelf.downloadViwe.tipLabel.text = [NSString stringWithFormat:@"Downloading %.f%%", 100.0];
+//            });
+//
+//            NSData *fileData = [NSData dataWithContentsOfURL:filePath];
+//            [strongSelf updateFirmwareStart:fileData];
+//        });
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            strongSelf.progressView.progress = 100.0;
+            strongSelf.downloadViwe.tipLabel.text = [NSString stringWithFormat:@"Downloading %.f%%", 100.0];
         });
+
+        NSData *fileData = [NSData dataWithContentsOfURL:filePath];
+        [strongSelf updateFirmwareStart:fileData];
         
     }];
 }
@@ -144,7 +153,9 @@
     [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateFirmwareCommand] onRespond:nil onTimeOut:nil];
     
     //等待2秒：
-    [self performSelector:@selector(readyToEarsing:) withObject:fileData afterDelay:2.0];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self readyToEarsing:fileData];
+    });
     
 //    __weak typeof(self) weakSelf = self;
 //    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateFirmwareCommand] onRespond:^BOOL(NSData *data) {
@@ -199,8 +210,15 @@
     //4:APP发送5A 69
     [[BluetoothManager sharedInstance] sendData:[LightControllerCommand erasingConfirmCommand] onRespond:nil onTimeOut:nil];
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.downloadViwe.tipLabel.text = @"Erasing 100%";
+        self.progressView.progress = 100;
+    });
+    
     //等待5秒：
-    [self performSelector:@selector(erasingData:) withObject:fileData afterDelay:5.0];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self erasingData:fileData];
+    });
     
 //    __weak typeof(self) weakSelf = self;
 //    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand erasingConfirmCommand] onRespond:^BOOL(NSData *data) {
@@ -246,7 +264,6 @@
 - (void)readyUpdating:(NSData *)fileData
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        
         self.downloadViwe.tipLabel.text = @"Updating 0%";
         self.progressView.progress = 0.0;
     });
@@ -265,59 +282,66 @@
 //开始写文件
 - (void)writeFirmwareData:(NSData *)fileData
 {
-    NSInteger offset = 0;
-    NSInteger sendLen = 20;
-    NSData *sendData = fileData;
-    BOOL sendComplete = NO;
-    
-    do {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
-        if (sendData.length > sendLen) {
-            sendData = [fileData subdataWithRange:NSMakeRange(offset, sendLen)];
-            offset += sendLen;
+        NSInteger offset = 0;
+        NSInteger sendLen = 20;
+        NSData *sendData = fileData;
+        BOOL sendComplete = NO;
+        
+        do {
             
-        }
-        else {
-            sendComplete = YES;
-            
-            if (sendData.length < sendLen) {
-                sendData = [LightControllerCommand formatCommand:sendData];
+            if (sendData.length > sendLen) {
+                sendData = [fileData subdataWithRange:NSMakeRange(offset, sendLen)];
+                offset += sendLen;
+                
             }
-        }
-        
-        [[BluetoothManager sharedInstance] sendData:sendData onRespond:nil onTimeOut:nil];        
-//        [[BluetoothManager sharedInstance] sendDataToPeripheral:sendData];
-        if (!sendComplete) {
-            sendData = [fileData subdataWithRange:NSMakeRange(offset, fileData.length - offset)];
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
+            else {
+                sendComplete = YES;
+                
+                if (sendData.length < sendLen) {
+                    sendData = [LightControllerCommand formatCommand:sendData];
+                }
+            }
             
-            CGFloat progress = (float)offset / (float)fileData.length;
-            self.progressView.progress = progress;
-            self.downloadViwe.tipLabel.text = [NSString stringWithFormat:@"Updating %.f%%", progress*100.0];
-        });
-        [NSThread sleepForTimeInterval:0.2];
-        
-    } while (!sendComplete);
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[BluetoothManager sharedInstance] sendData:sendData onRespond:nil onTimeOut:nil];
+            if (!sendComplete) {
+                sendData = [fileData subdataWithRange:NSMakeRange(offset, fileData.length - offset)];
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                CGFloat progress = (float)offset / (float)fileData.length;
+                self.progressView.progress = progress;
+                self.downloadViwe.tipLabel.text = [NSString stringWithFormat:@"Updating %.f%%", progress*100.0];
+            });
+            
+            //        CGFloat progress = (float)offset / (float)fileData.length;
+            //        self.progressView.progress = progress;
+            //        self.downloadViwe.tipLabel.text = [NSString stringWithFormat:@"Updating %.f%%", progress*100.0];
+            
+            [NSThread sleepForTimeInterval:0.2];
+            
+        } while (!sendComplete);
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.downloadViwe hide];
+            self.progressView.progress = 100;
+            self.downloadViwe.tipLabel.text = @"Successful";
         });
         
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.downloadViwe hide];
+            });
+            
+        });
+        
+        //写数据完成
+        if (self.downloadCompletionBlock) {
+            self.downloadCompletionBlock();
+        }
     });
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.downloadViwe.tipLabel.text = @"Successful";
-    });
-    
-    //写数据完成
-    if (self.downloadCompletionBlock) {
-        self.downloadCompletionBlock();
-    }
-    
 }
 
 @end
