@@ -547,31 +547,24 @@
         __strong typeof(self) strongSelf = weakSelf;
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUDForView:self.view];
+            [MBProgressHUD hideHUDForView:strongSelf.view];
 //            [MBProgressHUD showSuccess:message toView:self.view];
-            
         });
-        
-        NSString *message = [NSString stringWithFormat:@"<%@>", data];
         
         Byte value[2] = {0};
         [data getBytes:&value length:sizeof(value)];
         
         if (value[0] == 0xaa && value[1] == 0x0a) {
             
-            [strongSelf showTipWithMessage:message withTitle:@"返回数据" useCancel:NO onOKBlock:^{
+            [strongSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" cancel:^{
                 
-                [weakSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" cancel:^{
-                    
-                } okTitle:@"YES" onOKBlock:^{
-                    
-                    FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:strongSelf.light.identifier url:model.url completionHandler:^{
-                        //更新完成
-                    }];
-                    
-                    [service startUpdating];    //开始更新
+            } okTitle:@"YES" onOKBlock:^{
+                
+                FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:strongSelf.light.identifier url:model.url completionHandler:^{
+                    //更新完成
                 }];
                 
+                [service startUpdating];    //开始更新
             }];
             
             return YES;
@@ -582,11 +575,6 @@
                 
             }];
             return YES;
-        }
-        else  {
-            
-             [strongSelf showTipWithMessage:message withTitle:@"返回数据" useCancel:NO onOKBlock:^{
-             }];
         }
         
         return NO;
@@ -907,11 +895,6 @@
         //判断返回
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:strongSelf.view];
-            
-            NSString *message = [NSString stringWithFormat:@"%@", data];
-            [strongSelf showTipWithMessage:message withTitle:@"返回数据" useCancel:NO onOKBlock:^{
-                
-            }];
         });
         
         //respond
