@@ -543,17 +543,21 @@
     
     //校验时间
     [MBProgressHUD showMessage:@"Waiting..." toView:self.view];
-    @try {
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            //
-            Schedule *schedule = [Schedule addWithName:CustomSchedule withLightController:self.light inManageObjectContext:APPDELEGATE.managedObjectContext];
-            schedule.timeOn = self.onTimeValue;
-            schedule.timeOff = self.offTimeValue;
-            schedule.isPhotoCell = [[NSNumber alloc] initWithBool:self.photoCellSwitch.isOn];
+
+    MJWeakSelf;
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        //
+        __strong typeof(self) strongSelf = weakSelf;
+        @try {
+            Schedule *schedule = [Schedule addWithName:CustomSchedule withLightController:strongSelf.light inManageObjectContext:APPDELEGATE.managedObjectContext];
+            
+            schedule.timeOn = strongSelf.onTimeValue;
+            schedule.timeOff = strongSelf.offTimeValue;
+            schedule.isPhotoCell = [[NSNumber alloc] initWithBool:strongSelf.photoCellSwitch.isOn];
             schedule.isCustomSchedule = 0;
             
             //save
-            NSArray *tempArray = [self.daysArray copy];
+            NSArray *tempArray = [strongSelf.daysArray copy];
             for (int i = 0; i < tempArray.count; i++) {
                 ScheduleItemModel *itemModel = [tempArray objectAtIndex:i];
                 ScheduleItem *item = [ScheduleItem addWithName:itemModel.name withSchedule:schedule inManageObjectContext:APPDELEGATE.managedObjectContext];
@@ -571,24 +575,25 @@
             }
             
             [APPDELEGATE saveContext];
+        } @catch (NSException *exception) {
+            ;
+        } @finally {
+            ;
+        }
+        
+        //        [self setCustomSchedulePlan];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //
+            [MBProgressHUD hideHUDForView:strongSelf.view];
+            [MBProgressHUD showSuccess:@"Save Success!" toView:strongSelf.view];
             
-            //        [self setCustomSchedulePlan];
+            //设置完毕返回
+            [strongSelf returnViewController:[SettingViewController class]];
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                //
-                [MBProgressHUD hideHUDForView:self.view];
-                [MBProgressHUD showSuccess:@"Save Success!" toView:self.view];
-                
-                //设置完毕返回
-                [self returnViewController:[SettingViewController class]];
-                
-            });
         });
-    } @catch (NSException *exception) {
-
-    } @finally {
-
-    }
+    });
+    
     
 }
 

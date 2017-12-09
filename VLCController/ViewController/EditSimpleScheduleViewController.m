@@ -488,28 +488,38 @@
     
     [MBProgressHUD showMessage:@"Waiting..."];
     
+    MJWeakSelf;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        //save
-        Schedule *schedule = [Schedule addWithName:SimpleSchedule withLightController:self.light inManageObjectContext:APPDELEGATE.managedObjectContext];
-        schedule.timeOn = self.onTimeValue;
-        schedule.timeOff = self.offTimeValue;
-        schedule.isPhotoCell = [[NSNumber alloc] initWithBool:self.photoCellSwitch.isOn];
-        schedule.isCustomSchedule = 0;
         
-        NSArray *tempArray = [self.daysArray copy];
-        for (int i = 0; i < tempArray.count; i++) {
+        __strong typeof(self) strongSelf = weakSelf;
+        @try {
             
-            ScheduleItemModel *itemModel = [tempArray objectAtIndex:i];
-            //选中的星期数
-            ScheduleItem *item = [ScheduleItem addWithName:itemModel.name withSchedule:schedule inManageObjectContext:APPDELEGATE.managedObjectContext];
-            item.date = itemModel.date;
-            item.themeName = self.themeName;
-            item.isSelected = [[NSNumber alloc] initWithBool:itemModel.isSelected];
+            //save
+            Schedule *schedule = [Schedule addWithName:SimpleSchedule withLightController:strongSelf.light inManageObjectContext:APPDELEGATE.managedObjectContext];
+            schedule.timeOn = strongSelf.onTimeValue;
+            schedule.timeOff = strongSelf.offTimeValue;
+            schedule.isPhotoCell = [[NSNumber alloc] initWithBool:strongSelf.photoCellSwitch.isOn];
+            schedule.isCustomSchedule = 0;
+            
+            NSArray *tempArray = [strongSelf.daysArray copy];
+            for (int i = 0; i < tempArray.count; i++) {
+                
+                ScheduleItemModel *itemModel = [tempArray objectAtIndex:i];
+                //选中的星期数
+                ScheduleItem *item = [ScheduleItem addWithName:itemModel.name withSchedule:schedule inManageObjectContext:APPDELEGATE.managedObjectContext];
+                item.date = itemModel.date;
+                item.themeName = strongSelf.themeName;
+                item.isSelected = [[NSNumber alloc] initWithBool:itemModel.isSelected];
+            }
+            [APPDELEGATE saveContext];
+        } @catch (NSException *exception) {
+            ;
+        } @finally {
+            ;
         }
-        [APPDELEGATE saveContext];
         
         //发送设置命令
-//        [self setSimpleSchedulePlan];
+        //        [self setSimpleSchedulePlan];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             //
@@ -517,10 +527,12 @@
             [MBProgressHUD showSuccess:@"Save Success!"];
             
             //设置完毕返回
-            [self returnViewController:[SettingViewController class]];
+            [strongSelf returnViewController:[SettingViewController class]];
         });
         
     });
+    
+    
 }
 
 - (void)timePickerAction:(UIButton *)button

@@ -16,10 +16,10 @@
 
 @interface DropdownListView : UIView
 
-@property (nonatomic, strong) NSString *titleText;
+@property (nonatomic, copy) NSString *titleText;
 @property (nonatomic, strong) NSMutableArray *dataArray;    //of NSString
 @property (nonatomic, assign) CGRect showFrame;
-@property (nonatomic, assign) id<DropdownListViewDelegate> delegate;
+@property (nonatomic, weak) id<DropdownListViewDelegate> delegate;
 
 @property (nonatomic, copy) void (^didSelectedActionBlock)(NSInteger index);
 
