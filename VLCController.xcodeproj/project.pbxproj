@@ -107,6 +107,7 @@
 		D590FDD11C9116810049E0B1 /* BulbChannel+Fetch.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDD01C9116810049E0B1 /* BulbChannel+Fetch.m */; };
 		D590FDE01C915BCF0049E0B1 /* ColorFavorites+Fetch.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDDF1C915BCF0049E0B1 /* ColorFavorites+Fetch.m */; };
 		D590FDE31C91CA830049E0B1 /* SlaveControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D590FDE21C91CA830049E0B1 /* SlaveControllerViewController.m */; };
+		D59344751FE02C3F0056BB95 /* AlertPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D59344741FE02C3F0056BB95 /* AlertPopView.m */; };
 		D5A7E5331F7BE5D00012D044 /* UIViewController+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A7E5321F7BE5D00012D044 /* UIViewController+Visible.m */; };
 		D5BAD1231C76B5BD000B6966 /* ZJSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = D5BAD1221C76B5BD000B6966 /* ZJSwitch.m */; };
 		D5DDD3E51C586010002D1264 /* TipMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5DDD3E41C586010002D1264 /* TipMessageView.m */; };
@@ -394,6 +395,8 @@
 		D590FDDF1C915BCF0049E0B1 /* ColorFavorites+Fetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ColorFavorites+Fetch.m"; path = "DateBase/ColorFavorites+Fetch.m"; sourceTree = "<group>"; };
 		D590FDE11C91CA830049E0B1 /* SlaveControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlaveControllerViewController.h; path = ViewController/SlaveControllerViewController.h; sourceTree = "<group>"; };
 		D590FDE21C91CA830049E0B1 /* SlaveControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlaveControllerViewController.m; path = ViewController/SlaveControllerViewController.m; sourceTree = "<group>"; };
+		D59344731FE02C3F0056BB95 /* AlertPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertPopView.h; sourceTree = "<group>"; };
+		D59344741FE02C3F0056BB95 /* AlertPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertPopView.m; sourceTree = "<group>"; };
 		D5A7E5311F7BE5D00012D044 /* UIViewController+Visible.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Visible.h"; path = "Category/UIViewController+Visible.h"; sourceTree = "<group>"; };
 		D5A7E5321F7BE5D00012D044 /* UIViewController+Visible.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Visible.m"; path = "Category/UIViewController+Visible.m"; sourceTree = "<group>"; };
 		D5BAD1211C76B5BD000B6966 /* ZJSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSwitch.h; sourceTree = "<group>"; };
@@ -818,6 +821,7 @@
 		D536D1681F9250F90004FEA9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D59344721FE02BDF0056BB95 /* 弹出框 */,
 				D58ABC2E1C3F472A00270C1F /* HomeViewController.h */,
 				D58ABC2F1C3F472A00270C1F /* HomeViewController.m */,
 				D58ABC301C3F472A00270C1F /* HomeViewController.xib */,
@@ -1166,6 +1170,15 @@
 				D590FDCA1C8EBE600049E0B1 /* DateFuncation.m */,
 			);
 			path = Public;
+			sourceTree = "<group>";
+		};
+		D59344721FE02BDF0056BB95 /* 弹出框 */ = {
+			isa = PBXGroup;
+			children = (
+				D59344731FE02C3F0056BB95 /* AlertPopView.h */,
+				D59344741FE02C3F0056BB95 /* AlertPopView.m */,
+			);
+			path = "弹出框";
 			sourceTree = "<group>";
 		};
 		D5BAD1201C76B5BD000B6966 /* ZJSwitch */ = {
@@ -1799,6 +1812,7 @@
 				D50D943A1F1B017B00DD892C /* WKWebView+LoadCookies.m in Sources */,
 				E59E80C81EE1111500824319 /* MJRefreshBaseView.m in Sources */,
 				D590FDE01C915BCF0049E0B1 /* ColorFavorites+Fetch.m in Sources */,
+				D59344751FE02C3F0056BB95 /* AlertPopView.m in Sources */,
 				D58ABCCD1C4DCC0400270C1F /* ManageThemeViewController.m in Sources */,
 				D590FDC41C8EB5350049E0B1 /* Schedule+Fetch.m in Sources */,
 				D58ABC921C472F4300270C1F /* NSString+Extension.m in Sources */,

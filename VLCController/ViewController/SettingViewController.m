@@ -523,7 +523,8 @@
 //                [self.navigationController pushViewController:firmwareListVC animated:YES];
             }
             else {
-                [MBProgressHUD showError:@"No firmware updates currently available." toView:self.view];
+                
+                [MBProgressHUD showError:@"Your firmware is up to date." toView:self.view];
             }
             
         } failure:^(id error) {
@@ -537,6 +538,13 @@
 }
 
 #pragma mark - 固件升级判断
+- (void)showMessage:(NSString *)message title:(NSString *)title linkString:(NSString *)linkString cancelBlock:(void (^)(void))cancelBlock continueBlock:(void (^)(void))continueBlock
+{
+    
+    
+    
+}
+
 
 - (void)startFirmwareUpdate:(FirmwareModel *)model
 {
