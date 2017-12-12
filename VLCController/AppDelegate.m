@@ -25,6 +25,8 @@
         [self setupBugly];
     });
     
+    [UIApplication sharedApplication].idleTimerDisabled = YES;  //屏幕常亮设置
+    
     HomeViewController *mainViewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
     UINavigationController *naveigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
     
