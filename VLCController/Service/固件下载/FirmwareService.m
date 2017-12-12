@@ -91,6 +91,7 @@
     
     //默认配置
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
     
     //AFN3.0+基于封住URLSession的句柄
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -116,34 +117,32 @@
         NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
         NSString *path = [cachesPath stringByAppendingPathComponent:response.suggestedFilename];
         return [NSURL fileURLWithPath:path];
+        
     } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
         //下载完成后打印路径
         NSLog(@"%@",filePath.absoluteString);
         
-//        NSData*data = [NSDatadataWithContentsOfFile:@"/Users/tarena/Desktop/app.txt"];
-//        NSData *fileData = [FCFileManager readFileAtPathAsData:filePath.absoluteString error:nil];
-        
         __strong typeof(self) strongSelf = weakSelf;
-//        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                strongSelf.progressView.progress = 100.0;
-//                strongSelf.downloadViwe.tipLabel.text = [NSString stringWithFormat:@"Downloading %.f%%", 100.0];
-//            });
-//
-//            NSData *fileData = [NSData dataWithContentsOfURL:filePath];
-//            [strongSelf updateFirmwareStart:fileData];
-//        });
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            strongSelf.progressView.progress = 100.0;
-            strongSelf.downloadViwe.tipLabel.text = [NSString stringWithFormat:@"Downloading %.f%%", 100.0];
-        });
-
-        NSData *fileData = [NSData dataWithContentsOfURL:filePath];
-        [strongSelf updateFirmwareStart:fileData];
+        if (error) {
+            //下载失败
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [strongSelf.downloadViwe hide];
+                [MBProgressHUD showError:[NSString stringWithFormat:@"%@", error]];
+            });
+        }
+        else {
+            //下载成功
+            dispatch_async(dispatch_get_main_queue(), ^{
+                strongSelf.progressView.progress = 100.0;
+                strongSelf.downloadViwe.tipLabel.text = [NSString stringWithFormat:@"Downloading %.f%%", 100.0];
+            });
+            
+            NSData *fileData = [NSData dataWithContentsOfURL:filePath];
+            [strongSelf updateFirmwareStart:fileData];
+        }
         
     }];
+//    [_downloadTask resume];
 }
 //开始更新固件
 - (void)updateFirmwareStart:(NSData *)fileData

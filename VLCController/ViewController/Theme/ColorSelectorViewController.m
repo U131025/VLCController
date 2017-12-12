@@ -225,27 +225,6 @@
                        @"Pink":OpaqueRGBColor(255, 21, 28),
                        @"Crimson":OpaqueRGBColor(207, 50, 69),
                        };
-//        _colorsDic = @{@"╳":[UIColor clearColor],
-//                       @"Warm Clear":RGBFromColor(0x000000),
-//                       @"Champagne":OpaqueRGBColor(229, 204, 137),
-//                       @"Winter White":OpaqueRGBColor(235, 244, 251),
-//                       @"Red":[UIColor redColor],
-//                       @"Amber":OpaqueRGBColor(208, 121, 42),
-//                       @"Orange":OpaqueRGBColor(247, 169, 58),
-//                       @"Gold":OpaqueRGBColor(244, 212, 75),
-//                       @"Yellow":OpaqueRGBColor(236, 235, 91),
-//                       @"Green":[UIColor greenColor],
-//                       @"Sea Green":OpaqueRGBColor(72, 140, 93),
-//                       @"Turquoise":OpaqueRGBColor(125, 204, 198),
-//                       @"Aqua":OpaqueRGBColor(146, 214, 227),
-//                       @"Blue":[UIColor blueColor],
-//                       @"Royal":OpaqueRGBColor(59, 87, 150),
-//                       @"Midnight":OpaqueRGBColor(42, 42, 104),
-//                       @"Purple":OpaqueRGBColor(93, 88, 168),
-//                       @"Violet":OpaqueRGBColor(201, 141, 192),
-//                       @"Pink":OpaqueRGBColor(196, 107, 171),
-//                       @"Crimson":OpaqueRGBColor(207, 50, 69),
-//                       };
     }
     return _colorsDic;
 }

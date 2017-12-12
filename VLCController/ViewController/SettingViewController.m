@@ -718,7 +718,8 @@
         chanenlIndex = 1;
         for (Channel *channel in channelArray) {
             
-            if (channel.firstColorValue.length > 0 || channel.secondColorValue.length > 0) {
+//            if (channel.firstColorValue.length > 0 || channel.secondColorValue.length > 0)
+            {
                 NSString *timeOnBtye = [self getByteTimeWithDateString:simpleSchedule.timeOn withFormat:ScheduleTimeFormat];
                 NSString *timeOffBtye = [self getByteTimeWithDateString:simpleSchedule.timeOff withFormat:ScheduleTimeFormat];
                 
@@ -818,7 +819,8 @@
         for (Channel *channel in channelArray) {
             
             NSLog(@"channel : %@", channel);
-            if (channel.firstColorValue.length > 0 || channel.secondColorValue.length > 0) {
+//            if (channel.firstColorValue.length > 0 || channel.secondColorValue.length > 0)
+            {
                 NSString *timeOnBtye = [self getByteTimeWithDateString:customSchedule.timeOn withFormat:ScheduleTimeFormat];
                 NSString *timeOffBtye = [self getByteTimeWithDateString:customSchedule.timeOff withFormat:ScheduleTimeFormat];
                 
@@ -875,7 +877,7 @@
         return;
     }
     
-#ifdef TEST_POWER_ON_OFF
+#ifdef DEBUG
     powerSwitch.on = !powerSwitch.isOn;
     self.light.isPowerOn = [[NSNumber alloc] initWithBool:powerSwitch.isOn];
     [APPDELEGATE saveContext];
@@ -991,7 +993,8 @@
     for (Channel *channel in channelsArray) {
        
         NSLog(@"channel : %@", channel);
-        if (channel.firstColorValue.length > 0 || channel.secondColorValue.length > 0) {
+//        if (channel.firstColorValue.length > 0 || channel.secondColorValue.length > 0)
+        {
             [[BluetoothManager sharedInstance] sendData:[LightControllerCommand setTheColorThemeWithChannel:[Channel convertToModel:channel]] onRespond:nil onTimeOut:nil];
         }
         
