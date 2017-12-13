@@ -15,33 +15,39 @@ PODS:
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
   - Bugly (2.3.1)
+  - CCHLinkTextView (1.2.0)
   - FCFileManager (1.0.18)
   - IQKeyboardManager (4.0.8)
   - Kiwi (2.4.0)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
+  - pop (1.0.9)
   - YYKeyboardManager (1.0.1)
 
 DEPENDENCIES:
   - AFNetworking
   - Bugly
+  - CCHLinkTextView
   - FCFileManager (~> 1.0.7)
   - IQKeyboardManager
   - Kiwi
   - Masonry
   - MBProgressHUD
+  - pop (~> 1.0)
   - YYKeyboardManager
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   Bugly: c8ece2fa5bdcb404abdd0e07131e8129f580d893
+  CCHLinkTextView: bfe688e0b7d34088375a466524158765832f7657
   FCFileManager: 3d13576da1f709d37460bd7669cdf07b9d6d8bc3
   IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
   Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   YYKeyboardManager: ff53d2e80d1808567a7f004028bd200d9469a89f
 
-PODFILE CHECKSUM: d90c78a0381f526319fc6cb2e49e0669955ef9dd
+PODFILE CHECKSUM: d6222ae657e2b9e3a317113adc0ae70a654a1a93
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1

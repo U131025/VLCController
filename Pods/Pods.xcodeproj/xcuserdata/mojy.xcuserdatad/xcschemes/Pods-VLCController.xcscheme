@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3146DDA5B5A9F8650164F07F3B78AA24'
+               BlueprintIdentifier = '38D76B5F45942B40096DCA45B86A3EA1'
                BlueprintName = 'Pods-VLCController'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-VLCController.a'>

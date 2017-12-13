@@ -8,6 +8,8 @@ target 'VLCController' do
     pod 'MBProgressHUD'
     pod 'IQKeyboardManager'
     pod 'YYKeyboardManager'
+    pod 'pop', '~> 1.0'
+    pod 'CCHLinkTextView'
 end
 
 target 'VLCControllerTests' do

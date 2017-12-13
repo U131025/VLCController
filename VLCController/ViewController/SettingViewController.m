@@ -27,6 +27,7 @@
 #import "FirmwareService.h"
 #import "FirmwareListViewController.h"
 #import "FirmwareModel.h"
+#import "AlertPopView.h"
 
 #define Notify_ChangeTheme @"ChangeTheme"
 
@@ -538,13 +539,21 @@
 }
 
 #pragma mark - 固件升级判断
-- (void)showMessage:(NSString *)message title:(NSString *)title linkString:(NSString *)linkString cancelBlock:(void (^)(void))cancelBlock continueBlock:(void (^)(void))continueBlock
+- (void)showTipForFirmwareUpdateStep1:(void (^)(void))continueBlock
 {
-    
-    
-    
+    AlertPopView *alertView = [[AlertPopView alloc] init];
+    [alertView setTitle:@"A Firmware update is available for the controller.  Would you like to continue? " content:@"NOTE: bulbs and switches must be re-paired following the firmware update.  Visit www.villagelighting.com for pairing instructions." linkString:@"www.villagelighting.com"];
+    [alertView setBlockForContinue:continueBlock];
+    [alertView show];
 }
 
+- (void)showTipForFirmwareUpdateStep2:(void (^)(void))continueBlock
+{
+    AlertPopView *alertView = [[AlertPopView alloc] init];
+    [alertView setTitle:@"To continue with the firmware update, please:" content:@"1. On your iPhone, go to Settings / Display & Brightness / Auto-Lock, and select “Never”.  \n2.  Insure you’re connected to the internet.  \n3.  Keep your phone within 10 feet of the Controller during firmware update.  \n4.  Ensure the controller stays powered on during the firmware update process." linkString:nil];
+    [alertView setBlockForContinue:continueBlock];
+    [alertView show];
+}
 
 - (void)startFirmwareUpdate:(FirmwareModel *)model
 {
@@ -556,7 +565,6 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:strongSelf.view];
-//            [MBProgressHUD showSuccess:message toView:self.view];
         });
         
         Byte value[2] = {0};
@@ -564,16 +572,28 @@
         
         if (value[0] == 0xaa && value[1] == 0x0a) {
             
-            [strongSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" cancel:^{
+            __weak typeof(self) weakSelf = strongSelf;
+            [strongSelf showTipForFirmwareUpdateStep1:^{
                 
-            } okTitle:@"YES" onOKBlock:^{
-                
-                FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:strongSelf.light.identifier url:model.url completionHandler:^{
-                    //更新完成
+                [weakSelf showTipForFirmwareUpdateStep2:^{
+                    FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:strongSelf.light.identifier url:model.url completionHandler:^{
+                        //更新完成
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [MBProgressHUD showSuccess:@"The firmware update is complete. Please contact Village Lighting Company if additional support is needed." toView:weakSelf.view];
+                        });
+                        
+                    }];
+                    
+                    [service startUpdating];    //开始更新
                 }];
-                
-                [service startUpdating];    //开始更新
             }];
+//
+//            [strongSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" cancel:^{
+//
+//            } okTitle:@"YES" onOKBlock:^{
+//
+//
+//            }];
             
             return YES;
         }

@@ -190,6 +190,8 @@
 		E59E81261EE14F6F00824319 /* BabyToy.m in Sources */ = {isa = PBXBuildFile; fileRef = E59E811D1EE14F6F00824319 /* BabyToy.m */; };
 		E5A2148A1EDFBB010098A019 /* ConnectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A214891EDFBB010098A019 /* ConnectModel.m */; };
 		E5B4A9461DED54BD00894817 /* ThemeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B4A9451DED54BD00894817 /* ThemeTableViewCell.m */; };
+		E5BAE7FE1FE0DBA300B4C266 /* UIView+PopAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BAE7FA1FE0DB9F00B4C266 /* UIView+PopAnimation.m */; };
+		E5BAE7FF1FE0DBA300B4C266 /* UIView+Border.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BAE7FC1FE0DBA300B4C266 /* UIView+Border.m */; };
 		E5BBCDDB1EDE8E9200AB32CD /* PaireControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BBCDDA1EDE8E9200AB32CD /* PaireControllerViewController.m */; };
 		E5BBCDDE1EDE9C1C00AB32CD /* SetupResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BBCDDD1EDE9C1C00AB32CD /* SetupResultViewController.m */; };
 /* End PBXBuildFile section */
@@ -552,6 +554,10 @@
 		E5A214891EDFBB010098A019 /* ConnectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectModel.m; path = Model/ConnectModel.m; sourceTree = "<group>"; };
 		E5B4A9441DED54BD00894817 /* ThemeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThemeTableViewCell.h; path = View/Theme/ThemeTableViewCell.h; sourceTree = "<group>"; };
 		E5B4A9451DED54BD00894817 /* ThemeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThemeTableViewCell.m; path = View/Theme/ThemeTableViewCell.m; sourceTree = "<group>"; };
+		E5BAE7FA1FE0DB9F00B4C266 /* UIView+PopAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PopAnimation.m"; sourceTree = "<group>"; };
+		E5BAE7FB1FE0DBA000B4C266 /* UIView+PopAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PopAnimation.h"; sourceTree = "<group>"; };
+		E5BAE7FC1FE0DBA300B4C266 /* UIView+Border.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Border.m"; sourceTree = "<group>"; };
+		E5BAE7FD1FE0DBA300B4C266 /* UIView+Border.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Border.h"; sourceTree = "<group>"; };
 		E5BBCDD91EDE8E9200AB32CD /* PaireControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaireControllerViewController.h; path = ViewController/PairController/PaireControllerViewController.h; sourceTree = "<group>"; };
 		E5BBCDDA1EDE8E9200AB32CD /* PaireControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaireControllerViewController.m; path = ViewController/PairController/PaireControllerViewController.m; sourceTree = "<group>"; };
 		E5BBCDDC1EDE9C1C00AB32CD /* SetupResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupResultViewController.h; path = ViewController/PairController/SetupResultViewController.h; sourceTree = "<group>"; };
@@ -1143,6 +1149,10 @@
 		D58ABC8F1C472EDB00270C1F /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				E5BAE7FD1FE0DBA300B4C266 /* UIView+Border.h */,
+				E5BAE7FC1FE0DBA300B4C266 /* UIView+Border.m */,
+				E5BAE7FB1FE0DBA000B4C266 /* UIView+PopAnimation.h */,
+				E5BAE7FA1FE0DB9F00B4C266 /* UIView+PopAnimation.m */,
 				D5F58EFA1C575E8700DE602A /* UIView+Extension.h */,
 				D5F58EFB1C575E8700DE602A /* UIView+Extension.m */,
 				D58ABC901C472F4300270C1F /* NSString+Extension.h */,
@@ -1631,7 +1641,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		4CF4C0FC39DD918431AE08BE /* [CP] Copy Pods Resources */ = {
@@ -1661,7 +1671,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A771F6FC1B680B98A9F26286 /* [CP] Embed Pods Frameworks */ = {
@@ -1754,6 +1764,7 @@
 				D58ABCBA1C4CBD6800270C1F /* myUILabel.m in Sources */,
 				E59E81041EE1399800824319 /* Theme+CoreDataProperties.m in Sources */,
 				D58ABCC31C4CC2C600270C1F /* EditCustomScheduleViewController.m in Sources */,
+				E5BAE7FE1FE0DBA300B4C266 /* UIView+PopAnimation.m in Sources */,
 				D5DDD43B1C59B280002D1264 /* UIColor+extension.m in Sources */,
 				D58ABCD11C4DCE6D00270C1F /* ThemeModel.m in Sources */,
 				D5BAD1231C76B5BD000B6966 /* ZJSwitch.m in Sources */,
@@ -1788,6 +1799,7 @@
 				D564F7341F123D730094B517 /* FirmwareModel.m in Sources */,
 				D58ABCD91C4DDB5400270C1F /* ChannelModel.m in Sources */,
 				D5DDD3E81C58AC82002D1264 /* ColorOptionsViewController.m in Sources */,
+				E5BAE7FF1FE0DBA300B4C266 /* UIView+Border.m in Sources */,
 				E59E81201EE14F6F00824319 /* BabyCentralManager.m in Sources */,
 				D564F7311F123A8C0094B517 /* UITableViewCell+Extension.m in Sources */,
 				D57DF0C91EDD937F0038E7A7 /* SGWebView.m in Sources */,

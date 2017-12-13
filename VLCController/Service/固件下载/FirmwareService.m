@@ -315,31 +315,26 @@
                 self.downloadViwe.tipLabel.text = [NSString stringWithFormat:@"Updating %.f%%", progress*100.0];
             });
             
-            //        CGFloat progress = (float)offset / (float)fileData.length;
-            //        self.progressView.progress = progress;
-            //        self.downloadViwe.tipLabel.text = [NSString stringWithFormat:@"Updating %.f%%", progress*100.0];
-            
             [NSThread sleepForTimeInterval:0.2];
             
         } while (!sendComplete);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             self.progressView.progress = 100;
-            self.downloadViwe.tipLabel.text = @"Successful";
+            self.downloadViwe.tipLabel.text = @"Updating Successful";
         });
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.downloadViwe hide];
-            });
+            [self.downloadViwe hide];
+            //写数据完成
+            if (self.downloadCompletionBlock) {
+                self.downloadCompletionBlock();
+            }
             
         });
         
-        //写数据完成
-        if (self.downloadCompletionBlock) {
-            self.downloadCompletionBlock();
-        }
+        
     });
 }
 

@@ -18,6 +18,8 @@
 //判断是否是iPhone5
 #define kIsiPhone5 ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone && [[UIScreen mainScreen] bounds].size.height > 481.0f)
 
+#define iOS_Version_10  [[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0
+
 #define ScreenScale()     [[UIScreen mainScreen] scale]
 
 #define ScreenWidth [[UIScreen mainScreen] bounds].size.width
