@@ -18,8 +18,11 @@
 
 + (MBProgressHUD *)showMessage:(NSString *)message;
 + (MBProgressHUD *)showMessage:(NSString *)message toView:(UIView *)view;
++ (MBProgressHUD *)showMessage:(NSString *)message toView:(UIView *)view afterDelay:(NSTimeInterval)delay;
 
 + (void)hideHUD;
 + (void)hideHUDForView:(UIView *)view;
+
++ (void)show:(NSString *)text icon:(NSString *)icon view:(UIView *)view afterDelay:(NSTimeInterval)delay;
 
 @end

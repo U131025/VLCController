@@ -28,6 +28,7 @@
 #import "FirmwareListViewController.h"
 #import "FirmwareModel.h"
 #import "AlertPopView.h"
+#import "MBProgressHUD+NJ.h"
 
 #define Notify_ChangeTheme @"ChangeTheme"
 
@@ -595,21 +596,21 @@
                             
                             if (value[0] == 0xaa && value[1] == 0xee) {
                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                    [MBProgressHUD showSuccess:@"The firmware update is complete. Please contact Village Lighting Company if additional support is needed." toView:weakSelf.view];
+                                    [MBProgressHUD showMessage:@"Firmware update complete. If controller is not working properly, please contact Village Lighting" toView:weakSelf.view afterDelay:3.0];
                                 });
                                 
                             }
                             else {
                                 //版本不同
                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                    [MBProgressHUD showSuccess:@"Unsuccessful" toView:weakSelf.view];
+                                    [MBProgressHUD showMessage:@"Please try again or contact Village Lighting Company if additional support is needed." toView:weakSelf.view afterDelay:3.0];
                                 });
                             }
                             
                             return YES;
                         } onTimeOut:^{
                             dispatch_async(dispatch_get_main_queue(), ^{
-                                [MBProgressHUD showSuccess:@"Unsuccessful" toView:weakSelf.view];
+                                [MBProgressHUD showMessage:@"Please try again or contact Village Lighting Company if additional support is needed." toView:weakSelf.view afterDelay:3.0];
                             });
                         }];
                     }];
