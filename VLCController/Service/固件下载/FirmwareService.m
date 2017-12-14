@@ -152,7 +152,7 @@
     [[BluetoothManager sharedInstance] sendData:[LightControllerCommand updateFirmwareCommand] onRespond:nil onTimeOut:nil];
     
     //等待2秒：
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self readyToEarsing:fileData];
     });
     
@@ -321,10 +321,10 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             self.progressView.progress = 100;
-            self.downloadViwe.tipLabel.text = @"Updating Successful";
+            self.downloadViwe.tipLabel.text = @"Updating 100%";
         });
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             [self.downloadViwe hide];
             //写数据完成

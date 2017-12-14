@@ -112,7 +112,7 @@
 {
     [self.view endEditing:YES];
     
-#ifdef DEBUG
+#ifdef TEST_CLOSE_BLUETOOTH
     if (self.idTextField.text.length == 0) {
         self.idTextField.text = @"Tv221u_qwe12345#888888";
     }

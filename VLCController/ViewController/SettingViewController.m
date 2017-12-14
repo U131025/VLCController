@@ -87,6 +87,19 @@
         }
     }
     
+    //检查版本
+    //判断是否有固件更新
+    [FirmwareModel fetchListSuccess:^(id data) {
+        
+        NSArray *dataArray = data;
+        if (dataArray.count > 0) {
+            //固件更新
+            FirmwareModel *model = [dataArray objectAtIndex:0];
+            [self startFirmwareUpdate:model];
+        }
+        
+    } failure:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeThemeNotify:) name:Notify_ChangeTheme object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnectAction:) name:Notify_Disconnect object:nil];
@@ -519,9 +532,6 @@
                 //固件更新
                 FirmwareModel *model = [dataArray objectAtIndex:0];
                 [self startFirmwareUpdate:model];
-                
-//                FirmwareListViewController *firmwareListVC = [[FirmwareListViewController alloc] init];
-//                [self.navigationController pushViewController:firmwareListVC animated:YES];
             }
             else {
                 
@@ -577,23 +587,36 @@
                 
                 [weakSelf showTipForFirmwareUpdateStep2:^{
                     FirmwareService *service = [[FirmwareService alloc] initWithPeripheralIdentifier:strongSelf.light.identifier url:model.url completionHandler:^{
-                        //更新完成
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [MBProgressHUD showSuccess:@"The firmware update is complete. Please contact Village Lighting Company if additional support is needed." toView:weakSelf.view];
-                        });
                         
+                        //检验版本
+                        [[BluetoothManager sharedInstance] sendData:[LightControllerCommand checkVersionCommand:model.version] onRespond:^BOOL(NSData *data) {
+                            Byte value[2] = {0};
+                            [data getBytes:&value length:sizeof(value)];
+                            
+                            if (value[0] == 0xaa && value[1] == 0xee) {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [MBProgressHUD showSuccess:@"The firmware update is complete. Please contact Village Lighting Company if additional support is needed." toView:weakSelf.view];
+                                });
+                                
+                            }
+                            else {
+                                //版本不同
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [MBProgressHUD showSuccess:@"Unsuccessful" toView:weakSelf.view];
+                                });
+                            }
+                            
+                            return YES;
+                        } onTimeOut:^{
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [MBProgressHUD showSuccess:@"Unsuccessful" toView:weakSelf.view];
+                            });
+                        }];
                     }];
                     
                     [service startUpdating];    //开始更新
                 }];
             }];
-//
-//            [strongSelf showMessage:@"The new firmware is available,do you want to update?" withTitle:@"" cancleTitle:@"NO" cancel:^{
-//
-//            } okTitle:@"YES" onOKBlock:^{
-//
-//
-//            }];
             
             return YES;
         }
@@ -905,7 +928,7 @@
         return;
     }
     
-#ifdef DEBUG
+#ifdef TEST_CLOSE_BLUETOOTH
     powerSwitch.on = !powerSwitch.isOn;
     self.light.isPowerOn = [[NSNumber alloc] initWithBool:powerSwitch.isOn];
     [APPDELEGATE saveContext];
