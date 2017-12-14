@@ -84,12 +84,12 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/ViewController/FoundViewController.m"
-                  timestampString = "534183781.63057"
+                  timestampString = "534955501.520308"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "290"
                   endingLineNumber = "290"
-                  offsetFromSymbolStart = "288">
+                  offsetFromSymbolStart = "249">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -99,12 +99,12 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/ViewController/FoundViewController.m"
-                  timestampString = "534183781.633493"
+                  timestampString = "534955501.525159"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "290"
                   endingLineNumber = "290"
-                  offsetFromSymbolStart = "24">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -148,12 +148,12 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/Firmware/FirmwareListViewController.m"
-                  timestampString = "534183781.644491"
+                  timestampString = "534955501.542744"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "111"
                   endingLineNumber = "111"
-                  offsetFromSymbolStart = "40">
+                  offsetFromSymbolStart = "19">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -163,7 +163,7 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/Firmware/FirmwareListViewController.m"
-                  timestampString = "534183781.646897"
+                  timestampString = "534955501.547641"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "113"
@@ -196,12 +196,12 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/Firmware/FirmwareListViewController.m"
-                  timestampString = "534183781.652211"
+                  timestampString = "534955501.558158"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "104"
                   endingLineNumber = "104"
-                  offsetFromSymbolStart = "164">
+                  offsetFromSymbolStart = "160">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -211,12 +211,12 @@
                   moduleName = "VLCController"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My%20Projects/GitHub/VLCController/VLCController/Firmware/FirmwareListViewController.m"
-                  timestampString = "534183781.655542"
+                  timestampString = "534955501.563033"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "107"
                   endingLineNumber = "107"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>

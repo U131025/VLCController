@@ -14,7 +14,7 @@
 #import "SetupResultViewController.h"
 #import "ConnectModel.h"
 
-static const CGFloat kBorderW = 100;
+//static const CGFloat kBorderW = 100;
 static const CGFloat kMargin = 80;
 
 @interface ScanViewController ()<UIAlertViewDelegate,AVCaptureMetadataOutputObjectsDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>

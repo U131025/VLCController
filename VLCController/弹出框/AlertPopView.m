@@ -16,7 +16,7 @@
 
 @interface AlertPopView()<CCHLinkTextViewDelegate>
 
-@property (nonatomic, strong) UIView *bodyView;
+
 @property (nonatomic, copy) void (^continueBlock)(void);
 
 @end

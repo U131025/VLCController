@@ -13,6 +13,7 @@
 
 @interface AlertPopView : UIView
 
+@property (nonatomic, strong) UIView *bodyView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) CCHLinkTextView *textView;
 

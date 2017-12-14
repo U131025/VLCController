@@ -96,7 +96,7 @@
         if (dataArray.count > 0) {
             //固件更新
             FirmwareModel *model = [dataArray objectAtIndex:0];
-            [self startFirmwareUpdate:model];
+            [self startFirmwareUpdate:model showTip:NO];
         }
         
     } failure:nil];
@@ -568,6 +568,11 @@
 
 - (void)startFirmwareUpdate:(FirmwareModel *)model
 {
+    [self startFirmwareUpdate:model showTip:YES];
+}
+
+- (void)startFirmwareUpdate:(FirmwareModel *)model showTip:(BOOL)showTip
+{    
     //校验版本
     __weak typeof(self) weakSelf = self;
     [[BluetoothManager sharedInstance] sendData:[LightControllerCommand checkVersionCommand:model.version] onRespond:^BOOL(NSData *data) {
@@ -582,7 +587,7 @@
         [data getBytes:&value length:sizeof(value)];
         
         if (value[0] == 0xaa && value[1] == 0x0a) {
-            
+            //有更新
             __weak typeof(self) weakSelf = strongSelf;
             [strongSelf showTipForFirmwareUpdateStep1:^{
                 
@@ -596,21 +601,21 @@
                             
                             if (value[0] == 0xaa && value[1] == 0xee) {
                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                    [MBProgressHUD showMessage:@"Firmware update complete. If controller is not working properly, please contact Village Lighting" toView:weakSelf.view afterDelay:3.0];
+                                    [MBProgressHUD showMessage:@"Firmware update complete. If controller is not working properly, please contact Village Lighting" toView:weakSelf.view afterDelay:6.0];
                                 });
                                 
                             }
                             else {
                                 //版本不同
                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                    [MBProgressHUD showMessage:@"Please try again or contact Village Lighting Company if additional support is needed." toView:weakSelf.view afterDelay:3.0];
+                                    [MBProgressHUD showMessage:@"Please try again or contact Village Lighting Company if additional support is needed." toView:weakSelf.view afterDelay:6.0];
                                 });
                             }
                             
                             return YES;
                         } onTimeOut:^{
                             dispatch_async(dispatch_get_main_queue(), ^{
-                                [MBProgressHUD showMessage:@"Please try again or contact Village Lighting Company if additional support is needed." toView:weakSelf.view afterDelay:3.0];
+                                [MBProgressHUD showMessage:@"Please try again or contact Village Lighting Company if additional support is needed." toView:weakSelf.view afterDelay:6.0];
                             });
                         }];
                     }];
@@ -622,10 +627,13 @@
             return YES;
         }
         else if (value[0] == 0xaa && value[1] == 0xee) {
+            //版本相同
+            if (showTip) {
+                [strongSelf showTipWithMessage:@"There is no firmware available" withTitle:@"" useCancel:NO onOKBlock:^{
+                    
+                }];
+            }
             
-            [strongSelf showTipWithMessage:@"There is no firmware available" withTitle:@"" useCancel:NO onOKBlock:^{
-                
-            }];
             return YES;
         }
         
