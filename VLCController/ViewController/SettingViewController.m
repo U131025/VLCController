@@ -88,7 +88,8 @@
         }
     }
     
-    //检查版本
+    self.tableView.userInteractionEnabled = NO;
+
     //判断是否有固件更新
     [FirmwareModel fetchListSuccess:^(id data) {
         
@@ -100,6 +101,10 @@
         }
         
     } failure:nil];
+    
+    [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:self.light.lightID] onRespond:^BOOL(NSData *data) {
+        return YES;
+    } onTimeOut:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeThemeNotify:) name:Notify_ChangeTheme object:nil];
     
@@ -555,7 +560,7 @@
     AlertPopView *alertView = [[AlertPopView alloc] init];
     [alertView setTitle:@"A Firmware update is available for the controller.  Would you like to continue? " content:@"NOTE: bulbs and switches must be re-paired following the firmware update.  Visit www.villagelighting.com for pairing instructions." linkString:@"www.villagelighting.com"];
     [alertView setBlockForContinue:continueBlock];
-    [alertView show];
+    [alertView show];    
 }
 
 - (void)showTipForFirmwareUpdateStep2:(void (^)(void))continueBlock
@@ -581,6 +586,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:strongSelf.view];
+            strongSelf.tableView.userInteractionEnabled = YES;
         });
         
         Byte value[2] = {0};
@@ -600,6 +606,7 @@
                             [data getBytes:&value length:sizeof(value)];
                             
                             if (value[0] == 0xaa && value[1] == 0xee) {
+                                //版本相同
                                 dispatch_async(dispatch_get_main_queue(), ^{
                                     [MBProgressHUD showMessage:@"Firmware update complete. If controller is not working properly, please contact Village Lighting" toView:weakSelf.view afterDelay:6.0];
                                 });

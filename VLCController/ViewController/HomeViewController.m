@@ -765,8 +765,6 @@
                 [MBProgressHUD hideHUDForView:self.view];
             });
             
-            [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:_lightModel.lightID] onRespond:nil onTimeOut:nil];
-            
             SettingViewController *settingVC = [[SettingViewController alloc] initWithPeripheral:peripheral];
             settingVC.headerTitle = _lightModel.name;
             settingVC.light = light;

@@ -116,7 +116,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
             int pos = 0;
             Byte commandData[20] = {0};
             commandData[pos] = 0xaa; pos++;
-            commandData[pos] = 0xee; pos++;
+            commandData[pos] = 0x0a; pos++;
             //ID
             commandData[pos] = 0x00; pos++;
             
