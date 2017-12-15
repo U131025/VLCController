@@ -89,20 +89,21 @@
     }
     
     self.tableView.userInteractionEnabled = NO;
-
-    //判断是否有固件更新
-    [FirmwareModel fetchListSuccess:^(id data) {
-        
-        NSArray *dataArray = data;
-        if (dataArray.count > 0) {
-            //固件更新
-            FirmwareModel *model = [dataArray objectAtIndex:0];
-            [self startFirmwareUpdate:model showTip:NO];
-        }
-        
-    } failure:nil];
     
+    //判断是否有固件更新
     [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:self.light.lightID] onRespond:^BOOL(NSData *data) {
+
+        [FirmwareModel fetchListSuccess:^(id data) {
+            
+            NSArray *dataArray = data;
+            if (dataArray.count > 0) {
+                //固件更新
+                FirmwareModel *model = [dataArray objectAtIndex:0];
+                [self startFirmwareUpdate:model showTip:NO];
+            }
+            
+        } failure:nil];
+
         return YES;
     } onTimeOut:nil];
     

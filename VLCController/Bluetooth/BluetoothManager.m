@@ -12,6 +12,10 @@
 #import "NSData+Convert.h"
 
 @interface BluetoothManager()<DeviceManagerDelegate>
+{
+    dispatch_semaphore_t _signal;
+    dispatch_queue_t _queue;
+}
 
 //@property (nonatomic, strong) CBPeripheral *peripheral;
 //@property (nonatomic, strong) BluetoothLibary *bluetoothClient;
@@ -45,6 +49,8 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
     self = [super init];
     if (self) {
         [DeviceManager sharedInstance].delegate = self;
+        _signal = dispatch_semaphore_create(1);
+        _queue = dispatch_queue_create("send queue", DISPATCH_QUEUE_SERIAL);
     }
     return self;
 }
@@ -87,51 +93,75 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
 
 - (void)sendData:(NSData *)sendData onRespond:(BOOL (^)(NSData *))respond timeOutValue:(NSInteger)timeOutValue onTimeOut:(void (^)())timeOut
 {
-//    self.respond = YES;
-    self.onRespondBlock = respond;
-    self.OnRespondTimeoutBlock = timeOut;
-    
-    [[DeviceManager sharedInstance] sendDataToPeripheral:sendData];
-    
-//    [[DeviceManager sharedInstance] readData];
-    
-    //超时设置
-    if (timeOut) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self timerClean];
-            _timer = [NSTimer scheduledTimerWithTimeInterval:timeOutValue target:self selector:@selector(runTimer) userInfo:nil repeats:NO];
+    dispatch_async(_queue, ^{
+       
+//        dispatch_time_t duration = dispatch_time(DISPATCH_TIME_NOW, timeOutValue * NSEC_PER_SEC); //超时1秒
+//        dispatch_semaphore_wait(_signal, duration);
+        dispatch_semaphore_wait(_signal, DISPATCH_TIME_FOREVER);
+        
+        self.onRespondBlock = respond;
+        self.OnRespondTimeoutBlock = timeOut;
+        
+        [[DeviceManager sharedInstance] sendDataToPeripheral:sendData];
+        
+        //超时设置
+        if (timeOut) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self timerClean];
+                _timer = [NSTimer scheduledTimerWithTimeInterval:timeOutValue target:self selector:@selector(runTimer) userInfo:nil repeats:NO];
+            });
+            
+        }
+        
+#ifdef TEST_FILTER_RESPOND
+        
+        //模拟返回数据
+        __weak typeof(self) weakSelf = self;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            //
+            static NSInteger index = 0;
+            
+            if (weakSelf.onRespondBlock) {
+                
+                [weakSelf timerClean];
+                
+                int pos = 0;
+                Byte commandData[20] = {0};
+                commandData[pos] = 0xaa; pos++;
+                
+                if (index == 1) {
+                    commandData[pos] = 0xee; pos++;
+                }
+                else {
+                    commandData[pos] = 0x0a; pos++;
+                }
+                
+                //ID
+                commandData[pos] = 0x00; pos++;
+                
+                Byte verify = [LightControllerCommand getVerify:commandData datalength:19];
+                commandData[19] = verify;
+                NSData *respondData = [[NSData alloc] initWithBytes:commandData length:20];
+                
+                if (weakSelf.onRespondBlock(respondData)) {
+                    //返回结果处理
+                    weakSelf.onRespondBlock = nil;
+                    dispatch_semaphore_signal(_signal);
+                }
+            }
+            else {
+                 dispatch_semaphore_signal(_signal);
+            }
+            
+            index++;
+            
         });
         
-    }
-    
-#ifdef TEST_FILTER_RESPOND
-    //模拟返回数据
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        //
-        if (weakSelf.onRespondBlock) {
-            
-            [weakSelf timerClean];
-            
-            int pos = 0;
-            Byte commandData[20] = {0};
-            commandData[pos] = 0xaa; pos++;
-            commandData[pos] = 0x0a; pos++;
-            //ID
-            commandData[pos] = 0x00; pos++;
-            
-            Byte verify = [LightControllerCommand getVerify:commandData datalength:19];
-            commandData[19] = verify;
-            NSData *respondData = [[NSData alloc] initWithBytes:commandData length:20];
-                        
-            if (weakSelf.onRespondBlock(respondData)) {
-                //返回结果处理
-            }
-        }
+#endif
         
     });
     
-#endif
+    
 }
 
 - (void)readDataWithRespond:(BOOL (^)(NSData *data))respond timeOutValue:(NSInteger)timeOutValue onTimeOut:(void (^)())timeOut
@@ -240,7 +270,12 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
                 self.onRespondBlock = nil;
                 self.OnRespondTimeoutBlock = nil;
                 [self timerClean];
+                
+                dispatch_semaphore_signal(_signal);
             }
+        }
+        else {
+            dispatch_semaphore_signal(_signal);
         }
     }
     
@@ -253,6 +288,9 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
     self.onRespondBlock = nil;
     if (self.OnRespondTimeoutBlock) {
         self.OnRespondTimeoutBlock();
+        self.OnRespondTimeoutBlock = nil;
+        
+        dispatch_semaphore_signal(_signal);
     }
     
     //退出超时判断

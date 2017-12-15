@@ -230,7 +230,7 @@
             return;
         }
         
-        [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:_lightModel.lightID] onRespond:nil onTimeOut:nil];
+//        [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:_lightModel.lightID] onRespond:nil onTimeOut:nil];
         
         //点击事件
         SettingViewController *settingVC = [[SettingViewController alloc] initWithPeripheral:periphseral];
@@ -800,8 +800,6 @@
             [MBProgressHUD hideHUDForView:self.view];
         });
         
-        [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:_lightModel.lightID] onRespond:nil onTimeOut:nil];
-        
         SettingViewController *settingVC = [[SettingViewController alloc] initWithPeripheral:peripheral];
         settingVC.headerTitle = _lightModel.name;
         settingVC.light = light;
@@ -817,8 +815,7 @@
     [[BluetoothManager sharedInstance] connectWithName:light.macAddress oldPassword:password newPassword:password successBlock:^(CBPeripheral *peripheral, id data, BLERespondType type) {
         
         [self hideHUD];
-        [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:_lightModel.lightID] onRespond:nil onTimeOut:nil];
-        
+
         SettingViewController *settingVC = [[SettingViewController alloc] initWithPeripheral:peripheral];
         settingVC.headerTitle = _lightModel.name;
         settingVC.light = light;
@@ -866,7 +863,7 @@
     
     [[BluetoothManager sharedInstance] connectWithName:peripheral.name oldPassword:password newPassword:password successBlock:^(CBPeripheral *peripheral, id data, BLERespondType type) {
         
-        [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:_lightModel.lightID] onRespond:nil onTimeOut:nil];
+//        [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:_lightModel.lightID] onRespond:nil onTimeOut:nil];
         
         //success
         [self hideHUD];
@@ -881,70 +878,7 @@
             [self showSorryView];
         });
         
-    }];
-    
-//    [[BluetoothManager sharedInstance] pairDeviceWithOldPassword:password newPassWord:password withResponds:^(NSData *data) {
-//        //
-//        const char *pData = [data bytes];
-//        
-//        if (pData[0] == 0) {
-//            //success
-//            NSLog(@"\n ==== 配对成功 ===== \n");
-//            
-//            //success
-//            if (peripheral.state == CBPeripheralStateConnected) {
-//                
-//                MyLog(@"\n==lightController:%@==\n", light);
-//                
-//                //配对指令
-//                [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:_lightModel.lightID] onRespond:nil onTimeOut:nil];
-//                
-////                [[BluetoothManager sharedInstance] sendDataToPeripheral:[LightControllerCommand pairMainControllerCommand:_lightModel.lightID]];
-//                
-//                //success
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [MBProgressHUD hideHUD];
-//                });
-//                
-//                SettingViewController *settingVC = [[SettingViewController alloc] initWithPeripheral:peripheral];
-//                settingVC.headerTitle = _lightModel.name;
-//                settingVC.light = light;
-//                [self.navigationController pushViewController:settingVC animated:YES];
-//            }
-//        }
-//        else if (pData[0] == 1) {
-//            //password error
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [MBProgressHUD hideHUD];
-//                [MBProgressHUD showError:@"Invalid password"];
-//            });
-//            
-//        }
-//        else if (pData[0] == 2) {
-//            //modify success
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [MBProgressHUD hideHUD];
-//            });
-//        }
-//        else if (pData[0] == 3) {
-//            //cancel password
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [MBProgressHUD hideHUD];
-//            });
-//        }
-//        
-//    }];
-//    
-//    [[BluetoothManager sharedInstance] connectPeripheral:peripheral onSuccessBlock:^{
-//        //success
-//        
-//    } onTimeoutBlock:^{
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [MBProgressHUD hideHUD];
-//            [self showSorryView];
-//        });
-//    }];
-    
+    }];   
 }
 
 #pragma mark Slave Unlink 事件

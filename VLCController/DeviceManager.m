@@ -357,19 +357,6 @@
     DeviceModel *model = [self.peripheralDic objectForKey:channel];
     if (model && model.periperal && model.writeCharateristic) {
         
-//        if (model.readCharateristic) {
-//            __weak typeof(self) weakSelf = self;
-//            [self.baby notify:model.periperal characteristic:model.readCharateristic block:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
-//                
-//                for (id<DeviceManagerDelegate> delegate in weakSelf.delegateHashTable) {
-//                    if ([delegate respondsToSelector:@selector(peripheralAtCharateristic:notifyData:)]) {
-//                        [delegate peripheralAtCharateristic:characteristics notifyData:characteristics.value];
-//                    }
-//                }
-//            }];
-//        }
-        
-        
         NSLog(@"\n=======\n SendData: %@ \n========\n", sendData);
         
         [model.periperal writeValue:sendData forCharacteristic:model.writeCharateristic type:CBCharacteristicWriteWithoutResponse];
