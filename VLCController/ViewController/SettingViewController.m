@@ -81,18 +81,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    if (self.light.themeName) {
-        self.selectedTheme = [Theme getThemeWithWithName:self.light.themeName withLightController:self.light inManageObjectContext:APPDELEGATE.managedObjectContext];
-        if (!self.selectedTheme) {
-            self.light.themeName = nil;
-        }
-    }
-    
+    [MBProgressHUD showMessage:@"Please wait, system is starting" toView:self.view];
     self.tableView.userInteractionEnabled = NO;
     
     //判断是否有固件更新
     [[BluetoothManager sharedInstance] sendData:[LightControllerCommand pairMainControllerCommand:self.light.lightID] onRespond:^BOOL(NSData *data) {
-
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [FirmwareModel fetchListSuccess:^(id data) {
                 
@@ -103,11 +97,23 @@
                     [self startFirmwareUpdate:model showTip:NO];
                 }
                 
-            } failure:nil];
-        });        
-
+            } failure:^(id error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MBProgressHUD hideHUDForView:self.view];
+                    self.tableView.userInteractionEnabled = YES;
+                });
+            }];
+        });
+        
         return YES;
     } onTimeOut:nil];
+    
+    if (self.light.themeName) {
+        self.selectedTheme = [Theme getThemeWithWithName:self.light.themeName withLightController:self.light inManageObjectContext:APPDELEGATE.managedObjectContext];
+        if (!self.selectedTheme) {
+            self.light.themeName = nil;
+        }
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeThemeNotify:) name:Notify_ChangeTheme object:nil];
     
@@ -120,25 +126,22 @@
     self.useSchedulePlan = [self.light.useLightSchedule boolValue];
     self.themeComboxView.enable = !self.useSchedulePlan;
     
-    //检查主题，如果没有在数据库中存在则置空
-//    NSLog(@"== themeName: %@ ==", self.light.themeName);
-//    if (self.light.themeName) {
-//        Theme *itemTheme = [Theme getThemeWithWithName:_themeComboxView.contentText withLightController:self.light inManageObjectContext:APPDELEGATE.managedObjectContext];
-//        if (!itemTheme) {
-//            _themeComboxView.contentText = @"";
-//        }
-//    }
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        if (self.light.themeName) {
+            self.selectedTheme = [Theme getThemeWithWithName:self.light.themeName withLightController:self.light inManageObjectContext:APPDELEGATE.managedObjectContext];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (!self.selectedTheme) {
+                    self.light.themeName = nil;
+                    _themeComboxView.contentText = @"";
+                }
+                else {
+                    _themeComboxView.contentText = self.light.themeName;
+                }
+            });
+        }
+    });
     
-    if (self.light.themeName) {
-        self.selectedTheme = [Theme getThemeWithWithName:self.light.themeName withLightController:self.light inManageObjectContext:APPDELEGATE.managedObjectContext];
-        if (!self.selectedTheme) {
-            self.light.themeName = nil;
-            _themeComboxView.contentText = @"";
-        }
-        else {
-            _themeComboxView.contentText = self.light.themeName;
-        }
-    }
 }
 
 - (void)didReceiveMemoryWarning {

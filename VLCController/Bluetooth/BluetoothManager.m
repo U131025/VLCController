@@ -97,7 +97,8 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
        
 //        dispatch_time_t duration = dispatch_time(DISPATCH_TIME_NOW, timeOutValue * NSEC_PER_SEC); //超时1秒
 //        dispatch_semaphore_wait(_signal, duration);
-        dispatch_semaphore_wait(_signal, DISPATCH_TIME_FOREVER);
+        
+//        dispatch_semaphore_wait(_signal, DISPATCH_TIME_FOREVER);
         
         self.onRespondBlock = respond;
         self.OnRespondTimeoutBlock = timeOut;
@@ -117,7 +118,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
         
         //模拟返回数据
         __weak typeof(self) weakSelf = self;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             //
             static NSInteger index = 0;
             
@@ -159,8 +160,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(BluetoothManager);
         
 #endif
         
-    });
-    
+    });    
     
 }
 
