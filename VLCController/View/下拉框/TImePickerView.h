@@ -10,7 +10,9 @@
 
 @interface TimePickerView : UIView
 
-@property (nonatomic, copy) void (^doneActionBlock)(NSString *result);
+@property (nonatomic, strong) UIDatePicker *datePicker;
+
+@property (nonatomic, copy) void (^doneActionBlock)(NSString *result, NSDate *selDate);
 
 - (void)show;
 

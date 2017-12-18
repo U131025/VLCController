@@ -11,7 +11,7 @@
 @interface TimePickerView()
 
 @property (nonatomic, strong) UIView *backgroundView;
-@property (nonatomic, strong) UIDatePicker *datePicker;
+
 
 @end
 
@@ -87,7 +87,7 @@
     NSString *resultString = [dateFormatter stringFromDate:_datePicker.date];
     
     if (self.doneActionBlock) {
-        self.doneActionBlock(resultString);
+        self.doneActionBlock(resultString, _datePicker.date);
     }
     
     [self removeFromSuperview];

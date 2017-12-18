@@ -39,6 +39,10 @@
 
 @property (nonatomic, assign) BOOL isPhotoCell;
 @property (nonatomic, strong) Schedule *schedule;
+
+@property (nonatomic, strong) NSDate *onTime;
+@property (nonatomic, strong) NSDate *offTime;
+
 @end
 
 @interface EditSimpleScheduleViewController ()
@@ -543,19 +547,46 @@
 - (void)showDataPicker:(NSInteger)tag isShow:(BOOL)isShow
 {    
     __weak typeof(self) weakSelf = self;
-    self.timePicker.doneActionBlock = ^(NSString *result) {
-        
+    self.timePicker.doneActionBlock = ^(NSString *result, NSDate *selDate) {
+        __strong typeof(self) strongSelf = weakSelf;
         //返回结果
         if (tag == 0) {
             //on
-            weakSelf.onTimeValue = result;
-            [weakSelf.turnOnTimeButton setTitle:result forState:UIControlStateNormal];
+            strongSelf.onTimeValue = result;
+            strongSelf.onTime  = selDate;
+            [strongSelf.turnOnTimeButton setTitle:result forState:UIControlStateNormal];
         } else {
             //off
-            weakSelf.offTimeValue = result;
-            [weakSelf.turnOffTimeButton setTitle:result forState:UIControlStateNormal];
+            strongSelf.offTimeValue = result;
+            strongSelf.offTime = selDate;
+            [strongSelf.turnOffTimeButton setTitle:result forState:UIControlStateNormal];
         }
     };
+    
+    if (tag == 0) {
+        // On
+        if (self.offTime) {
+            self.onTime = [NSDate dateWithTimeInterval:-300 sinceDate:self.offTime];
+            self.timePicker.datePicker.maximumDate = self.onTime;
+        }
+        else {
+            self.onTime = [NSDate dateWithTimeIntervalSinceNow:300];
+        }
+        
+        [self.timePicker.datePicker setDate:self.onTime];
+    }
+    else {
+        //off
+        if (self.onTime) {
+            self.offTime = [NSDate dateWithTimeInterval:300 sinceDate:self.onTime];
+            self.timePicker.datePicker.minimumDate = self.offTime;
+        }
+        else {
+            self.offTime = [NSDate dateWithTimeIntervalSinceNow:300];
+        }
+        
+        [self.timePicker.datePicker setDate:self.offTime];
+    }
     
     [self.timePicker show];
    
