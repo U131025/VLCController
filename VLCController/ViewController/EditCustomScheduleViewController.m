@@ -281,6 +281,18 @@
             strongSelf.onTimeValue = result;
             strongSelf.onTime  = selDate;
             [strongSelf.turnOnTimeButton setTitle:result forState:UIControlStateNormal];
+            
+            NSTimeInterval seconds = [strongSelf.offTime timeIntervalSinceDate:strongSelf.onTime];
+            if (seconds < 300) {
+                strongSelf.offTime = [NSDate dateWithTimeInterval:300 sinceDate:strongSelf.onTime];
+                
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
+                [dateFormatter setDateFormat:@"hh:mm a"];
+                strongSelf.offTimeValue = [dateFormatter stringFromDate:strongSelf.offTime];;
+                [strongSelf.turnOffTimeButton setTitle:strongSelf.offTimeValue forState:UIControlStateNormal];
+            }
+            
         } else {
             //off
             strongSelf.offTimeValue = result;
@@ -291,26 +303,20 @@
     
     if (tag == 0) {
         // On
-        if (self.offTime) {
-            self.onTime = [NSDate dateWithTimeInterval:-300 sinceDate:self.offTime];
-            self.timePicker.datePicker.maximumDate = self.onTime;
-        }
-        else {
-            self.onTime = [NSDate dateWithTimeIntervalSinceNow:300];
-        }
+        NSDate *minDate = [NSDate dateWithTimeIntervalSinceNow:300];
+        self.timePicker.datePicker.minimumDate = minDate;
         
-        [self.timePicker.datePicker setDate:self.onTime];
+        [self.timePicker.datePicker setDate:minDate];
     }
     else {
         //off
         if (self.onTime) {
             self.offTime = [NSDate dateWithTimeInterval:300 sinceDate:self.onTime];
-            self.timePicker.datePicker.minimumDate = self.offTime;
         }
         else {
             self.offTime = [NSDate dateWithTimeIntervalSinceNow:300];
         }
-        
+        self.timePicker.datePicker.minimumDate = self.offTime;
         [self.timePicker.datePicker setDate:self.offTime];
     }
     
